@@ -1,7 +1,8 @@
 # https://www.postgresql.org/docs/18/sql-altertable.html
 
 # CASE OPTIONS
-ALTER TABLE [ IF EXISTS ] [ ONLY ] name [ * ] action [, ...]
+ALTER TABLE [ IF EXISTS ] [ ONLY ] name [ * ] 
+    action [, ...]
 
 # CASE RENAME_COLUMN
 ALTER TABLE [ IF EXISTS ] [ ONLY ] name [ * ]
@@ -12,7 +13,8 @@ ALTER TABLE [ IF EXISTS ] [ ONLY ] name [ * ]
     RENAME CONSTRAINT constraint TO new_constraint
 
 # CASE RENAME
-ALTER TABLE [ IF EXISTS ] name RENAME TO new_name
+ALTER TABLE [ IF EXISTS ] name
+    RENAME TO new_name
 
 # CASE ATTACH_PARTITION
 ALTER TABLE [ IF EXISTS ] name
@@ -25,7 +27,8 @@ ALTER TABLE [ IF EXISTS ] name
     [ CONCURRENTLY | FINALIZE ]
 
 # CASE SCHEMA
-ALTER TABLE [ IF EXISTS ] name SET SCHEMA schema
+ALTER TABLE [ IF EXISTS ] name
+    SET SCHEMA schema
 
 # CASE ALL_TABLESPACE
 ALTER TABLE ALL IN TABLESPACE tablespace
@@ -34,8 +37,8 @@ ALTER TABLE ALL IN TABLESPACE tablespace
     [ NOWAIT ]
 
 # ONEOFIS action
-  ADD [ COLUMN ] [ IF NOT EXISTS ] colname type [ COLLATE collate ] column_constraint_definition [...]
- DROP [ COLUMN ] [ IF EXISTS ] colname [ RESTRICT | CASCADE ]
+ADD [ COLUMN ] [ IF NOT EXISTS ] colname type [ COLLATE collate ] column_constraint_definition [...]
+DROP [ COLUMN ] [ IF EXISTS ] colname [ RESTRICT | CASCADE ]
 ALTER [ COLUMN ] colname [ SET DATA ] TYPE type [ COLLATE collate ] [ USING col_expression ]
 ALTER [ COLUMN ] colname SET DEFAULT value_expression
 ALTER [ COLUMN ] colname DROP DEFAULT
@@ -99,16 +102,22 @@ REPLICA IDENTITY { DEFAULT | USING INDEX index | FULL | NOTHING }
     [ ON DELETE on_delete_action ]
     [ ON UPDATE on_update_action ]
 }
-[ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ] [ ENFORCED | NOT ENFORCED ]
+[ DEFERRABLE | NOT DEFERRABLE ]
+[ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
+[ ENFORCED | NOT ENFORCED ]
 
 # WHERE table_constraint_definition
 [ CONSTRAINT constraint ]
 {
   CHECK ( boolean_expression ) [ NO INHERIT ] |
   NOT NULL colname [ NO INHERIT ] |
-  UNIQUE [ NULLS [ NOT ] DISTINCT ] ( colname [, ...] [, colname WITHOUT OVERLAPS ] ) unique_index_options |
-  PRIMARY KEY ( colname [, ...] [, colname WITHOUT OVERLAPS ] ) primary_key_index_options |
-  EXCLUDE [ USING index_method ] ( exclude_column_expression WITH operator [, ...] ) exclude_index_options [ WHERE ( boolean_expression ) ] |
+  UNIQUE [ NULLS [ NOT ] DISTINCT ] ( colname [, ...] [ WITHOUT OVERLAPS ] )
+    unique_index_options |
+  PRIMARY KEY ( colname [, ...] [ WITHOUT OVERLAPS ] )
+    primary_key_index_options |
+  EXCLUDE [ USING index_method ]
+    ( exclude_column_expression WITH operator [, ...] )
+    exclude_index_options [ WHERE ( boolean_expression ) ] |
   FOREIGN KEY ( colname [, ...] [, PERIOD colname ] )
     REFERENCES referenced_table [ ( refcolname [, ...] [, PERIOD refcolname ] ) ]
     [ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ]
@@ -130,7 +139,9 @@ REPLICA IDENTITY { DEFAULT | USING INDEX index | FULL | NOTHING }
 [ USING INDEX TABLESPACE tablespace ]
 
 # WHERE exclude_column_expression
-{ colname | ( col_expression ) } [ COLLATE collate ] [ opclass [ ( opclass_parameter = value [, ...] ) ] ] [ ASC | DESC ] [ NULLS { FIRST | LAST } ]
+{ colname | ( col_expression ) } [ COLLATE collate ]
+[ opclass [ ( opclass_parameter = value [, ...] ) ] ]
+[ ASC | DESC ] [ NULLS { FIRST | LAST } ]
 
 # WHERE on_delete_action, on_update_action
 { NO ACTION | RESTRICT | CASCADE | SET NULL [ ( colname [, ...] ) ] | SET DEFAULT [ ( colname [, ...] ) ] }
