@@ -147,7 +147,7 @@ REPLICA IDENTITY { DEFAULT | USING INDEX index | FULL | NOTHING }
 { NO ACTION | RESTRICT | CASCADE | SET NULL [ ( colname [, ...] ) ] | SET DEFAULT [ ( colname [, ...] ) ] }
 
 # ONEOFIS partition_bound_definition
-  IN ( partition_bound_expression [, ...] )
+IN ( partition_bound_expression [, ...] )
 FROM ( { partition_bound_expression | MINVALUE | MAXVALUE } [, ...] ) TO ( { partition_bound_expression | MINVALUE | MAXVALUE } [, ...] )
 WITH ( MODULUS modulus, REMAINDER remainder )
 
