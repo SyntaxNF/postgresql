@@ -1,3 +1,5 @@
 # https://www.postgresql.org/docs/18/sql-droptransform.html
 
-DROP TRANSFORM [ IF EXISTS ] FOR type LANGUAGE language [ CASCADE | RESTRICT ]
+DROP TRANSFORM [ IF EXISTS ] FOR type
+    LANGUAGE language
+    [ CASCADE | RESTRICT ]

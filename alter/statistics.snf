@@ -1,16 +1,20 @@
 # https://www.postgresql.org/docs/18/sql-alterstatistics.html
 
 # CASE RENAME
-ALTER STATISTICS name RENAME TO new_name
+ALTER STATISTICS name
+    RENAME TO new_name
 
 # CASE TARGET
-ALTER STATISTICS name SET STATISTICS { statistics_target | DEFAULT }
+ALTER STATISTICS name
+    SET STATISTICS { statistics_target | DEFAULT }
 
 # CASE SCHEMA
-ALTER STATISTICS name SET SCHEMA schema
+ALTER STATISTICS name
+    SET SCHEMA schema
 
 # CASE OWNER
-ALTER STATISTICS name OWNER TO role
+ALTER STATISTICS name
+    OWNER TO role
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }

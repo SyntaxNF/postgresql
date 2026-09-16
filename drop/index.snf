@@ -1,3 +1,4 @@
 # https://www.postgresql.org/docs/18/sql-dropindex.html
 
-DROP INDEX [ CONCURRENTLY ] [ IF EXISTS ] name [, ...] [ CASCADE | RESTRICT ]
+DROP INDEX [ CONCURRENTLY ] [ IF EXISTS ] name [, ...]
+    [ CASCADE | RESTRICT ]

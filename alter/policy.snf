@@ -7,7 +7,8 @@ ALTER POLICY name ON table
     [ WITH CHECK ( boolean_expression ) ]
 
 # CASE RENAME
-ALTER POLICY name ON table RENAME TO new_name
+ALTER POLICY name ON table
+    RENAME TO new_name
 
 # WHERE role_public
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER | PUBLIC }

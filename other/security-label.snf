@@ -1,32 +1,64 @@
 # https://www.postgresql.org/docs/18/sql-security-label.html
 
-SECURITY LABEL [ FOR provider ] ON label_target IS { 'string' | NULL }
+SECURITY LABEL [ FOR provider ]
+    ON label_target
+    IS { 'string' | NULL }
 
-# ONEOFIS label_target
+# PARTOFIS label_target
 TABLE table
+
 COLUMN table.colname
-AGGREGATE aggregate ( signature )
+
+AGGREGATE aggregate (
+    signature
+)
+
 DATABASE database
+
 DOMAIN domain
+
 EVENT TRIGGER event_trigger
-FOREIGN TABLE ft
-FUNCTION function [ ( argtype [, ...] ) ]
+
+FOREIGN TABLE foreign_table
+
+FUNCTION function
+    [ ( argtype [, ...] ) ]
+
 LARGE OBJECT large_object
+
 MATERIALIZED VIEW m_view
+
 [ PROCEDURAL ] LANGUAGE language
-PROCEDURE procedure [ ( argtype [, ...] ) ]
+
+PROCEDURE procedure
+    [ ( argtype [, ...] ) ]
+
 PUBLICATION publication
+
 ROLE role
-ROUTINE routine [ ( argtype [, ...] ) ]
+
+ROUTINE routine
+    [ ( argtype [, ...] ) ]
+
 SCHEMA schema
+
 SEQUENCE sequence
+
 SUBSCRIPTION subscription
+
 TABLESPACE tablespace
+
 TYPE type
+
 VIEW view
 
-# WHERE signature
-* | arg [, ...] | arg [, ...] ORDER BY orders [, ...]
+# PARTOFIS signature
+*
+
+arg [, ...]
+
+arg [, ...]
+ORDER BY orders [, ...]
 
 # WHERE arg, orders
 [ argmode ] [ argname ] argtype

@@ -1,35 +1,51 @@
 # https://www.postgresql.org/docs/18/sql-altertype.html
 
 # CASE OPTIONS
-ALTER TYPE name action [, ...]
+ALTER TYPE name
+    action [, ...]
 
 # CASE ADD_VALUE
-ALTER TYPE name ADD VALUE [ IF NOT EXISTS ] new_enum
+ALTER TYPE name
+    ADD VALUE [ IF NOT EXISTS ] new_enum
     [ { BEFORE | AFTER } neighbor_enum ]
 
 # CASE RENAME_ATTRIBUTE
-ALTER TYPE name RENAME ATTRIBUTE attribute TO new_attribute
+ALTER TYPE name
+    RENAME ATTRIBUTE attribute TO new_attribute
     [ CASCADE | RESTRICT ]
 
 # CASE RENAME_VALUE
-ALTER TYPE name RENAME VALUE enum TO new_enum
+ALTER TYPE name
+    RENAME VALUE enum TO new_enum
 
 # CASE RENAME
-ALTER TYPE name RENAME TO new_name
+ALTER TYPE name
+    RENAME TO new_name
 
 # CASE SET_OPTIONS
-ALTER TYPE name SET ( { type_parameter = value } [, ...] )
+ALTER TYPE name
+    SET ( { type_parameter = value } [, ...] )
 
 # CASE OWNER
-ALTER TYPE name OWNER TO role
+ALTER TYPE name
+    OWNER TO role
 
 # CASE SCHEMA
-ALTER TYPE name SET SCHEMA schema
+ALTER TYPE name
+    SET SCHEMA schema
 
-# ONEOFIS action
-ADD ATTRIBUTE attribute type [ COLLATE collation ] [ CASCADE | RESTRICT ]
-DROP ATTRIBUTE [ IF EXISTS ] attribute [ CASCADE | RESTRICT ]
-ALTER ATTRIBUTE attribute [ SET DATA ] TYPE type [ COLLATE collation ] [ CASCADE | RESTRICT ]
+# PARTOFIS action
+ADD ATTRIBUTE attribute type
+    [ COLLATE collation ]
+    [ CASCADE | RESTRICT ]
+
+DROP ATTRIBUTE [ IF EXISTS ] attribute
+    [ CASCADE | RESTRICT ]
+
+ALTER ATTRIBUTE attribute
+    [ SET DATA ] TYPE type
+    [ COLLATE collation ]
+    [ CASCADE | RESTRICT ]
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }

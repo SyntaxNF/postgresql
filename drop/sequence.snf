@@ -1,3 +1,4 @@
 # https://www.postgresql.org/docs/18/sql-dropsequence.html
 
-DROP SEQUENCE [ IF EXISTS ] name [, ...] [ CASCADE | RESTRICT ]
+DROP SEQUENCE [ IF EXISTS ] name [, ...]
+    [ CASCADE | RESTRICT ]

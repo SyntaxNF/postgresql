@@ -1,7 +1,9 @@
 # https://www.postgresql.org/docs/18/sql-altertrigger.html
 
 # CASE RENAME
-ALTER TRIGGER name ON table RENAME TO new_name
+ALTER TRIGGER name ON table
+    RENAME TO new_name
 
 # CASE DEPENDS_EXTENSION
-ALTER TRIGGER name ON table [ NO ] DEPENDS ON EXTENSION extension
+ALTER TRIGGER name ON table
+    [ NO ] DEPENDS ON EXTENSION extension

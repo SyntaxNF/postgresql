@@ -1,8 +1,13 @@
 # https://www.postgresql.org/docs/18/sql-droproutine.html
 
 DROP ROUTINE [ IF EXISTS ]
-    { name [ ( arg [, ...] ) ] } [, ...]
+    signature [, ...]
     [ CASCADE | RESTRICT ]
+
+# WHERE signature
+{ name
+[ ( arg [, ...] ) ]
+}
 
 # WHERE arg
 [ argmode ] [ argname ] argtype

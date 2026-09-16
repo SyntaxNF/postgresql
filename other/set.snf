@@ -5,4 +5,5 @@ SET [ SESSION | LOCAL ] config_parameter
     { TO | = } { value | 'value' | DEFAULT }
 
 # CASE TIME_ZONE
-SET [ SESSION | LOCAL ] TIME ZONE { value | 'value' | LOCAL | DEFAULT }
+SET [ SESSION | LOCAL ] TIME ZONE
+    { value | 'value' | LOCAL | DEFAULT }

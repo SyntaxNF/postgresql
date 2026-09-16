@@ -11,10 +11,12 @@ ALTER OPERATOR name ( { left | NONE }, right ) SET (
 )
 
 # CASE OWNER
-ALTER OPERATOR name ( { left | NONE }, right ) OWNER TO role
+ALTER OPERATOR name ( { left | NONE }, right )
+    OWNER TO role
 
 # CASE SCHEMA
-ALTER OPERATOR name ( { left | NONE }, right ) SET SCHEMA schema
+ALTER OPERATOR name ( { left | NONE }, right )
+    SET SCHEMA schema
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }

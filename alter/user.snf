@@ -14,7 +14,8 @@ ALTER USER user [ WITH ]
     [ VALID UNTIL 'timestamp' ]
 
 # CASE RENAME
-ALTER USER name RENAME TO new_name
+ALTER USER name
+    RENAME TO new_name
 
 # CASE SET_CURRENT
 ALTER USER { user | ALL }
@@ -37,4 +38,4 @@ ALTER USER { user | ALL }
     RESET ALL
 
 # WHERE user
-name | CURRENT_ROLE | CURRENT_USER | SESSION_USER
+{ name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }

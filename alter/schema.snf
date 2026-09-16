@@ -1,10 +1,12 @@
 # https://www.postgresql.org/docs/18/sql-alterschema.html
 
 # CASE RENAME
-ALTER SCHEMA name RENAME TO new_name
+ALTER SCHEMA name
+    RENAME TO new_name
 
 # CASE OWNER
-ALTER SCHEMA name OWNER TO role
+ALTER SCHEMA name
+    OWNER TO role
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }

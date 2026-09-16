@@ -1,7 +1,8 @@
 # https://www.postgresql.org/docs/18/sql-set-session-authorization.html
 
 # CASE SET
-SET [ SESSION | LOCAL ] SESSION AUTHORIZATION { role | DEFAULT }
+SET [ SESSION | LOCAL ] SESSION
+    AUTHORIZATION { role | DEFAULT }
 
 # CASE RESET
 RESET SESSION AUTHORIZATION
