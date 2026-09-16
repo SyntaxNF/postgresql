@@ -1,3 +1,5 @@
 # https://www.postgresql.org/docs/18/sql-droptrigger.html
 
-DROP TRIGGER [ IF EXISTS ] name ON table [ CASCADE | RESTRICT ]
+DROP TRIGGER [ IF EXISTS ] name
+    ON table
+    [ CASCADE | RESTRICT ]

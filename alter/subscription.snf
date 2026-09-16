@@ -10,31 +10,39 @@ ALTER SUBSCRIPTION name ENABLE
 ALTER SUBSCRIPTION name DISABLE
 
 # CASE SET_PUBLICATION
-ALTER SUBSCRIPTION name SET PUBLICATION publication [, ...]
+ALTER SUBSCRIPTION name
+    SET PUBLICATION publication [, ...]
     [ WITH ( REFRESH [= refresh] ) ]
 
 # CASE ADD_PUBLICATION
-ALTER SUBSCRIPTION name ADD PUBLICATION publication [, ...]
+ALTER SUBSCRIPTION name
+    ADD PUBLICATION publication [, ...]
     [ WITH ( REFRESH [= refresh] ) ]
 
 # CASE DROP_PUBLICATION
-ALTER SUBSCRIPTION name DROP PUBLICATION publication [, ...]
+ALTER SUBSCRIPTION name
+    DROP PUBLICATION publication [, ...]
     [ WITH ( REFRESH [= refresh] ) ]
 
 # CASE REFRESH_PUBLICATION
-ALTER SUBSCRIPTION name REFRESH PUBLICATION [ WITH ( COPY_DATA [= copy_data] ) ]
+ALTER SUBSCRIPTION name
+    REFRESH PUBLICATION [ WITH ( COPY_DATA [= copy_data] ) ]
 
 # CASE SKIP
-ALTER SUBSCRIPTION name SKIP ( LSN = lsn )
+ALTER SUBSCRIPTION name
+    SKIP ( LSN = lsn )
 
 # CASE OPTIONS
-ALTER SUBSCRIPTION name SET ( { subscription_parameter [= value] } [, ...] )
+ALTER SUBSCRIPTION name
+    SET ( { subscription_parameter [= value] } [, ...] )
 
 # CASE RENAME
-ALTER SUBSCRIPTION name RENAME TO new_name
+ALTER SUBSCRIPTION name
+    RENAME TO new_name
 
 # CASE OWNER
-ALTER SUBSCRIPTION name OWNER TO role
+ALTER SUBSCRIPTION name
+    OWNER TO role
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }

@@ -1,7 +1,6 @@
 # https://www.postgresql.org/docs/18/sql-alterdefaultprivileges.html
 
-ALTER DEFAULT PRIVILEGES
-    [ FOR { ROLE | USER } role [, ...] ]
+ALTER DEFAULT PRIVILEGES [ FOR { ROLE | USER } role [, ...] ]
     [ IN SCHEMA schema [, ...] ]
     grant_or_revoke_clause
 

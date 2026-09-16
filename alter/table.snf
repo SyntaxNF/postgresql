@@ -1,7 +1,7 @@
 # https://www.postgresql.org/docs/18/sql-altertable.html
 
 # CASE OPTIONS
-ALTER TABLE [ IF EXISTS ] [ ONLY ] name [ * ] 
+ALTER TABLE [ IF EXISTS ] [ ONLY ] name [ * ]
     action [, ...]
 
 # CASE RENAME_COLUMN
@@ -19,7 +19,7 @@ ALTER TABLE [ IF EXISTS ] name
 # CASE ATTACH_PARTITION
 ALTER TABLE [ IF EXISTS ] name
     ATTACH PARTITION partition
-    { FOR VALUES partition_bound_definition | DEFAULT }
+    partition_definition
 
 # CASE DETACH_PARTITION
 ALTER TABLE [ IF EXISTS ] name
@@ -36,90 +36,147 @@ ALTER TABLE ALL IN TABLESPACE tablespace
     SET TABLESPACE new_tablespace
     [ NOWAIT ]
 
-# ONEOFIS action
-ADD [ COLUMN ] [ IF NOT EXISTS ] colname type [ COLLATE collate ] column_constraint_definition [...]
+# PARTOFIS action
+ADD [ COLUMN ] [ IF NOT EXISTS ] colname type
+    [ COLLATE collate ]
+    column_constraint_definition [...]
+
 DROP [ COLUMN ] [ IF EXISTS ] colname [ RESTRICT | CASCADE ]
-ALTER [ COLUMN ] colname [ SET DATA ] TYPE type [ COLLATE collate ] [ USING col_expression ]
-ALTER [ COLUMN ] colname SET DEFAULT value_expression
+
+ALTER [ COLUMN ] colname
+    [ SET DATA ] TYPE type
+    [ COLLATE collate ]
+    [ USING col_expression ]
+
+ALTER [ COLUMN ] colname
+    SET DEFAULT value_expression
+
 ALTER [ COLUMN ] colname DROP DEFAULT
+
 ALTER [ COLUMN ] colname { SET | DROP } NOT NULL
-ALTER [ COLUMN ] colname SET EXPRESSION AS ( col_expression )
-ALTER [ COLUMN ] colname DROP EXPRESSION [ IF EXISTS ]
-ALTER [ COLUMN ] colname ADD GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY [ ( identity_options ) ]
-ALTER [ COLUMN ] colname { SET GENERATED { ALWAYS | BY DEFAULT } | SET generated_mode | RESTART [ [ WITH ] restart ] } [...]
-ALTER [ COLUMN ] colname DROP IDENTITY [ IF EXISTS ]
-ALTER [ COLUMN ] colname SET STATISTICS { statistics | DEFAULT }
-ALTER [ COLUMN ] colname SET ( attribute_parameter = value [, ...] )
-ALTER [ COLUMN ] colname RESET ( attribute_parameter [, ...] )
-ALTER [ COLUMN ] colname SET STORAGE { PLAIN | EXTERNAL | EXTENDED | MAIN | DEFAULT }
-ALTER [ COLUMN ] colname SET COMPRESSION compression
-ADD table_constraint_definition [ NOT VALID ]
-ADD table_index_constraint_definition
-ALTER CONSTRAINT constraint [ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ] [ ENFORCED | NOT ENFORCED ]
-ALTER CONSTRAINT constraint [ INHERIT | NO INHERIT ]
+
+ALTER [ COLUMN ] colname
+    SET EXPRESSION AS ( col_expression )
+
+ALTER [ COLUMN ] colname
+    DROP EXPRESSION [ IF EXISTS ]
+
+ALTER [ COLUMN ] colname
+    ADD GENERATED { ALWAYS | BY DEFAULT }
+    AS IDENTITY [ ( identity_options ) ]
+
+ALTER [ COLUMN ] colname
+    { SET GENERATED { ALWAYS | BY DEFAULT } | SET generated_mode | RESTART [ [ WITH ] restart ] } [...]
+
+ALTER [ COLUMN ] colname
+    DROP IDENTITY [ IF EXISTS ]
+
+ALTER [ COLUMN ] colname
+    SET STATISTICS { statistics | DEFAULT }
+
+ALTER [ COLUMN ] colname
+    SET ( attribute_parameter = value [, ...] )
+
+ALTER [ COLUMN ] colname
+    RESET ( attribute_parameter [, ...] )
+
+ALTER [ COLUMN ] colname
+    SET STORAGE { PLAIN | EXTERNAL | EXTENDED | MAIN | DEFAULT }
+
+ALTER [ COLUMN ] colname
+    SET COMPRESSION compression
+
+ADD [ CONSTRAINT constraint ]
+    table_constraint_definition
+    [ DEFERRABLE | NOT DEFERRABLE ]
+    [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
+    [ ENFORCED | NOT ENFORCED ]
+    [ NOT VALID ]
+
+ADD [ CONSTRAINT constraint ]
+    { UNIQUE | PRIMARY KEY }
+    USING INDEX index
+    [ DEFERRABLE | NOT DEFERRABLE ]
+    [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
+
+ALTER CONSTRAINT constraint
+    [ DEFERRABLE | NOT DEFERRABLE ]
+    [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
+    [ ENFORCED | NOT ENFORCED ]
+
+ALTER CONSTRAINT constraint
+    [ INHERIT | NO INHERIT ]
+
 VALIDATE CONSTRAINT constraint
+
 DROP CONSTRAINT [ IF EXISTS ] constraint [ RESTRICT | CASCADE ]
+
 DISABLE TRIGGER [ trigger | ALL | USER ]
+
 ENABLE TRIGGER [ trigger | ALL | USER ]
+
 ENABLE REPLICA TRIGGER trigger
+
 ENABLE ALWAYS TRIGGER trigger
+
 DISABLE RULE rule
+
 ENABLE RULE rule
+
 ENABLE REPLICA RULE rule
+
 ENABLE ALWAYS RULE rule
+
 DISABLE ROW LEVEL SECURITY
+
 ENABLE ROW LEVEL SECURITY
+
 FORCE ROW LEVEL SECURITY
+
 NO FORCE ROW LEVEL SECURITY
+
 CLUSTER ON cluster
+
 SET WITHOUT CLUSTER
+
 SET WITHOUT OIDS
+
 SET ACCESS METHOD { access_method | DEFAULT }
+
 SET TABLESPACE tablespace
+
 SET { LOGGED | UNLOGGED }
+
 SET ( { storage_parameter [= value] } [, ...] )
+
 RESET ( storage_parameter [, ...] )
+
 INHERIT inherit
+
 NO INHERIT no_inherit
+
 OF of
+
 NOT OF
+
 OWNER TO role
+
 REPLICA IDENTITY { DEFAULT | USING INDEX index | FULL | NOTHING }
 
 # WHERE column_constraint_definition
 [ CONSTRAINT constraint ]
 {
-  NOT NULL [ NO INHERIT ] |
-  NULL |
-  CHECK ( boolean_expression ) [ NO INHERIT ] |
-  DEFAULT value_expression |
-  GENERATED ALWAYS AS ( generated_expression ) [ STORED | VIRTUAL ] |
-  GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY [ ( identity_options ) ] |
-  UNIQUE [ NULLS [ NOT ] DISTINCT ] unique_index_options |
-  PRIMARY KEY primary_key_index_options |
-  REFERENCES referenced_table [ ( refcolname ) ]
-    [ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ]
-    [ ON DELETE on_delete_action ]
-    [ ON UPDATE on_update_action ]
-}
-[ DEFERRABLE | NOT DEFERRABLE ]
-[ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
-[ ENFORCED | NOT ENFORCED ]
-
-# WHERE table_constraint_definition
-[ CONSTRAINT constraint ]
-{
-  CHECK ( boolean_expression ) [ NO INHERIT ] |
-  NOT NULL colname [ NO INHERIT ] |
-  UNIQUE [ NULLS [ NOT ] DISTINCT ] ( colname [, ...] [ WITHOUT OVERLAPS ] )
+NULL |
+NOT NULL [ NO INHERIT ] |
+CHECK ( boolean_expression ) [ NO INHERIT ] |
+UNIQUE [ NULLS [ NOT ] DISTINCT ]
     unique_index_options |
-  PRIMARY KEY ( colname [, ...] [ WITHOUT OVERLAPS ] )
+PRIMARY KEY
     primary_key_index_options |
-  EXCLUDE [ USING index_method ]
-    ( exclude_column_expression WITH operator [, ...] )
-    exclude_index_options [ WHERE ( boolean_expression ) ] |
-  FOREIGN KEY ( colname [, ...] [, PERIOD colname ] )
-    REFERENCES referenced_table [ ( refcolname [, ...] [, PERIOD refcolname ] ) ]
+DEFAULT value_expression |
+GENERATED ALWAYS AS ( generated_expression ) [ STORED | VIRTUAL ] |
+GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY [ ( identity_options ) ] |
+    REFERENCES referenced_table [ ( refcolname ) ]
     [ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ]
     [ ON DELETE on_delete_action ]
     [ ON UPDATE on_update_action ]
@@ -128,10 +185,28 @@ REPLICA IDENTITY { DEFAULT | USING INDEX index | FULL | NOTHING }
 [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
 [ ENFORCED | NOT ENFORCED ]
 
-# WHERE table_index_constraint_definition
-[ CONSTRAINT constraint ]
-{ UNIQUE | PRIMARY KEY } USING INDEX index
-[ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
+# PARTOFIS table_constraint_definition
+NOT NULL colname [ NO INHERIT ]
+
+CHECK ( boolean_expression ) [ NO INHERIT ]
+
+UNIQUE [ NULLS [ NOT ] DISTINCT ] ( colname [, ...] [ WITHOUT OVERLAPS ] )
+    unique_index_options
+
+PRIMARY KEY ( colname [, ...] [ WITHOUT OVERLAPS ] )
+    primary_key_index_options
+
+EXCLUDE [ USING index_method ]
+    ( exclude_column_expression WITH operator [, ...] )
+    exclude_index_options
+    [ WHERE ( boolean_expression ) ]
+
+FOREIGN KEY ( colname [, ...] [, PERIOD colname ] )
+    REFERENCES referenced_table
+        [ ( refcolname [, ...] [, PERIOD refcolname ] ) ]
+    [ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ]
+    [ ON DELETE on_delete_action ]
+    [ ON UPDATE on_update_action ]
 
 # WHERE unique_index_options, primary_key_index_options, exclude_index_options
 [ INCLUDE ( colname [, ...] ) ]
@@ -146,9 +221,17 @@ REPLICA IDENTITY { DEFAULT | USING INDEX index | FULL | NOTHING }
 # WHERE on_delete_action, on_update_action
 { NO ACTION | RESTRICT | CASCADE | SET NULL [ ( colname [, ...] ) ] | SET DEFAULT [ ( colname [, ...] ) ] }
 
-# ONEOFIS partition_bound_definition
+# PARTOFIS partition_definition
+FOR VALUES partition_bound_definition
+
+DEFAULT
+
+# PARTOFIS partition_bound_definition
 IN ( partition_bound_expression [, ...] )
-FROM ( { partition_bound_expression | MINVALUE | MAXVALUE } [, ...] ) TO ( { partition_bound_expression | MINVALUE | MAXVALUE } [, ...] )
+
+FROM ( { partition_bound_expression | MINVALUE | MAXVALUE } [, ...] )
+TO ( { partition_bound_expression | MINVALUE | MAXVALUE } [, ...] )
+
 WITH ( MODULUS modulus, REMAINDER remainder )
 
 # WHERE role

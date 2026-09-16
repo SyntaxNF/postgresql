@@ -1,3 +1,4 @@
 # https://www.postgresql.org/docs/18/sql-dropmaterializedview.html
 
-DROP MATERIALIZED VIEW [ IF EXISTS ] name [, ...] [ CASCADE | RESTRICT ]
+DROP MATERIALIZED VIEW [ IF EXISTS ] name [, ...]
+    [ CASCADE | RESTRICT ]

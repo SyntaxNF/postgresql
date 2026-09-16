@@ -1,6 +1,7 @@
 # https://www.postgresql.org/docs/18/sql-vacuum.html
 
-VACUUM [ ( vacuum_options ) ] table_expression [, ...]
+VACUUM [ ( vacuum_options ) ]
+    table_expression [, ...]
 
 # WHERE vacuum_options
 [ FULL [ full ], ]

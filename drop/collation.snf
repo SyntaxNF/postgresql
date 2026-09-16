@@ -1,3 +1,4 @@
 # https://www.postgresql.org/docs/18/sql-dropcollation.html
 
-DROP COLLATION [ IF EXISTS ] name [ CASCADE | RESTRICT ]
+DROP COLLATION [ IF EXISTS ] name
+    [ CASCADE | RESTRICT ]
