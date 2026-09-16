@@ -1,13 +1,16 @@
 # https://www.postgresql.org/docs/18/sql-alterconversion.html
 
 # CASE RENAME
-ALTER CONVERSION name RENAME TO new_name
+ALTER CONVERSION name
+    RENAME TO new_name
 
 # CASE OWNER
-ALTER CONVERSION name OWNER TO role
+ALTER CONVERSION name
+    OWNER TO role
 
 # CASE SCHEMA
-ALTER CONVERSION name SET SCHEMA schema
+ALTER CONVERSION name
+    SET SCHEMA schema
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }

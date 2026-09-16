@@ -1,6 +1,7 @@
 # https://www.postgresql.org/docs/18/sql-fetch.html
 
-FETCH [ direction ] [ FROM | IN ] cursor
+FETCH [ direction ]
+    [ FROM | IN ] cursor
 
 # ONEOFIS direction
 NEXT

@@ -1,7 +1,11 @@
 # https://www.postgresql.org/docs/18/sql-declare.html
 
-DECLARE name [ BINARY ] [ ASENSITIVE | INSENSITIVE ] [ [ NO ] SCROLL ]
-    CURSOR [ { WITH | WITHOUT } HOLD ] FOR select_statement
+DECLARE name
+    [ BINARY ]
+    [ ASENSITIVE | INSENSITIVE ]
+    [ [ NO ] SCROLL ]
+    CURSOR [ { WITH | WITHOUT } HOLD ]
+    FOR select_statement
 
 # STATEMENT select_statement
 SELECT

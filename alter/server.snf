@@ -6,10 +6,12 @@ ALTER SERVER name
     [ OPTIONS ( option_action [, ...] ) ]
 
 # CASE RENAME
-ALTER SERVER name RENAME TO new_name
+ALTER SERVER name
+    RENAME TO new_name
 
 # CASE OWNER
-ALTER SERVER name OWNER TO role
+ALTER SERVER name
+    OWNER TO role
 
 # WHERE option_action
 [ ADD | SET | DROP ] option ['value']

@@ -14,7 +14,8 @@ ALTER ROLE role [ WITH ]
     [ VALID UNTIL 'timestamp' ]
 
 # CASE RENAME
-ALTER ROLE name RENAME TO new_name
+ALTER ROLE name
+    RENAME TO new_name
 
 # CASE SET_CURRENT
 ALTER ROLE { role | ALL }

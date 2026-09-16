@@ -1,3 +1,4 @@
 # https://www.postgresql.org/docs/18/sql-droppolicy.html
 
-DROP POLICY [ IF EXISTS ] name ON table [ CASCADE | RESTRICT ]
+DROP POLICY [ IF EXISTS ] name ON table
+    [ CASCADE | RESTRICT ]

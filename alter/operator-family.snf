@@ -1,27 +1,43 @@
 # https://www.postgresql.org/docs/18/sql-alteropfamily.html
 
 # CASE ADD
-ALTER OPERATOR FAMILY name USING index_method ADD
-    {
-        OPERATOR number operator ( left, right ) [ FOR SEARCH | FOR ORDER BY order ] |
-        FUNCTION number [ ( left [, right ] ) ] function [ ( argtype [, ...] ) ]
-    } [, ...]
+ALTER OPERATOR FAMILY name
+    USING index_method
+    ADD add_action [, ...]
 
 # CASE DROP
-ALTER OPERATOR FAMILY name USING index_method DROP
-    {
-        OPERATOR number ( left [, right ] ) |
-        FUNCTION number ( left [, right ] )
-    } [, ...]
+ALTER OPERATOR FAMILY name
+    USING index_method
+    DROP drop_action [, ...]
 
 # CASE RENAME
-ALTER OPERATOR FAMILY name USING index_method RENAME TO new_name
+ALTER OPERATOR FAMILY name
+    USING index_method
+    RENAME TO new_name
 
 # CASE OWNER
-ALTER OPERATOR FAMILY name USING index_method OWNER TO role
+ALTER OPERATOR FAMILY name
+    USING index_method
+    OWNER TO role
 
 # CASE SCHEMA
-ALTER OPERATOR FAMILY name USING index_method SET SCHEMA schema
+ALTER OPERATOR FAMILY name
+    USING index_method
+    SET SCHEMA schema
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }
+
+# PARTOFIS add_action
+OPERATOR number
+    operator ( left, right )
+    [ FOR SEARCH | FOR ORDER BY order ]
+
+FUNCTION number
+    [ ( left [, right ] ) ]
+    function [ ( argtype [, ...] ) ]
+
+# PARTOFIS drop_action
+OPERATOR number ( left [, right ] )
+
+FUNCTION number ( left [, right ] )

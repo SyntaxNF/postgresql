@@ -1,3 +1,4 @@
 # https://www.postgresql.org/docs/18/sql-dropextension.html
 
-DROP EXTENSION [ IF EXISTS ] name [, ...] [ CASCADE | RESTRICT ]
+DROP EXTENSION [ IF EXISTS ] name [, ...]
+    [ CASCADE | RESTRICT ]

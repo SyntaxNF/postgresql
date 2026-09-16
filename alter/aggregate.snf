@@ -1,16 +1,27 @@
 # https://www.postgresql.org/docs/18/sql-alteraggregate.html
 
 # CASE RENAME
-ALTER AGGREGATE name ( signature ) RENAME TO new_name
+ALTER AGGREGATE name (
+    signature
+) RENAME TO new_name
 
 # CASE OWNER
-ALTER AGGREGATE name ( signature ) OWNER TO role
+ALTER AGGREGATE name (
+    signature
+) OWNER TO role
 
 # CASE SCHEMA
-ALTER AGGREGATE name ( signature ) SET SCHEMA schema
+ALTER AGGREGATE name (
+    signature
+) SET SCHEMA schema
 
-# WHERE signature
-* | arg [, ...] | arg [, ...] ORDER BY order [, ...]
+# PARTOFIS signature
+*
+
+arg [, ...]
+
+arg [, ...]
+ORDER BY orders [, ...]
 
 # WHERE arg, order
 [ argmode ] [ argname ] argtype

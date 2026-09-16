@@ -8,7 +8,8 @@ REVOKE [ GRANT OPTION FOR ] { { SELECT | INSERT | UPDATE | DELETE | TRUNCATE | R
     [ CASCADE | RESTRICT ]
 
 # CASE COLUMN
-REVOKE [ GRANT OPTION FOR ] { { SELECT | INSERT | UPDATE | REFERENCES } ( colname [, ...] ) [, ...] | ALL [ PRIVILEGES ] ( colname [, ...] ) }
+REVOKE [ GRANT OPTION FOR ]
+    { { SELECT | INSERT | UPDATE | REFERENCES } ( colname [, ...] ) [, ...] | ALL [ PRIVILEGES ] ( colname [, ...] ) }
     ON [ TABLE ] table [, ...]
     FROM role_public [, ...]
     [ GRANTED BY role_public ]
@@ -51,7 +52,7 @@ REVOKE [ GRANT OPTION FOR ] { USAGE | ALL [ PRIVILEGES ] }
 
 # CASE ROUTINE
 REVOKE [ GRANT OPTION FOR ] { EXECUTE | ALL [ PRIVILEGES ] }
-    ON { { FUNCTION | PROCEDURE | ROUTINE } routine [ ( arg [, ...] ) ] [, ...] | ALL { FUNCTIONS | PROCEDURES | ROUTINES } IN SCHEMA schema [, ...] }
+    ON routine_definition
     FROM role_public [, ...]
     [ GRANTED BY role_public ]
     [ CASCADE | RESTRICT ]
@@ -103,6 +104,14 @@ REVOKE [ { ADMIN | INHERIT | SET } OPTION FOR ] role_name [, ...]
     FROM role_public [, ...]
     [ GRANTED BY role_public ]
     [ CASCADE | RESTRICT ]
+
+# PARTOFIS routine_definition
+{
+{ FUNCTION | PROCEDURE | ROUTINE } routine
+[ ( arg [, ...] ) ]
+} [, ...]
+
+ALL { FUNCTIONS | PROCEDURES | ROUTINES } IN SCHEMA schema [, ...]
 
 # WHERE role_public
 { [ GROUP ] role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER | PUBLIC }
