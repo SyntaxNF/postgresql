@@ -138,3 +138,7 @@ col_expression [ ASC | DESC ]
 | `storage_parameter` | PostgreSQL 对象的存储参数名。 |
 | `opclass` | 索引运算符类。 |
 | `role_public` | 允许普通角色或关键字 `PUBLIC` 的角色位置。 |
+
+## 覆盖状态
+
+语句入口覆盖、本轮修正和剩余缺口见 [SQL 定义覆盖检查](docs/coverage.md)。文件存在不代表全部语法组合已经验证。

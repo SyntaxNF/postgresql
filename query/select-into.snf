@@ -2,7 +2,7 @@
 
 [ WITH [ RECURSIVE ] with_query_definition [, ...] ]
 SELECT [ ALL | DISTINCT [ ON ( col_expression [, ...] ) ] ]
-    [ * | { col_expression [ [ AS ] col_alias ] } [, ...] ]
+    [ { * | col_expression [ [ AS ] col_alias ] } [, ...] ]
     INTO [ TEMPORARY | TEMP | UNLOGGED ] [ TABLE ] new_table
     [ FROM from_expression [, ...] ]
     [ WHERE boolean_expression ]
@@ -14,7 +14,10 @@ SELECT [ ALL | DISTINCT [ ON ( col_expression [, ...] ) ] ]
     [ LIMIT { limit | ALL } ]
     [ OFFSET offset [ ROW | ROWS ] ]
     [ FETCH { FIRST | NEXT } [ fetch ] { ROW | ROWS } ONLY ]
-    [ FOR { UPDATE | SHARE } [ OF table [, ...] ] [ NOWAIT ] ]
+    [ locking_clause [...] ]
+
+# WHERE locking_clause
+FOR { UPDATE | SHARE } [ OF table [, ...] ] [ NOWAIT ]
 
 # WHERE with_query_definition
 with_name [ ( colname [, ...] ) ] AS [ [ NOT ] MATERIALIZED ] ( query_statement )
@@ -25,23 +28,23 @@ with_name [ ( colname [, ...] ) ] AS [ [ NOT ] MATERIALIZED ] ( query_statement 
 with_name [ [ AS ] with_alias [ ( col_alias [, ...] ) ] ]
 [ ONLY ] table [ * ] [ [ AS ] table_alias [ ( col_alias [, ...] ) ] ] [ TABLESAMPLE tablesample ( number_expression [, ...] ) [ REPEATABLE ( seed ) ] ]
 [ LATERAL ] ( select_statement ) [ [ AS ] select_alias [ ( col_alias [, ...] ) ] ]
-[ LATERAL ] function ( value_expression [, ...] )
-[ LATERAL ] function ( value_expression [, ...] ) AS ( { colname [ type ] } [, ...] )
-[ LATERAL ] function ( value_expression [, ...] ) [ AS ] function_alias ( { colname [ type ] } [, ...] )
-[ LATERAL ] function ( value_expression [, ...] ) WITH ORDINALITY [ [ AS ] function_alias [ ( col_alias [, ...] ) ] ]
-[ LATERAL ] ROWS FROM ( { function ( value_expression [, ...] ) [ AS ( { colname [ type ] } [, ...] ) ] } [, ...] ) [ WITH ORDINALITY ] [ [ AS ] rows_from_alias [ ( col_alias [, ...] ) ] ]
+[ LATERAL ] function ( [ value_expression [, ...] ] ) [ [ AS ] function_alias [ ( col_alias [, ...] ) ] ]
+[ LATERAL ] function ( [ value_expression [, ...] ] ) AS ( { colname [ type ] } [, ...] )
+[ LATERAL ] function ( [ value_expression [, ...] ] ) [ AS ] function_alias ( { colname [ type ] } [, ...] )
+[ LATERAL ] function ( [ value_expression [, ...] ] ) WITH ORDINALITY [ [ AS ] function_alias [ ( col_alias [, ...] ) ] ]
+[ LATERAL ] ROWS FROM ( { function ( [ value_expression [, ...] ] ) [ AS ( { colname [ type ] } [, ...] ) ] } [, ...] ) [ WITH ORDINALITY ] [ [ AS ] rows_from_alias [ ( col_alias [, ...] ) ] ]
 from_expression join_type from_expression { ON boolean_expression | USING ( colname [, ...] ) [ AS join_alias ] }
 from_expression NATURAL join_type from_expression
 from_expression CROSS JOIN from_expression
 
+# WHERE join_type
+{ [ INNER ] | { LEFT | RIGHT | FULL } [ OUTER ] } JOIN
+
 # WHERE window_expression
 [ window ]
-[ PARTITION BY { RANGE | LIST | HASH } ( partition_column_expression [, ...] ) ]
+[ PARTITION BY col_expression [, ...] ]
 [ ORDER BY order_by_expression [, ...] ]
 [ frame_expression ]
-
-# WHERE partition_column_expression
-{ colname | ( col_expression ) } [ COLLATE collate ] [ opclass ]
 
 # ONEOFIS frame_expression
 { RANGE | ROWS | GROUPS } frame_start [ frame_exclusion ]
@@ -60,7 +63,7 @@ EXCLUDE GROUP
 EXCLUDE TIES
 EXCLUDE NO OTHERS
 
-# WHERE group_by_expression
+# ONEOFIS group_by_expression
 ( )
 col_expression
 ( col_expression [, ...] )

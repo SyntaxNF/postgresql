@@ -5,7 +5,7 @@ CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name (
     {
         column_definition |
         table_constraint_definition |
-        LIKE like_table [ like_option ]
+        LIKE like_table [ like_option [...] ]
     } [, ...]
 )
     [ INHERITS ( inherits [, ...] ) ]
@@ -53,7 +53,7 @@ colname [ WITH OPTIONS ]
 [ column_constraint_definition [...] ]
 
 # WHERE partition_column_definition
-colname [ WITH OPTIONS ] 
+colname [ WITH OPTIONS ]
 [ column_constraint_definition [...] ]
 
 # ONEOFIS partition_bound_definition
@@ -78,7 +78,7 @@ CHECK ( boolean_expression ) [ NO INHERIT ] |
 REFERENCES referenced_table [ ( refcolname ) ]
     [ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ]
     [ ON DELETE on_delete_action ]
-    [ ON UPDATE on_update ] 
+    [ ON UPDATE on_update_action ]
 }
 [ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ] [ ENFORCED | NOT ENFORCED ]
 
@@ -94,7 +94,7 @@ primary_key_index_options |
 EXCLUDE [ USING index_method ] (
     { colname | ( col_expression ) } [ COLLATE collate ]
     [ opclass [ ( { opclass_parameter = value } [, ...] ) ] ]
-    [ ASC | DESC ] [ NULLS { FIRST | LAST } ] WITH operator [, ...] 
+    [ ASC | DESC ] [ NULLS { FIRST | LAST } ] WITH operator [, ...]
 )
 exclude_index_options
 [ WHERE ( boolean_expression ) ] |
@@ -103,7 +103,7 @@ REFERENCES referenced_table
 [ ( refcolname [, ...] [, PERIOD refcolname ] ) ]
 [ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ]
 [ ON DELETE on_delete_action ]
-[ ON UPDATE on_update_action ] 
+[ ON UPDATE on_update_action ]
 }
 [ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ] [ ENFORCED | NOT ENFORCED ]
 
@@ -112,5 +112,14 @@ REFERENCES referenced_table
 [ WITH ( { storage_parameter [= value] } [, ...] ) ]
 [ USING INDEX TABLESPACE tablespace ]
 
-# WHERE on_delete_action, on_update_action
+# WHERE on_delete_action
 { NO ACTION | RESTRICT | CASCADE | SET NULL [ ( colname [, ...] ) ] | SET DEFAULT [ ( colname [, ...] ) ] }
+
+# WHERE on_update_action
+{ NO ACTION | RESTRICT | CASCADE | SET NULL | SET DEFAULT }
+
+# WHERE identity_options
+[ INCREMENT [ BY ] increment ]
+    [ MINVALUE minvalue | NO MINVALUE ] [ MAXVALUE maxvalue | NO MAXVALUE ]
+    [ START [ WITH ] start ] [ CACHE cache ] [ [ NO ] CYCLE ]
+    [ SEQUENCE NAME sequence ] [ LOGGED | UNLOGGED ]
