@@ -1,7 +1,6 @@
-# https://www.postgresql.org/docs/18/sql-begin.html
+# https://www.postgresql.org/docs/18/sql-start-transaction.html
 
-BEGIN [ WORK | TRANSACTION ]
-    [ transaction_mode [, ...] ]
+START TRANSACTION [ transaction_mode [, ...] ]
 
 # ONEOFIS transaction_mode
 ISOLATION LEVEL { SERIALIZABLE | REPEATABLE READ | READ COMMITTED | READ UNCOMMITTED }

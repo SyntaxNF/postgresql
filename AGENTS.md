@@ -28,7 +28,7 @@ Use a context-qualified `_alias` for aliases, `_target` for operation or clause 
 
 ## Testing Guidelines
 
-There is no checked-in test framework or coverage requirement. Validate changes by comparing them with the linked PostgreSQL 17 syntax page, checking balanced delimiters, and reviewing every alternative and optional clause in the diff. Keep edits narrowly scoped so grammar changes can be reviewed independently.
+There is no checked-in test framework or coverage requirement. Validate changes by comparing them with the linked PostgreSQL 18 syntax page, checking balanced delimiters, and reviewing every alternative and optional clause in the diff. Keep edits narrowly scoped so grammar changes can be reviewed independently.
 
 ## Commit & Pull Request Guidelines
 

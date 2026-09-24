@@ -16,14 +16,17 @@ with_name [ ( colname [, ...] ) ] AS [ [ NOT ] MATERIALIZED ] ( query_statement 
 with_name [ [ AS ] with_alias [ ( col_alias [, ...] ) ] ]
 [ ONLY ] table [ * ] [ [ AS ] table_alias [ ( col_alias [, ...] ) ] ] [ TABLESAMPLE tablesample ( number_expression [, ...] ) [ REPEATABLE ( seed ) ] ]
 [ LATERAL ] ( select_statement ) [ [ AS ] select_alias [ ( col_alias [, ...] ) ] ]
-[ LATERAL ] function ( value_expression [, ...] )
-[ LATERAL ] function ( value_expression [, ...] ) AS ( { colname [ type ] } [, ...] )
-[ LATERAL ] function ( value_expression [, ...] ) [ AS ] function_alias ( { colname [ type ] } [, ...] )
-[ LATERAL ] function ( value_expression [, ...] ) WITH ORDINALITY [ [ AS ] function_alias [ ( col_alias [, ...] ) ] ]
-[ LATERAL ] ROWS FROM ( { function ( value_expression [, ...] ) [ AS ( { colname [ type ] } [, ...] ) ] } [, ...] ) [ WITH ORDINALITY ] [ [ AS ] rows_from_alias [ ( col_alias [, ...] ) ] ]
+[ LATERAL ] function ( [ value_expression [, ...] ] ) [ [ AS ] function_alias [ ( col_alias [, ...] ) ] ]
+[ LATERAL ] function ( [ value_expression [, ...] ] ) AS ( { colname [ type ] } [, ...] )
+[ LATERAL ] function ( [ value_expression [, ...] ] ) [ AS ] function_alias ( { colname [ type ] } [, ...] )
+[ LATERAL ] function ( [ value_expression [, ...] ] ) WITH ORDINALITY [ [ AS ] function_alias [ ( col_alias [, ...] ) ] ]
+[ LATERAL ] ROWS FROM ( { function ( [ value_expression [, ...] ] ) [ AS ( { colname [ type ] } [, ...] ) ] } [, ...] ) [ WITH ORDINALITY ] [ [ AS ] rows_from_alias [ ( col_alias [, ...] ) ] ]
 from_expression join_type from_expression { ON boolean_expression | USING ( colname [, ...] ) [ AS join_alias ] }
 from_expression NATURAL join_type from_expression
 from_expression CROSS JOIN from_expression
+
+# WHERE join_type
+{ [ INNER ] | { LEFT | RIGHT | FULL } [ OUTER ] } JOIN
 
 # STATEMENT select_statement
 SELECT

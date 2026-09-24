@@ -1,0 +1,3 @@
+# https://www.postgresql.org/docs/18/sql-show.html
+
+SHOW { configuration_parameter | ALL }
