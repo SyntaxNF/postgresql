@@ -2,28 +2,28 @@
 
 # CASE OPTIONS
 ALTER ROUTINE name
-    [ ( arg [, ...] ) ]
+    [ ( [ arg [, ...] ] ) ]
     action
     [ RESTRICT ]
 
 # CASE RENAME
 ALTER ROUTINE name
-    [ ( arg [, ...] ) ]
+    [ ( [ arg [, ...] ] ) ]
     RENAME TO new_name
 
 # CASE OWNER
 ALTER ROUTINE name
-    [ ( arg [, ...] ) ]
+    [ ( [ arg [, ...] ] ) ]
     OWNER TO role
 
 # CASE SCHEMA
 ALTER ROUTINE name
-    [ ( arg [, ...] ) ]
+    [ ( [ arg [, ...] ] ) ]
     SET SCHEMA schema
 
 # CASE DEPENDS_EXTENSION
 ALTER ROUTINE name
-    [ ( arg [, ...] ) ]
+    [ ( [ arg [, ...] ] ) ]
     [ NO ] DEPENDS
     ON EXTENSION extension
 
@@ -34,8 +34,8 @@ ALTER ROUTINE name
 [ PARALLEL { UNSAFE | RESTRICTED | SAFE } ]
 [ COST cost ]
 [ ROWS rows ]
-[ { SET config_parameter { { TO | = } { value | DEFAULT } | FROM CURRENT } } [, ...] ]
-[ { RESET config_parameter } [, ...] ]
+[ set_parameter_clause [...] ]
+[ reset_parameter_clause [...] ]
 [ RESET ALL ]
 
 # WHERE arg
@@ -43,3 +43,9 @@ ALTER ROUTINE name
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }
+
+# WHERE set_parameter_clause
+SET config_parameter { { TO | = } { value | DEFAULT } | FROM CURRENT }
+
+# WHERE reset_parameter_clause
+RESET config_parameter

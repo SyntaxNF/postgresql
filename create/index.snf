@@ -1,6 +1,6 @@
 # https://www.postgresql.org/docs/18/sql-createindex.html
 
-CREATE [ UNIQUE ] INDEX [ CONCURRENTLY ] [ IF NOT EXISTS ] [ name ]
+CREATE [ UNIQUE ] INDEX [ CONCURRENTLY ] [ [ IF NOT EXISTS ] name ]
     ON [ ONLY ] table [ USING index_method ] (
         index_column_expression [, ...]
     )

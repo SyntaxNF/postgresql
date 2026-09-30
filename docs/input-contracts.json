@@ -1,0 +1,1507 @@
+{
+  "alter/aggregate.snf": {
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name"
+  },
+  "alter/collation.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name"
+  },
+  "alter/conversion.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name"
+  },
+  "alter/database.snf": {
+    "allowconn": "scalar-or-enum-value",
+    "config_parameter": "external-parameter-name",
+    "connlimit": "scalar-or-enum-value",
+    "istemplate": "scalar-or-enum-value",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "tablespace": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/domain.snf": {
+    "boolean_expression": "opaque-expression",
+    "constraint": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_constraint": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "value_expression": "opaque-expression"
+  },
+  "alter/event-trigger.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name"
+  },
+  "alter/extension.snf": {
+    "access_method": "identifier-or-domain-name",
+    "aggregate": "identifier-or-domain-name",
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "collation": "identifier-or-domain-name",
+    "conversion": "identifier-or-domain-name",
+    "domain": "identifier-or-domain-name",
+    "event_trigger": "identifier-or-domain-name",
+    "fdw": "identifier-or-domain-name",
+    "foreign_table": "identifier-or-domain-name",
+    "function": "identifier-or-domain-name",
+    "index_method": "identifier-or-domain-name",
+    "language": "identifier-or-domain-name",
+    "left": "opaque-data-type",
+    "m_view": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "opclass": "identifier-or-domain-name",
+    "operator": "identifier-or-domain-name",
+    "opfamily": "identifier-or-domain-name",
+    "procedure": "identifier-or-domain-name",
+    "right": "opaque-data-type",
+    "routine": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "sequence": "identifier-or-domain-name",
+    "server": "identifier-or-domain-name",
+    "source_type": "opaque-data-type",
+    "table": "identifier-or-domain-name",
+    "target_type": "opaque-data-type",
+    "transform": "identifier-or-domain-name",
+    "tsc": "identifier-or-domain-name",
+    "tsd": "identifier-or-domain-name",
+    "tsp": "identifier-or-domain-name",
+    "tst": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "version": "scalar-or-enum-value",
+    "view": "identifier-or-domain-name"
+  },
+  "alter/foreign-data.snf": {
+    "handler": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "option": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "validator": "identifier-or-domain-name",
+    "value": "quoted-string-content"
+  },
+  "alter/foreign-table.snf": {
+    "attribute_parameter": "external-parameter-name",
+    "boolean_expression": "opaque-expression",
+    "collate": "identifier-or-domain-name",
+    "colname": "identifier-or-domain-name",
+    "constraint": "identifier-or-domain-name",
+    "generation_expression": "opaque-expression",
+    "name": "identifier-or-domain-name",
+    "new_colname": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "option": "identifier-or-domain-name",
+    "parent_table": "identifier-or-domain-name",
+    "role": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "statistics_target": "scalar-or-enum-value",
+    "trigger": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "value": "quoted-string-content",
+    "value_expression": "opaque-expression"
+  },
+  "alter/function.snf": {
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "config_parameter": "external-parameter-name",
+    "cost": "scalar-or-enum-value",
+    "extension": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "rows": "scalar-or-enum-value",
+    "schema": "identifier-or-domain-name",
+    "support": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/group.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "user": "identifier-or-domain-name"
+  },
+  "alter/index.snf": {
+    "colnum": "identifier-or-domain-name",
+    "extension": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "new_tablespace": "identifier-or-domain-name",
+    "partition": "identifier-or-domain-name",
+    "role": "identifier-or-domain-name",
+    "statistics": "identifier-or-domain-name",
+    "storage_parameter": "external-parameter-name",
+    "tablespace": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/language.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name"
+  },
+  "alter/large-object.snf": {
+    "name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name"
+  },
+  "alter/materialized-view.snf": {
+    "access_method": "identifier-or-domain-name",
+    "attribute_parameter": "external-parameter-name",
+    "cluster": "scalar-or-enum-value",
+    "colname": "identifier-or-domain-name",
+    "compression": "scalar-or-enum-value",
+    "extension": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_colname": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "new_tablespace": "identifier-or-domain-name",
+    "owner": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "statistics": "identifier-or-domain-name",
+    "storage_parameter": "external-parameter-name",
+    "tablespace": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/operator-class.snf": {
+    "index_method": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name"
+  },
+  "alter/operator-family.snf": {
+    "argtype": "opaque-data-type",
+    "function": "identifier-or-domain-name",
+    "index_method": "identifier-or-domain-name",
+    "left": "opaque-data-type",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "number": "scalar-or-enum-value",
+    "operator": "identifier-or-domain-name",
+    "order": "identifier-or-domain-name",
+    "right": "opaque-data-type",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name"
+  },
+  "alter/operator.snf": {
+    "commutator": "identifier-or-domain-name",
+    "join": "identifier-or-domain-name",
+    "left": "opaque-data-type",
+    "name": "identifier-or-domain-name",
+    "negator": "identifier-or-domain-name",
+    "restrict": "identifier-or-domain-name",
+    "right": "opaque-data-type",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name"
+  },
+  "alter/policy.snf": {
+    "boolean_expression": "opaque-expression",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name"
+  },
+  "alter/privileges.snf": {
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name"
+  },
+  "alter/procedure.snf": {
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "config_parameter": "external-parameter-name",
+    "extension": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/publication.snf": {
+    "boolean_expression": "opaque-expression",
+    "colname": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "publication_parameter": "external-parameter-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/role.snf": {
+    "config_parameter": "external-parameter-name",
+    "connection_limit": "scalar-or-enum-value",
+    "database": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "password": "quoted-string-content",
+    "role_name": "identifier-or-domain-name",
+    "timestamp": "quoted-string-content",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/routine.snf": {
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "config_parameter": "external-parameter-name",
+    "cost": "scalar-or-enum-value",
+    "extension": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "rows": "scalar-or-enum-value",
+    "schema": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/rule.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name"
+  },
+  "alter/schema.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name"
+  },
+  "alter/sequence.snf": {
+    "cache": "scalar-or-enum-value",
+    "colname": "identifier-or-domain-name",
+    "increment": "scalar-or-enum-value",
+    "maxvalue": "scalar-or-enum-value",
+    "minvalue": "scalar-or-enum-value",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "restart": "scalar-or-enum-value",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "start": "scalar-or-enum-value",
+    "table": "identifier-or-domain-name",
+    "type": "opaque-data-type"
+  },
+  "alter/server.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "option": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "value": "quoted-string-content",
+    "version": "quoted-string-content"
+  },
+  "alter/statistics.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "statistics_target": "scalar-or-enum-value"
+  },
+  "alter/subscription.snf": {
+    "connection": "quoted-string-content",
+    "copy_data": "scalar-or-enum-value",
+    "lsn": "scalar-or-enum-value",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "publication": "identifier-or-domain-name",
+    "refresh": "scalar-or-enum-value",
+    "role_name": "identifier-or-domain-name",
+    "subscription_parameter": "external-parameter-name",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/system.snf": {
+    "config_parameter": "external-parameter-name",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/table.snf": {
+    "access_method": "identifier-or-domain-name",
+    "attribute_parameter": "external-parameter-name",
+    "boolean_expression": "opaque-expression",
+    "cache": "scalar-or-enum-value",
+    "cluster": "scalar-or-enum-value",
+    "col_expression": "opaque-expression",
+    "collate": "identifier-or-domain-name",
+    "colname": "identifier-or-domain-name",
+    "compression": "scalar-or-enum-value",
+    "constraint": "identifier-or-domain-name",
+    "generated_expression": "opaque-expression",
+    "increment": "scalar-or-enum-value",
+    "index": "identifier-or-domain-name",
+    "index_method": "identifier-or-domain-name",
+    "inherit": "identifier-or-domain-name",
+    "maxvalue": "scalar-or-enum-value",
+    "minvalue": "scalar-or-enum-value",
+    "modulus": "scalar-or-enum-value",
+    "name": "identifier-or-domain-name",
+    "new_colname": "identifier-or-domain-name",
+    "new_constraint": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "new_tablespace": "identifier-or-domain-name",
+    "no_inherit": "scalar-or-enum-value",
+    "of": "opaque-data-type",
+    "opclass": "identifier-or-domain-name",
+    "opclass_parameter": "external-parameter-name",
+    "operator": "identifier-or-domain-name",
+    "owner": "identifier-or-domain-name",
+    "partition": "identifier-or-domain-name",
+    "partition_bound_expression": "opaque-expression",
+    "refcolname": "identifier-or-domain-name",
+    "referenced_table": "identifier-or-domain-name",
+    "remainder": "scalar-or-enum-value",
+    "restart": "scalar-or-enum-value",
+    "role_name": "identifier-or-domain-name",
+    "rule": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "sequence": "identifier-or-domain-name",
+    "start": "scalar-or-enum-value",
+    "statistics": "identifier-or-domain-name",
+    "storage_parameter": "external-parameter-name",
+    "tablespace": "identifier-or-domain-name",
+    "trigger": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "value": "scalar-or-enum-value",
+    "value_expression": "opaque-expression"
+  },
+  "alter/tablespace.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "tablespace_parameter": "external-parameter-name",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/text-search-configuration.snf": {
+    "dictionary": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_dictionary": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "token": "identifier-or-domain-name"
+  },
+  "alter/text-search-dictionary.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "template_parameter": "external-parameter-name",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/text-search-parser.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name"
+  },
+  "alter/text-search-template.snf": {
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name"
+  },
+  "alter/trigger.snf": {
+    "extension": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name"
+  },
+  "alter/type.snf": {
+    "attribute": "identifier-or-domain-name",
+    "collation": "identifier-or-domain-name",
+    "enum": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "neighbor_enum": "identifier-or-domain-name",
+    "new_attribute": "identifier-or-domain-name",
+    "new_enum": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "type_parameter": "external-parameter-name",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/user-mapping.snf": {
+    "option": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "server": "identifier-or-domain-name",
+    "value": "quoted-string-content"
+  },
+  "alter/user.snf": {
+    "config_parameter": "external-parameter-name",
+    "connlimit": "scalar-or-enum-value",
+    "database": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "password": "quoted-string-content",
+    "timestamp": "quoted-string-content",
+    "value": "scalar-or-enum-value"
+  },
+  "alter/view.snf": {
+    "colname": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "new_colname": "identifier-or-domain-name",
+    "new_name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value",
+    "value_expression": "opaque-expression",
+    "view_parameter": "external-parameter-name"
+  },
+  "auth/grant.snf": {
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "colname": "identifier-or-domain-name",
+    "database": "identifier-or-domain-name",
+    "domain": "identifier-or-domain-name",
+    "fdw": "identifier-or-domain-name",
+    "language": "identifier-or-domain-name",
+    "large_object": "identifier-or-domain-name",
+    "parameter": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "routine": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "sequence": "identifier-or-domain-name",
+    "server": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "tablespace": "identifier-or-domain-name",
+    "type": "opaque-data-type"
+  },
+  "auth/revoke.snf": {
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "colname": "identifier-or-domain-name",
+    "database": "identifier-or-domain-name",
+    "domain": "identifier-or-domain-name",
+    "fdw": "identifier-or-domain-name",
+    "language": "identifier-or-domain-name",
+    "large_object": "identifier-or-domain-name",
+    "parameter": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "routine": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "sequence": "identifier-or-domain-name",
+    "server": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "tablespace": "identifier-or-domain-name",
+    "type": "opaque-data-type"
+  },
+  "create/access-method.snf": {
+    "handler": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name"
+  },
+  "create/aggregate.snf": {
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "basetype": "opaque-data-type",
+    "combinefunc": "identifier-or-domain-name",
+    "deserialfunc": "identifier-or-domain-name",
+    "finalfunc": "identifier-or-domain-name",
+    "initcond": "scalar-or-enum-value",
+    "mffunc": "identifier-or-domain-name",
+    "mfinalfunc": "identifier-or-domain-name",
+    "minitcond": "scalar-or-enum-value",
+    "minvfunc": "identifier-or-domain-name",
+    "msfunc": "identifier-or-domain-name",
+    "msspace": "scalar-or-enum-value",
+    "mstype": "opaque-data-type",
+    "name": "identifier-or-domain-name",
+    "serialfunc": "identifier-or-domain-name",
+    "sfunc": "identifier-or-domain-name",
+    "sortop": "identifier-or-domain-name",
+    "sspace": "scalar-or-enum-value",
+    "stype": "opaque-data-type"
+  },
+  "create/cast.snf": {
+    "argtype": "opaque-data-type",
+    "function": "identifier-or-domain-name",
+    "source_type": "opaque-data-type",
+    "target_type": "opaque-data-type"
+  },
+  "create/collation.snf": {
+    "collation": "identifier-or-domain-name",
+    "deterministic": "scalar-or-enum-value",
+    "lc_collate": "identifier-or-domain-name",
+    "lc_ctype": "identifier-or-domain-name",
+    "locale": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "provider": "scalar-or-enum-value",
+    "rules": "identifier-or-domain-name",
+    "version": "scalar-or-enum-value"
+  },
+  "create/conversion.snf": {
+    "for": "identifier-or-domain-name",
+    "from": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "to": "identifier-or-domain-name"
+  },
+  "create/database.snf": {
+    "allow_connection": "scalar-or-enum-value",
+    "builtin_locale": "identifier-or-domain-name",
+    "collation_version": "scalar-or-enum-value",
+    "connection_limit": "scalar-or-enum-value",
+    "encoding": "identifier-or-domain-name",
+    "icu_locale": "identifier-or-domain-name",
+    "icu_rules": "identifier-or-domain-name",
+    "is_template": "scalar-or-enum-value",
+    "lc_collate": "identifier-or-domain-name",
+    "lc_ctype": "identifier-or-domain-name",
+    "locale": "identifier-or-domain-name",
+    "locale_provider": "scalar-or-enum-value",
+    "name": "identifier-or-domain-name",
+    "oid": "scalar-or-enum-value",
+    "owner": "identifier-or-domain-name",
+    "strategy": "scalar-or-enum-value",
+    "tablespace": "identifier-or-domain-name",
+    "template": "identifier-or-domain-name"
+  },
+  "create/domain.snf": {
+    "boolean_expression": "opaque-expression",
+    "collate": "identifier-or-domain-name",
+    "constraint": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "value_expression": "opaque-expression"
+  },
+  "create/event-trigger.snf": {
+    "event": "scalar-or-enum-value",
+    "filter_value": "quoted-string-content",
+    "function": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name"
+  },
+  "create/extension.snf": {
+    "name": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "version": "scalar-or-enum-value"
+  },
+  "create/foreign-data.snf": {
+    "handler": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "option": "identifier-or-domain-name",
+    "validator": "identifier-or-domain-name",
+    "value": "quoted-string-content"
+  },
+  "create/foreign-table.snf": {
+    "boolean_expression": "opaque-expression",
+    "collation": "identifier-or-domain-name",
+    "colname": "identifier-or-domain-name",
+    "coltype": "opaque-data-type",
+    "constraint": "identifier-or-domain-name",
+    "generation_expression": "opaque-expression",
+    "inherit": "identifier-or-domain-name",
+    "like_table": "identifier-or-domain-name",
+    "modulus": "scalar-or-enum-value",
+    "name": "identifier-or-domain-name",
+    "option": "identifier-or-domain-name",
+    "parent": "identifier-or-domain-name",
+    "partition_bound_expression": "opaque-expression",
+    "remainder": "scalar-or-enum-value",
+    "server": "identifier-or-domain-name",
+    "value": "quoted-string-content",
+    "value_expression": "opaque-expression"
+  },
+  "create/function.snf": {
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "colname": "identifier-or-domain-name",
+    "coltype": "opaque-data-type",
+    "config_parameter": "external-parameter-name",
+    "cost": "scalar-or-enum-value",
+    "definition": "quoted-string-content",
+    "language": "identifier-or-domain-name",
+    "link_symbol": "quoted-string-content",
+    "name": "identifier-or-domain-name",
+    "object_file": "quoted-string-content",
+    "rows": "scalar-or-enum-value",
+    "support": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "value": "scalar-or-enum-value",
+    "value_expression": "opaque-expression"
+  },
+  "create/group.snf": {
+    "admin": "identifier-or-domain-name",
+    "connection_limit": "scalar-or-enum-value",
+    "in_group": "identifier-or-domain-name",
+    "in_role": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "password": "quoted-string-content",
+    "role": "identifier-or-domain-name",
+    "sysid": "scalar-or-enum-value",
+    "timestamp": "quoted-string-content",
+    "user": "identifier-or-domain-name"
+  },
+  "create/index.snf": {
+    "boolean_expression": "opaque-expression",
+    "col_expression": "opaque-expression",
+    "collate": "identifier-or-domain-name",
+    "colname": "identifier-or-domain-name",
+    "include": "identifier-or-domain-name",
+    "index_method": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "opclass": "identifier-or-domain-name",
+    "opclass_parameter": "external-parameter-name",
+    "storage_parameter": "external-parameter-name",
+    "table": "identifier-or-domain-name",
+    "tablespace": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value"
+  },
+  "create/language.snf": {
+    "handler": "identifier-or-domain-name",
+    "inline": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "validator": "identifier-or-domain-name"
+  },
+  "create/materialized-view.snf": {
+    "colname": "identifier-or-domain-name",
+    "index_method": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "storage_parameter": "external-parameter-name",
+    "tablespace": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value"
+  },
+  "create/operator-class.snf": {
+    "argtype": "opaque-data-type",
+    "family": "identifier-or-domain-name",
+    "func": "identifier-or-domain-name",
+    "index_method": "identifier-or-domain-name",
+    "left": "opaque-data-type",
+    "name": "identifier-or-domain-name",
+    "number": "scalar-or-enum-value",
+    "operator": "identifier-or-domain-name",
+    "order": "identifier-or-domain-name",
+    "right": "opaque-data-type",
+    "type": "opaque-data-type"
+  },
+  "create/operator-family.snf": {
+    "index_method": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name"
+  },
+  "create/operator.snf": {
+    "commutator": "identifier-or-domain-name",
+    "function": "identifier-or-domain-name",
+    "join": "identifier-or-domain-name",
+    "leftarg": "opaque-data-type",
+    "name": "identifier-or-domain-name",
+    "negator": "identifier-or-domain-name",
+    "restrict": "identifier-or-domain-name",
+    "rightarg": "opaque-data-type"
+  },
+  "create/policy.snf": {
+    "boolean_expression": "opaque-expression",
+    "name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name"
+  },
+  "create/procedure.snf": {
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "config_parameter": "external-parameter-name",
+    "definition": "quoted-string-content",
+    "language": "identifier-or-domain-name",
+    "link_symbol": "quoted-string-content",
+    "name": "identifier-or-domain-name",
+    "object_file": "quoted-string-content",
+    "type": "opaque-data-type",
+    "value": "scalar-or-enum-value",
+    "value_expression": "opaque-expression"
+  },
+  "create/publication.snf": {
+    "boolean_expression": "opaque-expression",
+    "colname": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "publication_parameter": "external-parameter-name",
+    "schema": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value"
+  },
+  "create/role.snf": {
+    "admin": "identifier-or-domain-name",
+    "connection_limit": "scalar-or-enum-value",
+    "in_role": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "password": "quoted-string-content",
+    "role": "identifier-or-domain-name",
+    "sysid": "scalar-or-enum-value",
+    "timestamp": "quoted-string-content"
+  },
+  "create/rule.snf": {
+    "boolean_expression": "opaque-expression",
+    "name": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name"
+  },
+  "create/schema.snf": {
+    "name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name"
+  },
+  "create/sequence.snf": {
+    "cache": "scalar-or-enum-value",
+    "colname": "identifier-or-domain-name",
+    "increment": "scalar-or-enum-value",
+    "maxvalue": "scalar-or-enum-value",
+    "minvalue": "scalar-or-enum-value",
+    "name": "identifier-or-domain-name",
+    "start": "scalar-or-enum-value",
+    "table": "identifier-or-domain-name",
+    "type": "opaque-data-type"
+  },
+  "create/server.snf": {
+    "fdw": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "option": "identifier-or-domain-name",
+    "type": "quoted-string-content",
+    "value": "quoted-string-content",
+    "version": "quoted-string-content"
+  },
+  "create/statistics.snf": {
+    "col_expression": "opaque-expression",
+    "colname": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name"
+  },
+  "create/subscription.snf": {
+    "connection": "quoted-string-content",
+    "name": "identifier-or-domain-name",
+    "publication": "identifier-or-domain-name",
+    "subscription_parameter": "external-parameter-name",
+    "value": "scalar-or-enum-value"
+  },
+  "create/table-as.snf": {
+    "colname": "identifier-or-domain-name",
+    "index_method": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "storage_parameter": "external-parameter-name",
+    "tablespace": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value"
+  },
+  "create/table.snf": {
+    "boolean_expression": "opaque-expression",
+    "cache": "scalar-or-enum-value",
+    "col_expression": "opaque-expression",
+    "collate": "identifier-or-domain-name",
+    "colname": "identifier-or-domain-name",
+    "compression": "scalar-or-enum-value",
+    "constraint": "identifier-or-domain-name",
+    "generated_expression": "opaque-expression",
+    "include": "identifier-or-domain-name",
+    "increment": "scalar-or-enum-value",
+    "index_method": "identifier-or-domain-name",
+    "inherits": "identifier-or-domain-name",
+    "like_table": "identifier-or-domain-name",
+    "maxvalue": "scalar-or-enum-value",
+    "minvalue": "scalar-or-enum-value",
+    "modulus": "scalar-or-enum-value",
+    "name": "identifier-or-domain-name",
+    "opclass": "identifier-or-domain-name",
+    "opclass_parameter": "external-parameter-name",
+    "operator": "identifier-or-domain-name",
+    "parent": "identifier-or-domain-name",
+    "partition_bound_expression": "opaque-expression",
+    "refcolname": "identifier-or-domain-name",
+    "referenced_table": "identifier-or-domain-name",
+    "remainder": "scalar-or-enum-value",
+    "sequence": "identifier-or-domain-name",
+    "start": "scalar-or-enum-value",
+    "storage_parameter": "external-parameter-name",
+    "tablespace": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "value": "scalar-or-enum-value",
+    "value_expression": "opaque-expression"
+  },
+  "create/tablespace.snf": {
+    "location": "quoted-string-content",
+    "name": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "tablespace_parameter": "external-parameter-name",
+    "value": "scalar-or-enum-value"
+  },
+  "create/text-search-configuration.snf": {
+    "copy": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "parser": "identifier-or-domain-name"
+  },
+  "create/text-search-dictionary.snf": {
+    "name": "identifier-or-domain-name",
+    "template": "identifier-or-domain-name",
+    "template_parameter": "external-parameter-name",
+    "value": "scalar-or-enum-value"
+  },
+  "create/text-search-parser.snf": {
+    "end": "scalar-or-enum-value",
+    "gettoken": "identifier-or-domain-name",
+    "headline": "identifier-or-domain-name",
+    "lextypes": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "start": "scalar-or-enum-value"
+  },
+  "create/text-search-template.snf": {
+    "init": "identifier-or-domain-name",
+    "lexize": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name"
+  },
+  "create/transform.snf": {
+    "argtype": "opaque-data-type",
+    "from_function": "identifier-or-domain-name",
+    "language": "identifier-or-domain-name",
+    "to_function": "identifier-or-domain-name",
+    "type": "opaque-data-type"
+  },
+  "create/trigger.snf": {
+    "boolean_expression": "opaque-expression",
+    "colname": "identifier-or-domain-name",
+    "from": "identifier-or-domain-name",
+    "function": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "referencing": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value"
+  },
+  "create/type.snf": {
+    "alignment": "scalar-or-enum-value",
+    "analyze": "scalar-or-enum-value",
+    "attribute": "identifier-or-domain-name",
+    "canonical": "identifier-or-domain-name",
+    "category": "scalar-or-enum-value",
+    "collatable": "scalar-or-enum-value",
+    "collate": "identifier-or-domain-name",
+    "collation": "identifier-or-domain-name",
+    "delimiter": "scalar-or-enum-value",
+    "element": "opaque-data-type",
+    "input": "identifier-or-domain-name",
+    "internallength": "scalar-or-enum-value",
+    "label": "quoted-string-content",
+    "like": "opaque-data-type",
+    "multirange_type_name": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "output": "identifier-or-domain-name",
+    "preferred": "scalar-or-enum-value",
+    "receive": "identifier-or-domain-name",
+    "send": "identifier-or-domain-name",
+    "storage": "scalar-or-enum-value",
+    "subscript": "identifier-or-domain-name",
+    "subtype": "opaque-data-type",
+    "subtype_diff": "identifier-or-domain-name",
+    "subtype_opclass": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "typmod_in": "identifier-or-domain-name",
+    "typmod_out": "identifier-or-domain-name",
+    "value_expression": "opaque-expression"
+  },
+  "create/user-mapping.snf": {
+    "option": "identifier-or-domain-name",
+    "role_name": "identifier-or-domain-name",
+    "server": "identifier-or-domain-name",
+    "value": "quoted-string-content"
+  },
+  "create/user.snf": {
+    "admin": "identifier-or-domain-name",
+    "connection_limit": "scalar-or-enum-value",
+    "in_group": "identifier-or-domain-name",
+    "in_role": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "password": "quoted-string-content",
+    "role": "identifier-or-domain-name",
+    "sysid": "scalar-or-enum-value",
+    "timestamp": "quoted-string-content",
+    "user": "identifier-or-domain-name"
+  },
+  "create/view.snf": {
+    "colname": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "value": "scalar-or-enum-value",
+    "view_parameter": "external-parameter-name"
+  },
+  "drop/access-method.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/aggregate.snf": {
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "name": "identifier-or-domain-name"
+  },
+  "drop/cast.snf": {
+    "source_type": "opaque-data-type",
+    "target_type": "opaque-data-type"
+  },
+  "drop/collation.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/conversion.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/database.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/domain.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/event-trigger.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/extension.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/foreign-data.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/foreign-table.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/function.snf": {
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "name": "identifier-or-domain-name"
+  },
+  "drop/group.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/index.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/language.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/materialized-view.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/operator-class.snf": {
+    "index_method": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name"
+  },
+  "drop/operator-family.snf": {
+    "index_method": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name"
+  },
+  "drop/operator.snf": {
+    "left": "opaque-data-type",
+    "name": "identifier-or-domain-name",
+    "right": "opaque-data-type"
+  },
+  "drop/owned.snf": {
+    "role_name": "identifier-or-domain-name"
+  },
+  "drop/policy.snf": {
+    "name": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name"
+  },
+  "drop/procedure.snf": {
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "name": "identifier-or-domain-name"
+  },
+  "drop/publication.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/role.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/routine.snf": {
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "name": "identifier-or-domain-name"
+  },
+  "drop/rule.snf": {
+    "name": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name"
+  },
+  "drop/schema.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/sequence.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/server.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/statistics.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/subscription.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/table.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/tablespace.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/text-search-configuration.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/text-search-dictionary.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/text-search-parser.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/text-search-template.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/transform.snf": {
+    "language": "identifier-or-domain-name",
+    "type": "opaque-data-type"
+  },
+  "drop/trigger.snf": {
+    "name": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name"
+  },
+  "drop/type.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/user-mapping.snf": {
+    "role_name": "identifier-or-domain-name",
+    "server": "identifier-or-domain-name"
+  },
+  "drop/user.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "drop/view.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "other/analyze.snf": {
+    "buffer_usage_limit": "scalar-or-enum-value",
+    "colname": "identifier-or-domain-name",
+    "name": "identifier-or-domain-name",
+    "skip_locked": "scalar-or-enum-value",
+    "verbose": "scalar-or-enum-value"
+  },
+  "other/call.snf": {
+    "procedure": "identifier-or-domain-name",
+    "value_expression": "opaque-expression"
+  },
+  "other/checkpoint.snf": {},
+  "other/close.snf": {
+    "cursor": "identifier-or-domain-name"
+  },
+  "other/cluster.snf": {
+    "index": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "verbose": "scalar-or-enum-value"
+  },
+  "other/comment.snf": {
+    "access_name": "identifier-or-domain-name",
+    "aggregate": "identifier-or-domain-name",
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "collation": "identifier-or-domain-name",
+    "colname": "identifier-or-domain-name",
+    "comment": "quoted-string-content",
+    "conversion": "identifier-or-domain-name",
+    "database": "identifier-or-domain-name",
+    "domain": "identifier-or-domain-name",
+    "domain_constraint": "identifier-or-domain-name",
+    "event_trigger": "identifier-or-domain-name",
+    "extension": "identifier-or-domain-name",
+    "fdw": "identifier-or-domain-name",
+    "ft": "identifier-or-domain-name",
+    "function": "identifier-or-domain-name",
+    "index": "identifier-or-domain-name",
+    "index_method": "identifier-or-domain-name",
+    "language": "identifier-or-domain-name",
+    "large_object": "identifier-or-domain-name",
+    "left": "opaque-data-type",
+    "m_view": "identifier-or-domain-name",
+    "op_class": "identifier-or-domain-name",
+    "op_family": "identifier-or-domain-name",
+    "operator": "identifier-or-domain-name",
+    "policy": "identifier-or-domain-name",
+    "procedure": "identifier-or-domain-name",
+    "publication": "identifier-or-domain-name",
+    "right": "opaque-data-type",
+    "role": "identifier-or-domain-name",
+    "routine": "identifier-or-domain-name",
+    "rule": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "sequence": "identifier-or-domain-name",
+    "server": "identifier-or-domain-name",
+    "source_type": "opaque-data-type",
+    "statistics": "identifier-or-domain-name",
+    "subscription": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "table_constraint": "identifier-or-domain-name",
+    "tablespace": "identifier-or-domain-name",
+    "target_type": "opaque-data-type",
+    "transform": "identifier-or-domain-name",
+    "trigger": "identifier-or-domain-name",
+    "tsc": "identifier-or-domain-name",
+    "tsd": "identifier-or-domain-name",
+    "tsp": "identifier-or-domain-name",
+    "tst": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "view": "identifier-or-domain-name"
+  },
+  "other/copy.snf": {
+    "boolean_expression": "opaque-expression",
+    "colname": "identifier-or-domain-name",
+    "command": "quoted-string-content",
+    "default": "quoted-string-content",
+    "delimiter": "scalar-or-enum-value",
+    "encoding": "quoted-string-content",
+    "escape": "quoted-string-content",
+    "file": "quoted-string-content",
+    "freeze": "scalar-or-enum-value",
+    "header": "scalar-or-enum-value",
+    "null": "quoted-string-content",
+    "quote": "quoted-string-content",
+    "reject_limit": "scalar-or-enum-value",
+    "table": "identifier-or-domain-name"
+  },
+  "other/deallocate.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "other/declare.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "other/discard.snf": {},
+  "other/do.snf": {
+    "code_literal": "opaque-code-literal",
+    "language": "identifier-or-domain-name"
+  },
+  "other/execute.snf": {
+    "prepare": "identifier-or-domain-name",
+    "value_expression": "opaque-expression"
+  },
+  "other/explain.snf": {
+    "analyze": "scalar-or-enum-value",
+    "buffers": "scalar-or-enum-value",
+    "costs": "scalar-or-enum-value",
+    "generic_plan": "scalar-or-enum-value",
+    "memory": "scalar-or-enum-value",
+    "settings": "scalar-or-enum-value",
+    "summary": "scalar-or-enum-value",
+    "timing": "scalar-or-enum-value",
+    "verbose": "scalar-or-enum-value",
+    "wal": "scalar-or-enum-value"
+  },
+  "other/fetch.snf": {
+    "absolute": "scalar-or-enum-value",
+    "backward": "scalar-or-enum-value",
+    "count": "scalar-or-enum-value",
+    "cursor": "identifier-or-domain-name",
+    "forward": "scalar-or-enum-value",
+    "relative": "scalar-or-enum-value"
+  },
+  "other/import-foreign-schema.snf": {
+    "local": "identifier-or-domain-name",
+    "option": "identifier-or-domain-name",
+    "remote_schema": "identifier-or-domain-name",
+    "server": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "value": "quoted-string-content"
+  },
+  "other/listen.snf": {
+    "channel": "identifier-or-domain-name"
+  },
+  "other/load.snf": {
+    "file": "quoted-string-content"
+  },
+  "other/lock.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "other/move.snf": {
+    "absolute": "scalar-or-enum-value",
+    "backward": "scalar-or-enum-value",
+    "count": "scalar-or-enum-value",
+    "cursor": "identifier-or-domain-name",
+    "forward": "scalar-or-enum-value",
+    "relative": "scalar-or-enum-value"
+  },
+  "other/notify.snf": {
+    "channel": "identifier-or-domain-name",
+    "payload": "identifier-or-domain-name"
+  },
+  "other/prepare.snf": {
+    "name": "identifier-or-domain-name",
+    "type": "opaque-data-type"
+  },
+  "other/reassign-owned.snf": {
+    "role_name": "identifier-or-domain-name"
+  },
+  "other/refresh-materialized-view.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "other/reindex.snf": {
+    "concurrently": "scalar-or-enum-value",
+    "name": "identifier-or-domain-name",
+    "tablespace": "identifier-or-domain-name",
+    "verbose": "scalar-or-enum-value"
+  },
+  "other/reset.snf": {
+    "config_parameter": "external-parameter-name"
+  },
+  "other/security-label.snf": {
+    "aggregate": "identifier-or-domain-name",
+    "argmode": "scalar-or-enum-value",
+    "argname": "identifier-or-domain-name",
+    "argtype": "opaque-data-type",
+    "colname": "identifier-or-domain-name",
+    "database": "identifier-or-domain-name",
+    "domain": "identifier-or-domain-name",
+    "event_trigger": "identifier-or-domain-name",
+    "foreign_table": "identifier-or-domain-name",
+    "function": "identifier-or-domain-name",
+    "language": "identifier-or-domain-name",
+    "large_object": "identifier-or-domain-name",
+    "m_view": "identifier-or-domain-name",
+    "procedure": "identifier-or-domain-name",
+    "provider": "scalar-or-enum-value",
+    "publication": "identifier-or-domain-name",
+    "role": "identifier-or-domain-name",
+    "routine": "identifier-or-domain-name",
+    "schema": "identifier-or-domain-name",
+    "sequence": "identifier-or-domain-name",
+    "string": "quoted-string-content",
+    "subscription": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "tablespace": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "view": "identifier-or-domain-name"
+  },
+  "other/set-constraints.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "other/set-role.snf": {
+    "role": "identifier-or-domain-name"
+  },
+  "other/set-session-authorization.snf": {
+    "role": "identifier-or-domain-name"
+  },
+  "other/set.snf": {
+    "config_parameter": "external-parameter-name",
+    "encoding": "quoted-string-content",
+    "schema": "quoted-string-content",
+    "value": "quoted-string-content"
+  },
+  "other/show.snf": {
+    "configuration_parameter": "external-parameter-name"
+  },
+  "other/truncate.snf": {
+    "name": "identifier-or-domain-name"
+  },
+  "other/unlisten.snf": {
+    "channel": "identifier-or-domain-name"
+  },
+  "other/vacuum.snf": {
+    "analyze": "scalar-or-enum-value",
+    "buffer_usage_limit": "scalar-or-enum-value",
+    "colname": "identifier-or-domain-name",
+    "disable_page_skipping": "scalar-or-enum-value",
+    "freeze": "scalar-or-enum-value",
+    "full": "scalar-or-enum-value",
+    "name": "identifier-or-domain-name",
+    "only_database_stats": "scalar-or-enum-value",
+    "parallel": "scalar-or-enum-value",
+    "process_main": "scalar-or-enum-value",
+    "process_toast": "scalar-or-enum-value",
+    "skip_database_stats": "scalar-or-enum-value",
+    "skip_locked": "scalar-or-enum-value",
+    "truncate": "scalar-or-enum-value",
+    "verbose": "scalar-or-enum-value"
+  },
+  "query/delete.snf": {
+    "boolean_expression": "opaque-expression",
+    "col_alias": "identifier-or-domain-name",
+    "col_expression": "opaque-expression",
+    "collate": "identifier-or-domain-name",
+    "colname": "identifier-or-domain-name",
+    "cursor": "identifier-or-domain-name",
+    "cycle_colname": "identifier-or-domain-name",
+    "cycle_path_colname": "identifier-or-domain-name",
+    "function": "identifier-or-domain-name",
+    "function_alias": "identifier-or-domain-name",
+    "join_alias": "identifier-or-domain-name",
+    "mark_default": "scalar-or-enum-value",
+    "mark_value": "scalar-or-enum-value",
+    "number_expression": "opaque-expression",
+    "output_alias": "identifier-or-domain-name",
+    "rows_from_alias": "identifier-or-domain-name",
+    "search_colname": "identifier-or-domain-name",
+    "search_path_colname": "identifier-or-domain-name",
+    "seed": "scalar-or-enum-value",
+    "select_alias": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "table_alias": "identifier-or-domain-name",
+    "tablesample": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "value_expression": "opaque-expression",
+    "with_alias": "identifier-or-domain-name",
+    "with_name": "identifier-or-domain-name"
+  },
+  "query/insert.snf": {
+    "boolean_expression": "opaque-expression",
+    "col_alias": "identifier-or-domain-name",
+    "col_expression": "opaque-expression",
+    "collate": "identifier-or-domain-name",
+    "colname": "identifier-or-domain-name",
+    "constraint": "identifier-or-domain-name",
+    "cycle_colname": "identifier-or-domain-name",
+    "cycle_path_colname": "identifier-or-domain-name",
+    "mark_default": "scalar-or-enum-value",
+    "mark_value": "scalar-or-enum-value",
+    "opclass": "identifier-or-domain-name",
+    "output_alias": "identifier-or-domain-name",
+    "search_path_colname": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "table_alias": "identifier-or-domain-name",
+    "value_expression": "opaque-expression",
+    "with_name": "identifier-or-domain-name"
+  },
+  "query/merge.snf": {
+    "boolean_expression": "opaque-expression",
+    "col_alias": "identifier-or-domain-name",
+    "col_expression": "opaque-expression",
+    "colname": "identifier-or-domain-name",
+    "cycle_colname": "identifier-or-domain-name",
+    "cycle_path_colname": "identifier-or-domain-name",
+    "mark_default": "scalar-or-enum-value",
+    "mark_value": "scalar-or-enum-value",
+    "output_alias": "identifier-or-domain-name",
+    "search_path_colname": "identifier-or-domain-name",
+    "source_alias": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "target_alias": "identifier-or-domain-name",
+    "value_expression": "opaque-expression",
+    "with_name": "identifier-or-domain-name"
+  },
+  "query/select-into.snf": {
+    "boolean_expression": "opaque-expression",
+    "col_alias": "identifier-or-domain-name",
+    "col_expression": "opaque-expression",
+    "collate": "identifier-or-domain-name",
+    "colname": "identifier-or-domain-name",
+    "cycle_colname": "identifier-or-domain-name",
+    "cycle_path_colname": "identifier-or-domain-name",
+    "fetch": "scalar-or-enum-value",
+    "function": "identifier-or-domain-name",
+    "function_alias": "identifier-or-domain-name",
+    "join_alias": "identifier-or-domain-name",
+    "limit": "scalar-or-enum-value",
+    "mark_default": "scalar-or-enum-value",
+    "mark_value": "scalar-or-enum-value",
+    "new_table": "identifier-or-domain-name",
+    "number_expression": "opaque-expression",
+    "offset": "scalar-or-enum-value",
+    "operator": "identifier-or-domain-name",
+    "rows_from_alias": "identifier-or-domain-name",
+    "search_path_colname": "identifier-or-domain-name",
+    "seed": "scalar-or-enum-value",
+    "select_alias": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "table_alias": "identifier-or-domain-name",
+    "tablesample": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "value_expression": "opaque-expression",
+    "window": "identifier-or-domain-name",
+    "with_alias": "identifier-or-domain-name",
+    "with_name": "identifier-or-domain-name"
+  },
+  "query/select.snf": {
+    "boolean_expression": "opaque-expression",
+    "col_alias": "identifier-or-domain-name",
+    "col_expression": "opaque-expression",
+    "collate": "identifier-or-domain-name",
+    "colname": "identifier-or-domain-name",
+    "cycle_colname": "identifier-or-domain-name",
+    "cycle_path_colname": "identifier-or-domain-name",
+    "fetch": "scalar-or-enum-value",
+    "function": "identifier-or-domain-name",
+    "function_alias": "identifier-or-domain-name",
+    "join_alias": "identifier-or-domain-name",
+    "limit": "scalar-or-enum-value",
+    "mark_default": "scalar-or-enum-value",
+    "mark_value": "scalar-or-enum-value",
+    "number_expression": "opaque-expression",
+    "offset": "scalar-or-enum-value",
+    "operator": "identifier-or-domain-name",
+    "rows_from_alias": "identifier-or-domain-name",
+    "search_colname": "identifier-or-domain-name",
+    "search_path_colname": "identifier-or-domain-name",
+    "seed": "scalar-or-enum-value",
+    "select_alias": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "table_alias": "identifier-or-domain-name",
+    "tablesample": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "value_expression": "opaque-expression",
+    "window": "identifier-or-domain-name",
+    "with_alias": "identifier-or-domain-name",
+    "with_name": "identifier-or-domain-name"
+  },
+  "query/update.snf": {
+    "boolean_expression": "opaque-expression",
+    "col_alias": "identifier-or-domain-name",
+    "col_expression": "opaque-expression",
+    "collate": "identifier-or-domain-name",
+    "colname": "identifier-or-domain-name",
+    "cursor": "identifier-or-domain-name",
+    "cycle_colname": "identifier-or-domain-name",
+    "cycle_path_colname": "identifier-or-domain-name",
+    "function": "identifier-or-domain-name",
+    "function_alias": "identifier-or-domain-name",
+    "join_alias": "identifier-or-domain-name",
+    "mark_default": "scalar-or-enum-value",
+    "mark_value": "scalar-or-enum-value",
+    "number_expression": "opaque-expression",
+    "output_alias": "identifier-or-domain-name",
+    "rows_from_alias": "identifier-or-domain-name",
+    "search_colname": "identifier-or-domain-name",
+    "search_path_colname": "identifier-or-domain-name",
+    "seed": "scalar-or-enum-value",
+    "select_alias": "identifier-or-domain-name",
+    "table": "identifier-or-domain-name",
+    "table_alias": "identifier-or-domain-name",
+    "tablesample": "identifier-or-domain-name",
+    "type": "opaque-data-type",
+    "value_expression": "opaque-expression",
+    "with_alias": "identifier-or-domain-name",
+    "with_name": "identifier-or-domain-name"
+  },
+  "query/values.snf": {
+    "col_expression": "opaque-expression",
+    "fetch": "scalar-or-enum-value",
+    "limit": "scalar-or-enum-value",
+    "offset": "scalar-or-enum-value",
+    "operator": "identifier-or-domain-name",
+    "value_expression": "opaque-expression"
+  },
+  "transaction/abort.snf": {},
+  "transaction/begin.snf": {},
+  "transaction/commit-prepared.snf": {
+    "transaction": "scalar-or-enum-value"
+  },
+  "transaction/commit.snf": {},
+  "transaction/end.snf": {},
+  "transaction/prepare-transaction.snf": {
+    "transaction": "scalar-or-enum-value"
+  },
+  "transaction/release-savepoint.snf": {
+    "savepoint": "identifier-or-domain-name"
+  },
+  "transaction/rollback-prepared.snf": {
+    "transaction": "scalar-or-enum-value"
+  },
+  "transaction/rollback-to.snf": {
+    "savepoint": "identifier-or-domain-name"
+  },
+  "transaction/rollback.snf": {},
+  "transaction/save-point.snf": {
+    "savepoint": "identifier-or-domain-name"
+  },
+  "transaction/set-transaction.snf": {
+    "snapshot": "scalar-or-enum-value"
+  },
+  "transaction/start-transaction.snf": {}
+}

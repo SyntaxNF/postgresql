@@ -2,11 +2,11 @@
 
 # CASE ADD
 ALTER PUBLICATION name
-    ADD table [, ...]
+    ADD publication_object [, ...]
 
 # CASE DROP
 ALTER PUBLICATION name
-    DROP table [, ...]
+    DROP publication_drop_object [, ...]
 
 # CASE RENAME
 ALTER PUBLICATION name
@@ -14,7 +14,7 @@ ALTER PUBLICATION name
 
 # CASE SET_TABLES
 ALTER PUBLICATION name
-    SET table [, ...]
+    SET publication_object [, ...]
 
 # CASE SET_OPTIONS
 ALTER PUBLICATION name
@@ -23,12 +23,21 @@ ALTER PUBLICATION name
 # CASE OWNER
 ALTER PUBLICATION name OWNER TO role
 
-# PARTOFIS table
-TABLE [ ONLY ] table [ * ]
-    [ ( colname [, ...] ) ]
-    [ WHERE ( boolean_expression ) ]
+# PARTOFIS publication_object
+TABLE table_definition [, ...]
 
-TABLES IN SCHEMA { schema | CURRENT_SCHEMA }
+TABLES IN SCHEMA { schema | CURRENT_SCHEMA } [, ...]
+
+# WHERE table_definition
+[ ONLY ] table [ * ] [ ( colname [, ...] ) ] [ WHERE ( boolean_expression ) ]
+
+# PARTOFIS publication_drop_object
+TABLE table_target [, ...]
+
+TABLES IN SCHEMA { schema | CURRENT_SCHEMA } [, ...]
+
+# WHERE table_target
+[ ONLY ] table [ * ]
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }

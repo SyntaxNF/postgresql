@@ -1,6 +1,6 @@
 # https://www.postgresql.org/docs/18/sql-lock.html
 
-LOCK [ TABLE ] [ ONLY ] { name [ * ] } [, ...]
+LOCK [ TABLE ] { [ ONLY ] name [ * ] } [, ...]
     [ IN lock_mode MODE ]
     [ NOWAIT ]
 

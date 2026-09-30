@@ -2,11 +2,11 @@
 
 # CASE NORMAL
 CREATE FOREIGN TABLE [ IF NOT EXISTS ] name (
-    {
+    [ {
         column_definition |
         table_constraint_definition |
         LIKE like_table [ like_option [...] ]
-    } [, ...]
+    } [, ...] ]
 )
     [ INHERITS ( inherit [, ...] ) ]
     SERVER server
@@ -51,6 +51,6 @@ colname [ WITH OPTIONS ]
 { INCLUDING | EXCLUDING } { COMMENTS | CONSTRAINTS | DEFAULTS | GENERATED | STATISTICS | ALL }
 
 # ONEOFIS partition_bound_definition
-  IN ( partition_bound_expression [, ...] )
+IN ( partition_bound_expression [, ...] )
 FROM ( { partition_bound_expression | MINVALUE | MAXVALUE } [, ...] ) TO ( { partition_bound_expression | MINVALUE | MAXVALUE } [, ...] )
 WITH ( MODULUS modulus, REMAINDER remainder )

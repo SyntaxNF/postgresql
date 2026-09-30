@@ -9,7 +9,7 @@ REVOKE [ GRANT OPTION FOR ] { { SELECT | INSERT | UPDATE | DELETE | TRUNCATE | R
 
 # CASE COLUMN
 REVOKE [ GRANT OPTION FOR ]
-    { { SELECT | INSERT | UPDATE | REFERENCES } ( colname [, ...] ) [, ...] | ALL [ PRIVILEGES ] ( colname [, ...] ) }
+    { { { SELECT | INSERT | UPDATE | REFERENCES } ( colname [, ...] ) } [, ...] | ALL [ PRIVILEGES ] ( colname [, ...] ) }
     ON [ TABLE ] table [, ...]
     FROM role_public [, ...]
     [ GRANTED BY role_public ]
@@ -106,10 +106,8 @@ REVOKE [ { ADMIN | INHERIT | SET } OPTION FOR ] role_name [, ...]
     [ CASCADE | RESTRICT ]
 
 # PARTOFIS routine_definition
-{
-{ FUNCTION | PROCEDURE | ROUTINE } routine
-[ ( arg [, ...] ) ]
-} [, ...]
+{ FUNCTION | PROCEDURE | ROUTINE }
+    { routine [ ( [ arg [, ...] ] ) ] } [, ...]
 
 ALL { FUNCTIONS | PROCEDURES | ROUTINES } IN SCHEMA schema [, ...]
 

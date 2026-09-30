@@ -20,8 +20,8 @@ ALTER AGGREGATE name (
 
 arg [, ...]
 
-arg [, ...]
-ORDER BY orders [, ...]
+[ arg [, ...] ]
+ORDER BY order [, ...]
 
 # WHERE arg, order
 [ argmode ] [ argname ] argtype

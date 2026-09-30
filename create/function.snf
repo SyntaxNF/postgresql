@@ -1,9 +1,9 @@
 # https://www.postgresql.org/docs/18/sql-createfunction.html
 
 CREATE [ OR REPLACE ] FUNCTION name (
-    argument_definition [, ...]
+    [ argument_definition [, ...] ]
 )
-    [ RETURNS returns | RETURNS TABLE ( table_column_definition [, ...] ) ]
+    [ RETURNS [ SETOF ] type | RETURNS TABLE ( table_column_definition [, ...] ) ]
     [ LANGUAGE language ]
     [ TRANSFORM { FOR TYPE type } [, ...] ]
     [ WINDOW ]
@@ -15,14 +15,28 @@ CREATE [ OR REPLACE ] FUNCTION name (
     [ COST cost ]
     [ ROWS rows ]
     [ SUPPORT support ]
-    [ { SET config_parameter { TO value | = value | FROM CURRENT } } [, ...] ]
-    [ AS 'file', 'function' ]
-    [ AS pg_definition ]
-    [ sql_definition ]
+    [ set_parameter_clause [...] ]
+    [ routine_body_clause ]
 
 # WHERE argument_definition
-[ argmode ] [ argname ] argtype
+[ IN | OUT | INOUT | VARIADIC ] [ argname ] argtype
 [ { DEFAULT | = } value_expression ]
 
 # WHERE table_column_definition
 colname coltype
+
+# WHERE set_parameter_clause
+SET config_parameter { TO value | = value | FROM CURRENT }
+
+# PARTOFIS routine_body_clause
+AS 'definition'
+
+AS 'object_file', 'link_symbol'
+
+RETURN value_expression
+
+BEGIN ATOMIC
+    sql_statement [; ...] ;
+END
+
+# STATEMENT sql_statement

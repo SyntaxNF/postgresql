@@ -12,8 +12,10 @@ ALTER FOREIGN DATA WRAPPER name RENAME TO new_name
 # CASE OWNER
 ALTER FOREIGN DATA WRAPPER name OWNER TO role
 
-# WHERE option_action
-[ ADD | SET | DROP ] option ['value']
+# PARTOFIS option_action
+[ ADD | SET ] option 'value'
+
+DROP option
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }

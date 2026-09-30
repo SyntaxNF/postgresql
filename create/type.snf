@@ -2,12 +2,12 @@
 
 # CASE COMPOSITE
 CREATE TYPE name AS (
-    attribute_definition [, ...]
+    [ attribute_definition [, ...] ]
 )
 
 # CASE ENUM
 CREATE TYPE name AS ENUM (
-    'label' [, ...]
+    [ 'label' [, ...] ]
 )
 
 # CASE RANGE
