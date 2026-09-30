@@ -1,8 +1,0 @@
-# https://www.postgresql.org/docs/18/sql-start-transaction.html
-
-START TRANSACTION [ transaction_mode [, ...] ]
-
-# ONEOFIS transaction_mode
-ISOLATION LEVEL { SERIALIZABLE | REPEATABLE READ | READ COMMITTED | READ UNCOMMITTED }
-READ WRITE | READ ONLY
-[ NOT ] DEFERRABLE
