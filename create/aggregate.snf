@@ -2,7 +2,7 @@
 
 # CASE NORMAL
 CREATE [ OR REPLACE ] AGGREGATE name (
-    argument_definition [, ...]
+    { * | argument_definition [, ...] }
 ) (
     SFUNC = sfunc,
     STYPE = stype,

@@ -5,7 +5,7 @@ ALTER FOREIGN TABLE [ IF EXISTS ] [ ONLY ] name [ * ] alter_action [, ...]
 
 # CASE ADD_COLUMN
 ALTER FOREIGN TABLE [ IF EXISTS ] [ ONLY ] name [ * ]
-    ADD [ COLUMN ] [ IF NOT EXISTS ] colname type [ COLLATE collate ] [ column_constraint_definition [...] ]
+    ADD [ COLUMN ] [ IF NOT EXISTS ] colname type [ COLLATE collate ] column_constraint_definition [...]
 
 # CASE DROP_COLUMN
 ALTER FOREIGN TABLE [ IF EXISTS ] [ ONLY ] name [ * ]
@@ -25,7 +25,7 @@ ALTER FOREIGN TABLE [ IF EXISTS ] name RENAME TO new_name
 ALTER FOREIGN TABLE [ IF EXISTS ] name SET SCHEMA schema
 
 # ONEOFIS alter_action
-ADD [ COLUMN ] [ IF NOT EXISTS ] colname type [ COLLATE collate ] [ column_constraint_definition [...] ]
+ADD [ COLUMN ] [ IF NOT EXISTS ] colname type [ COLLATE collate ] column_constraint_definition [...]
 DROP [ COLUMN ] [ IF EXISTS ] colname [ RESTRICT | CASCADE ]
 ALTER [ COLUMN ] colname [ SET DATA ] TYPE type [ COLLATE collate ]
 ALTER [ COLUMN ] colname SET DEFAULT value_expression
@@ -53,7 +53,7 @@ OPTIONS ( foreign_option [, ...] )
 # WHERE column_constraint_definition
 [ CONSTRAINT constraint ]
     { NOT NULL [ NO INHERIT ] | NULL | CHECK ( boolean_expression ) [ NO INHERIT ] |
-      DEFAULT value_expression | GENERATED ALWAYS AS ( generation_expression ) [ STORED | VIRTUAL ] }
+        DEFAULT value_expression | GENERATED ALWAYS AS ( generation_expression ) [ STORED | VIRTUAL ] }
     [ ENFORCED | NOT ENFORCED ]
 
 # ONEOFIS foreign_option

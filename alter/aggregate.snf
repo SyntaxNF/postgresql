@@ -21,7 +21,7 @@ ALTER AGGREGATE name (
 arg [, ...]
 
 arg [, ...]
-ORDER BY orders [, ...]
+ORDER BY order [, ...]
 
 # WHERE arg, order
 [ argmode ] [ argname ] argtype

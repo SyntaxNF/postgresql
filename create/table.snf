@@ -1,34 +1,34 @@
 # https://www.postgresql.org/docs/18/sql-createtable.html
 
 # CASE NORMAL
-CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name (
+CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXISTS ] name (
     {
         column_definition |
         table_constraint_definition |
-        LIKE like_table [ like_option [...] ]
+        LIKE like_table like_option [...]
     } [, ...]
 )
     [ INHERITS ( inherits [, ...] ) ]
     [ PARTITION BY { RANGE | LIST | HASH } ( partition_column_expression [, ...] ) ]
     [ USING index_method ]
-    [ WITH ( { storage_parameter [= value] } [, ...] ) ]
+    [ WITH ( { storage_parameter [= value] } [, ...] ) | WITHOUT OIDS ]
     [ ON COMMIT { PRESERVE ROWS | DELETE ROWS | DROP } ]
     [ TABLESPACE tablespace ]
 
 # CASE TYPE
-CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name OF type
+CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXISTS ] name OF type
     [ ( {
         typed_column_definition |
         table_constraint_definition
     } [, ...] ) ]
     [ PARTITION BY { RANGE | LIST | HASH } ( partition_column_expression [, ...] ) ]
     [ USING index_method ]
-    [ WITH ( { storage_parameter [= value] } [, ...] ) ]
+    [ WITH ( { storage_parameter [= value] } [, ...] ) | WITHOUT OIDS ]
     [ ON COMMIT { PRESERVE ROWS | DELETE ROWS | DROP } ]
     [ TABLESPACE tablespace ]
 
 # CASE PARTITION
-CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name PARTITION OF parent
+CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXISTS ] name PARTITION OF parent
     [ ( {
         partition_column_definition |
         table_constraint_definition
@@ -36,28 +36,28 @@ CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name PARTITION OF
     { FOR VALUES partition_bound_definition | DEFAULT }
     [ PARTITION BY { RANGE | LIST | HASH } ( partition_column_expression [, ...] ) ]
     [ USING index_method ]
-    [ WITH ( { storage_parameter [= value] } [, ...] ) ]
+    [ WITH ( { storage_parameter [= value] } [, ...] ) | WITHOUT OIDS ]
     [ ON COMMIT { PRESERVE ROWS | DELETE ROWS | DROP } ]
     [ TABLESPACE tablespace ]
 
 # WHERE column_definition
 colname type [ STORAGE { PLAIN | EXTERNAL | EXTENDED | MAIN | DEFAULT } ]
 [ COMPRESSION compression ] [ COLLATE collate ]
-[ column_constraint_definition [...] ]
+column_constraint_definition [...]
 
 # WHERE like_option
 { INCLUDING | EXCLUDING } { COMMENTS | COMPRESSION | CONSTRAINTS | DEFAULTS | GENERATED | IDENTITY | INDEXES | STATISTICS | STORAGE | ALL }
 
 # WHERE typed_column_definition
 colname [ WITH OPTIONS ]
-[ column_constraint_definition [...] ]
+column_constraint_definition [...]
 
 # WHERE partition_column_definition
 colname [ WITH OPTIONS ]
-[ column_constraint_definition [...] ]
+column_constraint_definition [...]
 
 # ONEOFIS partition_bound_definition
-  IN ( partition_bound_expression [, ...] )
+IN ( partition_bound_expression [, ...] )
 FROM ( { partition_bound_expression | MINVALUE | MAXVALUE } [, ...] ) TO ( { partition_bound_expression | MINVALUE | MAXVALUE } [, ...] )
 WITH ( MODULUS modulus, REMAINDER remainder )
 
@@ -92,9 +92,11 @@ unique_index_options |
 PRIMARY KEY ( colname [, ...] [ WITHOUT OVERLAPS ] )
 primary_key_index_options |
 EXCLUDE [ USING index_method ] (
-    { colname | ( col_expression ) } [ COLLATE collate ]
-    [ opclass [ ( { opclass_parameter = value } [, ...] ) ] ]
-    [ ASC | DESC ] [ NULLS { FIRST | LAST } ] WITH operator [, ...]
+    {
+        { colname | ( col_expression ) } [ COLLATE collate ]
+        [ opclass [ ( { opclass_parameter = value } [, ...] ) ] ]
+        [ ASC | DESC ] [ NULLS { FIRST | LAST } ] WITH operator
+    } [, ...]
 )
 exclude_index_options
 [ WHERE ( boolean_expression ) ] |

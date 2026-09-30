@@ -6,11 +6,14 @@ CREATE [ OR REPLACE ] PROCEDURE name (
     [ LANGUAGE language ]
     [ TRANSFORM { FOR TYPE type } [, ...] ]
     [ [ EXTERNAL ] SECURITY { INVOKER | DEFINER } ]
-    [ { SET config_parameter { TO value | = value | FROM CURRENT } } [, ...] ]
+    set_parameter_clause [...]
     [ AS 'file', 'function' ]
     [ AS pg_definition ]
     [ sql_definition ]
 
 # WHERE argument_definition
-[ argmode ] [ argname ] argtype
+[ IN | OUT | INOUT | VARIADIC ] [ argname ] argtype
 [ { DEFAULT | = } value_expression ]
+
+# WHERE set_parameter_clause
+SET config_parameter { TO value | = value | FROM CURRENT }

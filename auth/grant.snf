@@ -8,7 +8,7 @@ GRANT { { SELECT | INSERT | UPDATE | DELETE | TRUNCATE | REFERENCES | TRIGGER | 
     [ GRANTED BY role_public ]
 
 # CASE COLUMN
-GRANT { { SELECT | INSERT | UPDATE | REFERENCES } ( colname [, ...] ) [, ...] | ALL [ PRIVILEGES ] ( colname [, ...] ) }
+GRANT { { { SELECT | INSERT | UPDATE | REFERENCES } ( colname [, ...] ) } [, ...] | ALL [ PRIVILEGES ] ( colname [, ...] ) }
     ON [ TABLE ] table [, ...]
     TO role_public [, ...]
     [ WITH GRANT OPTION ]
@@ -105,10 +105,8 @@ GRANT role_name [, ...]
     [ GRANTED BY role_public ]
 
 # PARTOFIS routine_definition
-{
-{ FUNCTION | PROCEDURE | ROUTINE } routine
-[ ( arg [, ...] ) ]
-} [, ...]
+{ FUNCTION | PROCEDURE | ROUTINE }
+    { routine [ ( arg [, ...] ) ] } [, ...]
 
 ALL { FUNCTIONS | PROCEDURES | ROUTINES } IN SCHEMA schema [, ...]
 
