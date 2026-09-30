@@ -89,8 +89,25 @@ prodHas('alter/subscription.snf', 'publication_options', /COPY_DATA/);
 prodHas('alter/table.snf', 'action', /DISABLE TRIGGER \{ trigger \| ALL \| USER \}/);
 prodHas('alter/table.snf', 'identity_option', /INCREMENT \[ BY \] increment/);
 has('drop/database.snf', /\[ \[ WITH \] \( FORCE \) \]/, 'FORCE parentheses');
-for (const file of ['create/table.snf', 'create/table-as.snf']) has(file, /GLOBAL \| LOCAL/, 'GLOBAL/LOCAL temporary syntax');
-has('create/table.snf', /WITHOUT OIDS/, 'WITHOUT OIDS option');
+// Omit accepted-but-ineffective legacy table options from new SQL generation.
+for (const [file, name] of [['create/table.snf', 'NORMAL'], ['create/table.snf', 'TYPE'], ['create/table.snf', 'PARTITION'], ['create/table-as.snf', null]]) {
+    prodLacks(file, name, /\b(?:GLOBAL|LOCAL)\b|WITHOUT OIDS/);
+    prodHas(file, name, /CREATE \[ TEMPORARY \| TEMP \| UNLOGGED \] TABLE/);
+    prodHas(file, name, /\[ WITH \( \{ storage_parameter \[= value\] \} \[, \.\.\.\] \) \]/);
+}
+has('create/view.snf', /WITH \[ CASCADED \| LOCAL \] CHECK OPTION/, 'effective LOCAL view option stays');
+has('other/set.snf', /SET \[ SESSION \| LOCAL \]/, 'effective LOCAL setting stays');
+prodLacks('alter/table.snf', 'action', /SET WITHOUT OIDS/);
+prodLacks('alter/foreign-table.snf', 'alter_action', /SET WITHOUT OIDS/);
+check('all SNF files omit the same ineffective compatibility forms', () => {
+    for (const family of ['alter', 'auth', 'create', 'drop', 'other', 'query', 'transaction']) {
+        for (const filename of fs.readdirSync(path.join(root, family)).filter(name => name.endsWith('.snf'))) {
+            const file = `${family}/${filename}`, text = source(file);
+            assert.doesNotMatch(text, /\b(?:WITH|WITHOUT) OIDS\b/, `${file}: legacy OIDS option`);
+            assert.doesNotMatch(text, /\b(?:GLOBAL|LOCAL)\b\s*(?:\|\s*LOCAL\s*)?\]?\s*\{?\s*(?:TEMPORARY|TEMP)\b/, `${file}: ineffective temporary-table prefix`);
+        }
+    }
+});
 for (const file of ['other/lock.snf', 'other/truncate.snf']) repeats(file, null, /^\{ \[ ONLY \] name \[ \* \] \}$/);
 for (const name of ['FROM', 'TO']) prodHas('other/copy.snf', name, /\[ \[ WITH \] \( copy_options \) \]/);
 prodHas('other/copy.snf', 'copy_options', /FORMAT \{ TEXT \| CSV \| BINARY \}/);

@@ -1,7 +1,7 @@
 # https://www.postgresql.org/docs/18/sql-createtable.html
 
 # CASE NORMAL
-CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXISTS ] name (
+CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name (
     {
         column_definition |
         table_constraint_definition |
@@ -11,24 +11,24 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXI
     [ INHERITS ( inherits [, ...] ) ]
     [ PARTITION BY { RANGE | LIST | HASH } ( partition_column_expression [, ...] ) ]
     [ USING index_method ]
-    [ WITH ( { storage_parameter [= value] } [, ...] ) | WITHOUT OIDS ]
+    [ WITH ( { storage_parameter [= value] } [, ...] ) ]
     [ ON COMMIT { PRESERVE ROWS | DELETE ROWS | DROP } ]
     [ TABLESPACE tablespace ]
 
 # CASE TYPE
-CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXISTS ] name OF type
+CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name OF type
     [ ( {
         typed_column_definition |
         table_constraint_definition
     } [, ...] ) ]
     [ PARTITION BY { RANGE | LIST | HASH } ( partition_column_expression [, ...] ) ]
     [ USING index_method ]
-    [ WITH ( { storage_parameter [= value] } [, ...] ) | WITHOUT OIDS ]
+    [ WITH ( { storage_parameter [= value] } [, ...] ) ]
     [ ON COMMIT { PRESERVE ROWS | DELETE ROWS | DROP } ]
     [ TABLESPACE tablespace ]
 
 # CASE PARTITION
-CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXISTS ] name PARTITION OF parent
+CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name PARTITION OF parent
     [ ( {
         partition_column_definition |
         table_constraint_definition
@@ -36,7 +36,7 @@ CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXI
     { FOR VALUES partition_bound_definition | DEFAULT }
     [ PARTITION BY { RANGE | LIST | HASH } ( partition_column_expression [, ...] ) ]
     [ USING index_method ]
-    [ WITH ( { storage_parameter [= value] } [, ...] ) | WITHOUT OIDS ]
+    [ WITH ( { storage_parameter [= value] } [, ...] ) ]
     [ ON COMMIT { PRESERVE ROWS | DELETE ROWS | DROP } ]
     [ TABLESPACE tablespace ]
 

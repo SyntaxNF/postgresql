@@ -59,6 +59,7 @@ node scripts/check-snf.mjs /absolute/path/to/report.json
 `npm run test:regression` 包含：
 
 - 保留修正的语法形状：缺失选项/关键字、括号、赋值、SET/RESET 分隔符、TRANSFORM 单向形式等
+- 全仓库兼容形式检查：省略无效果的 GLOBAL/LOCAL 临时表前缀及 WITH/WITHOUT OIDS；四种 CREATE TABLE/AS 形式保留有效临时/非日志与存储选项，SET/VIEW 的有效 LOCAL 仍保留
 - 真实 `exchangeLoopNode` 的绑定断言：WINDOW、VALUES 行、RETURNING alias、列权限、routine 列表、CONFLICT target、EXCLUDE 项、参数赋值和过滤条件
 - malformed SNF、三种换行符、无主内容、不可达 helper、错误的裸圆括号重复和纯 LOOP 可选范围的负向样例
 - 8 个孤立展开 fixture，每个检查 0/1/2 次，共 24 个确定结果：逗号列表、完整 WINDOW 项、嵌套 VALUES 行、RETURNING alias、无逗号 SET、AND 过滤条件、分号语句、可选圆括号
@@ -73,12 +74,12 @@ README 的“移除 SQL 圆括号内最后一个逗号”属于生成约定，�
 | --- | --- |
 | 固定 parser 新构建与基础测试 | 通过 |
 | 全部 SNF 文件 | 183 个，全部真实解析通过 |
-| Physical blocks / 原始 AST nodes | 968 / 31,993（包含 183 个首行来源注释 block 的空 ROOT） |
+| Physical blocks / 原始 AST nodes | 967 / 31,893（包含 183 个首行来源注释 block 的空 ROOT） |
 | Round-trip、raw/span、指令归属、本地 helper 可达性 | 通过 |
 | 真实 walker LOOP 绑定 | 539 个，全部通过 |
 | 本轮修改的 SNF 文件 | 50 个；纯 LOOP 外层可选为 0 |
 | 未修改 SNF 文件中的纯 LOOP 外层可选 | 0；仅报告，不扩大失败范围 |
-| 回归断言 | 152 个通过，包含 8 个孤立 fixture 的 24 次展开 |
+| 回归断言 | 166 个通过，包含 8 个孤立 fixture 的 24 次展开 |
 | `git diff --check` | 通过 |
 | 生产生成器、PostgreSQL SQL 解析与实库执行 | 未运行 |
 | 任意输入/组合的完整语义正确性 | 不作此保证 |
