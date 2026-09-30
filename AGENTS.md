@@ -8,10 +8,8 @@ Each SNF file should begin with a comment linking to the relevant PostgreSQL doc
 
 ## Build, Test, and Development Commands
 
-This definitions-only project has opt-in validation scripts documented in `docs/validation.md`. Run them only when explicitly requested by the user; the agent-specific no-automatic-tests rule below remains in force. Useful repository checks are:
+The project currently has no build, test, lint, or runtime scripts in `package.json`; it contains package metadata only. Useful repository checks are:
 
-- `npm run check:snf` — use `SNF_PARSER_MODULE` for the pinned real parser and verify source round-trip, conventions, inventory and input boundaries.
-- `npm run test:regression` — production-shape and parser-fixture assertions, not PostgreSQL execution.
 - `git diff --check` — finds whitespace errors in edited definitions.
 - `rg --files -g '*.snf'` — lists all grammar definition files.
 - `git diff -- create/table.snf` — reviews a focused grammar change.
@@ -30,7 +28,7 @@ Use a context-qualified `_alias` for aliases, `_target` for operation or clause 
 
 ## Testing Guidelines
 
-The opt-in structural regression suite does not claim complete SQL grammar or semantic coverage. Validate changes by comparing them with the linked PostgreSQL 18 syntax page, checking balanced delimiters, and reviewing every alternative and optional clause in the diff. Keep edits narrowly scoped so grammar changes can be reviewed independently.
+There is no checked-in test framework or coverage requirement. Validate changes by comparing them with the linked PostgreSQL 18 syntax page, checking balanced delimiters, and reviewing every alternative and optional clause in the diff. Keep edits narrowly scoped so grammar changes can be reviewed independently.
 
 ## Commit & Pull Request Guidelines
 

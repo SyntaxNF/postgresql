@@ -35,7 +35,7 @@ FOREIGN DATA WRAPPER fdw
 FOREIGN TABLE ft
 
 FUNCTION function
-    [ ( [ arg [, ...] ] ) ]
+    [ ( arg [, ...] ) ]
 
 INDEX index
 
@@ -54,14 +54,14 @@ POLICY policy ON table
 [ PROCEDURAL ] LANGUAGE language
 
 PROCEDURE procedure
-    [ ( [ arg [, ...] ] ) ]
+    [ ( arg [, ...] ) ]
 
 PUBLICATION publication
 
 ROLE role
 
 ROUTINE routine
-    [ ( [ arg [, ...] ] ) ]
+    [ ( arg [, ...] ) ]
 
 RULE rule ON table
 
@@ -100,7 +100,7 @@ VIEW view
 
 arg [, ...]
 
-[ arg [, ...] ]
+arg [, ...]
 ORDER BY orders [, ...]
 
 # WHERE arg, orders

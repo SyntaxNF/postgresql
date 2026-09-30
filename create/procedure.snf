@@ -1,28 +1,16 @@
 # https://www.postgresql.org/docs/18/sql-createprocedure.html
 
 CREATE [ OR REPLACE ] PROCEDURE name (
-    [ argument_definition [, ...] ]
+    argument_definition [, ...]
 )
     [ LANGUAGE language ]
     [ TRANSFORM { FOR TYPE type } [, ...] ]
     [ [ EXTERNAL ] SECURITY { INVOKER | DEFINER } ]
-    [ set_parameter_clause [...] ]
-    [ routine_body_clause ]
+    [ { SET config_parameter { TO value | = value | FROM CURRENT } } [, ...] ]
+    [ AS 'file', 'function' ]
+    [ AS pg_definition ]
+    [ sql_definition ]
 
 # WHERE argument_definition
-[ IN | OUT | INOUT | VARIADIC ] [ argname ] argtype
+[ argmode ] [ argname ] argtype
 [ { DEFAULT | = } value_expression ]
-
-# WHERE set_parameter_clause
-SET config_parameter { TO value | = value | FROM CURRENT }
-
-# PARTOFIS routine_body_clause
-AS 'definition'
-
-AS 'object_file', 'link_symbol'
-
-BEGIN ATOMIC
-    sql_statement [; ...] ;
-END
-
-# STATEMENT sql_statement

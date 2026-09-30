@@ -4,7 +4,7 @@ CREATE [ OR REPLACE ] RULE name AS
     ON { SELECT | UPDATE | INSERT | DELETE }
     TO table
     [ WHERE boolean_expression ]
-    DO [ ALSO | INSTEAD ] { NOTHING | rule_statement | ( rule_statement [; ...] ) }
+    DO [ ALSO | INSTEAD ] { NOTHING | ( rule_statement [; ...] ) }
 
 # STATEMENT rule_statement
 SELECT

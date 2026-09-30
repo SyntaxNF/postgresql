@@ -3,9 +3,9 @@
 [ WITH [ RECURSIVE ] with_query_definition [, ...] ]
 INSERT INTO table [ AS table_alias ] [ ( colname [, ...] ) ]
     [ OVERRIDING { SYSTEM | USER } VALUE ]
-    { DEFAULT VALUES | VALUES { ( { value_expression | DEFAULT } [, ...] ) } [, ...] | select_statement }
+    { DEFAULT VALUES | VALUES ( { value_expression | DEFAULT } [, ...] ) [, ...] | select_statement }
     [ ON CONFLICT { [ conflict_target ] DO NOTHING | conflict_target conflict_action } ]
-    [ RETURNING [ WITH ( { { OLD | NEW } AS output_alias } [, ...] ) ]
+    [ RETURNING [ WITH ( { OLD | NEW } AS output_alias [, ...] ) ]
         { * | col_expression [ [ AS ] col_alias ] } [, ...] ]
 
 # WHERE with_query_definition
@@ -14,15 +14,15 @@ with_name [ ( colname [, ...] ) ] AS [ [ NOT ] MATERIALIZED ] ( query_statement 
     [ CYCLE colname [, ...] SET cycle_colname [ TO mark_value DEFAULT mark_default ] USING cycle_path_colname ]
 
 # ONEOFIS conflict_target
-( { { colname | ( col_expression ) } [ COLLATE collate ] [ opclass ] } [, ...] ) [ WHERE boolean_expression ]
+( { colname | ( col_expression ) } [ COLLATE collate ] [ opclass ] [, ...] ) [ WHERE boolean_expression ]
 ON CONSTRAINT constraint
 
 # WHERE conflict_action
 DO UPDATE SET
 {
-    colname = { value_expression | DEFAULT } |
-    ( colname [, ...] ) = [ ROW ] ( { value_expression | DEFAULT } [, ...] ) |
-    ( colname [, ...] ) = ( select_statement )
+  colname = { value_expression | DEFAULT } |
+  ( colname [, ...] ) = [ ROW ] ( { value_expression | DEFAULT } [, ...] ) |
+  ( colname [, ...] ) = ( select_statement )
 } [, ...]
 [ WHERE boolean_expression ]
 

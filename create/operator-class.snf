@@ -3,7 +3,8 @@
 CREATE OPERATOR CLASS name [ DEFAULT ]
     FOR TYPE type
     USING index_method [ FAMILY family ] AS
-    { operator_definition | function_definition | STORAGE type } [, ...]
+    { operator_definition | function_definition } [, ...]
+    [ STORAGE storage ]
 
 # WHERE operator_definition
 OPERATOR number operator

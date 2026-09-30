@@ -4,11 +4,12 @@ CREATE [ OR REPLACE ] [ CONSTRAINT ] TRIGGER name
     { BEFORE | AFTER | INSTEAD OF } event [OR ...]
     ON table
     [ FROM from ]
-    [ NOT DEFERRABLE | [ DEFERRABLE ] [ INITIALLY IMMEDIATE | INITIALLY DEFERRED ] ]
+    [ DEFERRABLE | NOT DEFERRABLE ]
+    [ INITIALLY IMMEDIATE | INITIALLY DEFERRED ]
     [ REFERENCING { { OLD | NEW } TABLE [ AS ] referencing } [...] ]
     [ FOR [ EACH ] { ROW | STATEMENT } ]
     [ WHEN ( boolean_expression ) ]
-    EXECUTE { FUNCTION | PROCEDURE } function ( [ value [, ...] ] )
+    EXECUTE { FUNCTION | PROCEDURE } function ( value [, ...] )
 
 # WHERE event
 { INSERT | UPDATE [ OF colname [, ...] ] | DELETE | TRUNCATE }

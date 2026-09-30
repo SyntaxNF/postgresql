@@ -13,10 +13,8 @@ ALTER SERVER name
 ALTER SERVER name
     OWNER TO role
 
-# PARTOFIS option_action
-[ ADD | SET ] option 'value'
-
-DROP option
+# WHERE option_action
+[ ADD | SET | DROP ] option ['value']
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }

@@ -1,4 +1,4 @@
 # https://www.postgresql.org/docs/18/sql-dropdatabase.html
 
 DROP DATABASE [ IF EXISTS ] name
-    [ [ WITH ] ( FORCE ) ]
+    [ WITH FORCE ]

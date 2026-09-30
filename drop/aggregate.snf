@@ -9,8 +9,8 @@ name (
 {
 * |
 arg [, ...] |
-[ arg [, ...] ]
-ORDER BY orders [, ...]
+arg [, ...]
+ORDER BY order [, ...]
 }
 )
 

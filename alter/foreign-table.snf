@@ -53,7 +53,7 @@ OPTIONS ( foreign_option [, ...] )
 # WHERE column_constraint_definition
 [ CONSTRAINT constraint ]
     { NOT NULL [ NO INHERIT ] | NULL | CHECK ( boolean_expression ) [ NO INHERIT ] |
-        DEFAULT value_expression | GENERATED ALWAYS AS ( generation_expression ) [ STORED | VIRTUAL ] }
+      DEFAULT value_expression | GENERATED ALWAYS AS ( generation_expression ) [ STORED | VIRTUAL ] }
     [ ENFORCED | NOT ENFORCED ]
 
 # ONEOFIS foreign_option

@@ -1,6 +1,6 @@
 # https://www.postgresql.org/docs/18/sql-values.html
 
-VALUES { ( value_expression [, ...] ) } [, ...]
+VALUES ( value_expression [, ...] ) [, ...]
     [ ORDER BY order_by_expression [, ...] ]
     [ LIMIT { limit | ALL } ]
     [ OFFSET offset [ ROW | ROWS ] ]

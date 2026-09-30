@@ -3,16 +3,16 @@
 # CASE FROM
 COPY table [ ( colname [, ...] ) ]
     FROM { 'file' | PROGRAM 'command' | STDIN }
-    [ [ WITH ] ( copy_from_options ) ]
+    [ WITH ( copy_options ) ]
     [ WHERE boolean_expression ]
 
 # CASE TO
 COPY { table [ ( colname [, ...] ) ] | ( query_statement ) }
     TO { 'file' | PROGRAM 'command' | STDOUT }
-    [ [ WITH ] ( copy_to_options ) ]
+    [ WITH ( copy_options ) ]
 
-# WHERE copy_from_options
-[ FORMAT { TEXT | CSV | BINARY }, ]
+# WHERE copy_options
+[ FORMAT format, ]
 [ FREEZE [ freeze ], ]
 [ DELIMITER 'delimiter', ]
 [ NULL 'null', ]
@@ -20,22 +20,13 @@ COPY { table [ ( colname [, ...] ) ] | ( query_statement ) }
 [ HEADER [ header | MATCH ], ]
 [ QUOTE 'quote', ]
 [ ESCAPE 'escape', ]
+[ FORCE_QUOTE { ( colname [, ...] ) | * }, ]
 [ FORCE_NOT_NULL { ( colname [, ...] ) | * }, ]
 [ FORCE_NULL { ( colname [, ...] ) | * }, ]
-[ ON_ERROR { STOP | IGNORE }, ]
+[ ON_ERROR on_error, ]
 [ REJECT_LIMIT reject_limit, ]
 [ ENCODING 'encoding', ]
-[ LOG_VERBOSITY { DEFAULT | VERBOSE | SILENT }, ]
-
-# WHERE copy_to_options
-[ FORMAT { TEXT | CSV | BINARY }, ]
-[ DELIMITER 'delimiter', ]
-[ NULL 'null', ]
-[ HEADER [ header ], ]
-[ QUOTE 'quote', ]
-[ ESCAPE 'escape', ]
-[ FORCE_QUOTE { ( colname [, ...] ) | * }, ]
-[ ENCODING 'encoding', ]
+[ LOG_VERBOSITY log_verbosity, ]
 
 # STATEMENT query_statement
 SELECT

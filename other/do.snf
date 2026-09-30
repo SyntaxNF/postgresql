@@ -1,4 +1,4 @@
 # https://www.postgresql.org/docs/18/sql-do.html
 
 DO [ LANGUAGE language ]
-    code_literal
+    language_statement

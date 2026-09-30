@@ -142,7 +142,3 @@ col_expression [ ASC | DESC ]
 ## 覆盖状态
 
 语句入口覆盖、本轮修正和剩余缺口见 [SQL 定义覆盖检查](docs/coverage.md)。文件存在不代表全部语法组合已经验证。
-
-## 显式验证
-
-用户触发的 parser、输入契约和结构回归检查见 [验证说明](docs/validation.md)。逐命令状态见 [审阅表](docs/command-audit.md)；这些检查不会执行 SQL，也不证明完整 SQL 语义覆盖。

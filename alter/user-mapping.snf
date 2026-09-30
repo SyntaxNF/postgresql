@@ -4,10 +4,8 @@ ALTER USER MAPPING FOR role_public
     SERVER server
     OPTIONS ( option_action [, ...] )
 
-# PARTOFIS option_action
-[ ADD | SET ] option 'value'
-
-DROP option
+# WHERE option_action
+[ ADD | SET | DROP ] option ['value']
 
 # WHERE role_public
-{ role_name | USER | CURRENT_ROLE | CURRENT_USER | SESSION_USER | PUBLIC }
+{ role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER | PUBLIC }

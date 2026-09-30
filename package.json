@@ -10,9 +10,5 @@
   "keywords": [
     "snf",
     "postgres"
-  ],
-  "scripts": {
-    "check:snf": "node scripts/check-snf.mjs",
-    "test:regression": "node scripts/regression.mjs"
-  }
+  ]
 }

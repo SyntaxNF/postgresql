@@ -4,7 +4,7 @@
 MERGE INTO [ ONLY ] table [ * ] [ [ AS ] target_alias ]
     USING from_expression ON boolean_expression
     when_clause [...]
-    [ RETURNING [ WITH ( { { OLD | NEW } AS output_alias } [, ...] ) ]
+    [ RETURNING [ WITH ( { OLD | NEW } AS output_alias [, ...] ) ]
         { * | col_expression [ [ AS ] col_alias ] } [, ...] ]
 
 # WHERE with_query_definition
@@ -23,9 +23,9 @@ WHEN NOT MATCHED [ BY TARGET ] [ AND boolean_expression ] THEN { insert_action |
 # WHERE update_action
 UPDATE SET
 {
-    colname = { value_expression | DEFAULT } |
-    ( colname [, ...] ) = [ ROW ] ( { value_expression | DEFAULT } [, ...] ) |
-    ( colname [, ...] ) = ( select_statement )
+  colname = { value_expression | DEFAULT } |
+  ( colname [, ...] ) = [ ROW ] ( { value_expression | DEFAULT } [, ...] ) |
+  ( colname [, ...] ) = ( select_statement )
 } [, ...]
 
 # WHERE insert_action

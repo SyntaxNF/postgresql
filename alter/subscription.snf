@@ -12,17 +12,17 @@ ALTER SUBSCRIPTION name DISABLE
 # CASE SET_PUBLICATION
 ALTER SUBSCRIPTION name
     SET PUBLICATION publication [, ...]
-    [ WITH ( publication_options ) ]
+    [ WITH ( REFRESH [= refresh] ) ]
 
 # CASE ADD_PUBLICATION
 ALTER SUBSCRIPTION name
     ADD PUBLICATION publication [, ...]
-    [ WITH ( publication_options ) ]
+    [ WITH ( REFRESH [= refresh] ) ]
 
 # CASE DROP_PUBLICATION
 ALTER SUBSCRIPTION name
     DROP PUBLICATION publication [, ...]
-    [ WITH ( publication_options ) ]
+    [ WITH ( REFRESH [= refresh] ) ]
 
 # CASE REFRESH_PUBLICATION
 ALTER SUBSCRIPTION name
@@ -46,8 +46,3 @@ ALTER SUBSCRIPTION name
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }
-
-# PARTOFIS publication_options
-REFRESH [= refresh] [ , COPY_DATA [= copy_data] ]
-
-COPY_DATA [= copy_data]

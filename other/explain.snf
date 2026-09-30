@@ -1,7 +1,7 @@
 # https://www.postgresql.org/docs/18/sql-explain.html
 
 EXPLAIN [ ( explain_options ) ]
-    explainable_statement
+    sql_statement
 
 # WHERE explain_options
 [ ANALYZE [ analyze ], ]
@@ -16,16 +16,3 @@ EXPLAIN [ ( explain_options ) ]
 [ SUMMARY [ summary ], ]
 [ MEMORY [ memory ], ]
 [ FORMAT { TEXT | XML | JSON | YAML }, ]
-
-# STATEMENT explainable_statement
-SELECT
-TABLE
-VALUES
-INSERT
-UPDATE
-DELETE
-MERGE
-EXECUTE
-DECLARE
-CREATE TABLE AS
-CREATE MATERIALIZED VIEW
