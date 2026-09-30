@@ -1,7 +1,7 @@
 # https://www.postgresql.org/docs/18/sql-altersystem.html
 
 # CASE SET
-ALTER SYSTEM SET config_parameter { TO | = } { value | DEFAULT }
+ALTER SYSTEM SET config_parameter { TO | = } { value [, ...] | DEFAULT }
 
 # CASE RESET
 ALTER SYSTEM RESET config_parameter

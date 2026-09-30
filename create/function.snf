@@ -3,7 +3,7 @@
 CREATE [ OR REPLACE ] FUNCTION name (
     argument_definition [, ...]
 )
-    [ RETURNS returns | RETURNS TABLE ( table_column_definition [, ...] ) ]
+    [ RETURNS [ SETOF ] type | RETURNS TABLE ( table_column_definition [, ...] ) ]
     [ LANGUAGE language ]
     [ TRANSFORM { FOR TYPE type } [, ...] ]
     [ WINDOW ]
@@ -15,14 +15,17 @@ CREATE [ OR REPLACE ] FUNCTION name (
     [ COST cost ]
     [ ROWS rows ]
     [ SUPPORT support ]
-    [ { SET config_parameter { TO value | = value | FROM CURRENT } } [, ...] ]
+    set_parameter_clause [...]
     [ AS 'file', 'function' ]
     [ AS pg_definition ]
     [ sql_definition ]
 
 # WHERE argument_definition
-[ argmode ] [ argname ] argtype
+[ IN | OUT | INOUT | VARIADIC ] [ argname ] argtype
 [ { DEFAULT | = } value_expression ]
 
 # WHERE table_column_definition
 colname coltype
+
+# WHERE set_parameter_clause
+SET config_parameter { TO value | = value | FROM CURRENT }
