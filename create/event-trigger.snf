@@ -1,5 +1,8 @@
 # https://www.postgresql.org/docs/18/sql-createeventtrigger.html
 
 CREATE EVENT TRIGGER name ON event
-    [ WHEN TAG IN {( value_expression [, ...] )} [ AND ... ] ]
+    [ WHEN filter_definition [ AND ... ] ]
     EXECUTE { FUNCTION | PROCEDURE } function()
+
+# WHERE filter_definition
+TAG IN ( 'filter_value' [, ...] )

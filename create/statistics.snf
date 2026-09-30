@@ -2,11 +2,19 @@
 
 # CASE EXPRESSION
 CREATE STATISTICS [ IF NOT EXISTS ] [ name ]
-    ON ( on )
+    ON ( col_expression )
     FROM table
 
 # CASE KIND
 CREATE STATISTICS [ IF NOT EXISTS ] [ name ]
     [ ( kind [, ...] ) ]
-    ON { colname | ( col_expression ) } [, ...]
+    ON statistics_expression [, ...]
     FROM table
+
+# WHERE statistics_expression
+{ colname | ( col_expression ) }
+
+# ONEOFIS kind
+NDISTINCT
+DEPENDENCIES
+MCV

@@ -6,7 +6,7 @@ ALTER TABLESPACE name
 
 # CASE SET_OPTIONS
 ALTER TABLESPACE name
-    SET ( { tablespace_parameter [= value ] } [, ...] )
+    SET ( { tablespace_parameter = value } [, ...] )
 
 # CASE RESET_OPTIONS
 ALTER TABLESPACE name

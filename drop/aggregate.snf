@@ -10,7 +10,7 @@ name (
 * |
 arg [, ...] |
 arg [, ...]
-ORDER BY order [, ...]
+ORDER BY orders [, ...]
 }
 )
 
