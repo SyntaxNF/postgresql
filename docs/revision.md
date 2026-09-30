@@ -7,7 +7,7 @@
 - 复合项整体参与循环：WINDOW、VALUES 行、RETURNING 别名、列权限、CONFLICT 项、EXCLUDE 项、属性/索引参数，以及 LOCK/TRUNCATE 的 ONLY 目标。
 - 聚合签名的单数 order 循环项与同名声明绑定（不因重复而加 s）、PUBLICATION 的 table helper 与 table 标识符同名冲突。
 - SET/RESET 多项之间不再错误插入逗号；DROP DATABASE 的 FORCE 括号；COPY 的可选 WITH；TABLESPACE 和 COLLATION_VERSION 的赋值标点。
-- 缺失的可选形式：聚合 `*`、规则的单条 statement、单向 TRANSFORM、SUBSCRIPTION COPY_DATA、SET SCHEMA/NAMES、GLOBAL/LOCAL、WITHOUT OIDS；以及明确的关键词选项。
+- 缺失的可选形式：聚合 `*`、规则的单条 statement、单向 TRANSFORM、SUBSCRIPTION COPY_DATA、SET SCHEMA/NAMES；以及明确的关键词选项。
 - FROM record 列的类型/COLLATE 与括号 JOIN 形式，保留现有子查询引用。
 
 ## 循环修正与范围
@@ -23,6 +23,12 @@
 - 不把普通输入节点列为覆盖缺口，也不引入每文件强制输入分类清单。
 - 不恢复统计表达式“固定首项 + 逗号 + 循环”的最低数量模拟。
 - 圆括号内末尾逗号遵循已有生成器清理约定；不会新增另一套分隔符策略。
+
+## 有意省略的历史兼容选项
+
+CREATE TABLE 的普通表、类型表、分区表和 CREATE TABLE AS 均不再提供临时表前缀 GLOBAL/LOCAL 或 WITHOUT OIDS。PG18 仍接受这些旧写法，但前者没有效果且官方不建议使用，后者仅为兼容旧语法；生成新 SQL 有意省略它们，不算有效功能缺失。全仓库同类检查也移除了 ALTER TABLE、ALTER FOREIGN TABLE 的 SET WITHOUT OIDS；这两种写法在 PG18 同样没有效果。TEMP/TEMPORARY/UNLOGGED、存储参数 WITH、其它有效 LOCAL 语法和 OID 类型/对象引用保持不变。
+
+依据：[CREATE TABLE](https://www.postgresql.org/docs/18/sql-createtable.html) 、[CREATE TABLE AS](https://www.postgresql.org/docs/18/sql-createtableas.html)、[ALTER TABLE](https://www.postgresql.org/docs/18/sql-altertable.html) 与 [ALTER FOREIGN TABLE](https://www.postgresql.org/docs/18/sql-alterforeigntable.html)。
 
 ## 需要消费者注意的字段变化
 
