@@ -68,6 +68,8 @@ has('create/access-method.snf', /TYPE \{ TABLE \| INDEX \}/, 'access method kind
 has('create/database.snf', /COLLATION_VERSION = /, 'required assignment token');
 for (const file of ['alter/tablespace.snf', 'create/tablespace.snf']) has(file, /tablespace_parameter = value/, 'parameter assignment');
 prodHas('create/aggregate.snf', 'NORMAL', /\{ \* \| argument_definition/);
+prodHas('drop/aggregate.snf', 'signature', /ORDER BY order \[, \.\.\.\]/);
+prodHas('drop/aggregate.snf', 'order', /\[ argmode \] \[ argname \] argtype/);
 for (const name of ['FROM_SQL', 'TO_SQL', 'BOTH']) check(`create/transform.snf:${name}`, () => assert.ok(production('create/transform.snf', name)));
 prodHas('create/transform.snf', 'BOTH', /FROM SQL[\s\S]*\],\n\s+TO SQL/);
 prodLacks('create/transform.snf', 'FROM_SQL', /TO SQL/);

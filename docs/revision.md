@@ -5,7 +5,7 @@
 ## 保留的修正
 
 - 复合项整体参与循环：WINDOW、VALUES 行、RETURNING 别名、列权限、CONFLICT 项、EXCLUDE 项、属性/索引参数，以及 LOCK/TRUNCATE 的 ONLY 目标。
-- 聚合签名的 order/orders 绑定、PUBLICATION 的 table helper 与 table 标识符同名冲突。
+- 聚合签名的单数 order 循环项与同名声明绑定（不因重复而加 s）、PUBLICATION 的 table helper 与 table 标识符同名冲突。
 - SET/RESET 多项之间不再错误插入逗号；DROP DATABASE 的 FORCE 括号；COPY 的可选 WITH；TABLESPACE 和 COLLATION_VERSION 的赋值标点。
 - 缺失的可选形式：聚合 `*`、规则的单条 statement、单向 TRANSFORM、SUBSCRIPTION COPY_DATA、SET SCHEMA/NAMES、GLOBAL/LOCAL、WITHOUT OIDS；以及明确的关键词选项。
 - FROM record 列的类型/COLLATE 与括号 JOIN 形式，保留现有子查询引用。
