@@ -8,7 +8,12 @@ Each SNF file should begin with a comment linking to the relevant PostgreSQL doc
 
 ## Build, Test, and Development Commands
 
-The project currently has no build, test, lint, or runtime scripts in `package.json`; it contains package metadata only. Useful repository checks are:
+Validation is opt-in: never run tests or type checks without explicit user permission for the current task. See `docs/validation.md`. Available commands are:
+
+- `npm run check:snf` — actual-parser source/AST/directive checks using `SNF_PARSER_MODULE`.
+- `npm run test:regression` — focused generation-structure and loop-binding regressions using the same parser.
+
+Useful repository checks are:
 
 - `git diff --check` — finds whitespace errors in edited definitions.
 - `rg --files -g '*.snf'` — lists all grammar definition files.
@@ -28,7 +33,7 @@ Use a context-qualified `_alias` for aliases, `_target` for operation or clause 
 
 ## Testing Guidelines
 
-There is no checked-in test framework or coverage requirement. Validate changes by comparing them with the linked PostgreSQL 18 syntax page, checking balanced delimiters, and reviewing every alternative and optional clause in the diff. Keep edits narrowly scoped so grammar changes can be reviewed independently.
+The opt-in checks verify SNF structure, not full SQL semantics or database execution. Validate changes by comparing them with the linked PostgreSQL 18 syntax page, checking balanced delimiters, and reviewing every alternative and optional clause in the diff. Keep edits narrowly scoped so grammar changes can be reviewed independently.
 
 ## Commit & Pull Request Guidelines
 
@@ -41,3 +46,7 @@ After modifying files, agents must not run tests or type checks automatically. T
 ## SQL grammar ownership
 
 Organize definitions by SQL statement, using CASE for syntax variants. Do not copy or trim a definition for an application menu, object action, or safety policy. Consumers own operation-to-definition mappings, case/branch allowlists, defaults, target locks, authorization and execution workflows. Represent SQL options in the grammar even when a consumer restricts them. Reuse CREATE definitions for replacement actions; do not add rebuild or definition copies.
+
+## Generation scope
+
+Loops include their complete preceding member and allow zero or more items. Do not add an optional wrapper around a loop alone. Preserve optional keyword/punctuation groups. Group multi-field repeated items or use a helper. Expressions, bodies, and reused statements are legitimate input boundaries; do not require exhaustive semantic eligibility checks. Follow README's documented parenthesized trailing-comma cleanup convention.
