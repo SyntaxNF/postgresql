@@ -6,7 +6,7 @@ DROP FUNCTION [ IF EXISTS ]
 
 # WHERE signature
 { name
-[ ( arg [, ...] ) ]
+[ ( [ arg [, ...] ] ) ]
 }
 
 # WHERE arg

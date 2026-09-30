@@ -6,7 +6,7 @@ DROP ROUTINE [ IF EXISTS ]
 
 # WHERE signature
 { name
-[ ( arg [, ...] ) ]
+[ ( [ arg [, ...] ] ) ]
 }
 
 # WHERE arg

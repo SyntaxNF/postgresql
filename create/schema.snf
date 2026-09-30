@@ -1,7 +1,18 @@
 # https://www.postgresql.org/docs/18/sql-createschema.html
 
-CREATE SCHEMA [ IF NOT EXISTS ] [ name ] [ AUTHORIZATION role ]
-    create_statement [...]
+# CASE NAMED
+CREATE SCHEMA name [ AUTHORIZATION role ]
+    [ create_statement [...] ]
+
+# CASE AUTHORIZATION
+CREATE SCHEMA AUTHORIZATION role
+    [ create_statement [...] ]
+
+# CASE NAMED_IF_NOT_EXISTS
+CREATE SCHEMA IF NOT EXISTS name [ AUTHORIZATION role ]
+
+# CASE AUTHORIZATION_IF_NOT_EXISTS
+CREATE SCHEMA IF NOT EXISTS AUTHORIZATION role
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }

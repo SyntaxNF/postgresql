@@ -1,0 +1,3646 @@
+[
+  {
+    "command": "ABORT",
+    "file": "transaction/abort.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-abort.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "e1b88622cda9b610e8edf3f6f9ed8825a7b434ca2e5b94e0ecbebb8d664f8d84"
+  },
+  {
+    "command": "ALTER AGGREGATE",
+    "file": "alter/aggregate.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alteraggregate.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "RENAME",
+      "OWNER",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "signature",
+      "arg",
+      "order",
+      "role"
+    ],
+    "fixes": [
+      "Fix ordered-set signature optional direct arguments and undefined orders node"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "91d4362a5f1f5054966e815e6d0131bc5ce0d63ab86e91a9fc1bc4d8c3b47c88"
+  },
+  {
+    "command": "ALTER COLLATION",
+    "file": "alter/collation.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altercollation.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "REFRESH",
+      "RENAME",
+      "OWNER",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "7817b6eb869aec06414ca17a71851e3515615b53826a1b7f6b23d4b10af38f1b"
+  },
+  {
+    "command": "ALTER CONVERSION",
+    "file": "alter/conversion.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterconversion.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "RENAME",
+      "OWNER",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "b77e0d2e8082d756e947ed0f508d2e3f5853f788332e8939c91eec2eb75805d9"
+  },
+  {
+    "command": "ALTER DATABASE",
+    "file": "alter/database.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterdatabase.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "OPTIONS",
+      "REFRESH_COLLATION",
+      "SET_CURRENT",
+      "SET",
+      "RESET",
+      "RESET_ALL",
+      "RENAME",
+      "OWNER",
+      "TABLESPACE"
+    ],
+    "helpers": [
+      "action",
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "da3c31bfe0c44de3c262d59c2fd9513266afc43126483b6732083dfcbe44e71c"
+  },
+  {
+    "command": "ALTER DEFAULT PRIVILEGES",
+    "file": "alter/privileges.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterdefaultprivileges.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "grant_or_revoke_clause",
+      "role",
+      "role_public"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Privilege/object-kind restrictions, PUBLIC versus role membership/grant option, grantor authority and inherited membership require semantic validation."
+    ],
+    "synopsis_sha256": "ce53048d4cc7832a5bd8fdb4e92aca519b6e7a0bf18820e85de2aab9571a9a67"
+  },
+  {
+    "command": "ALTER DOMAIN",
+    "file": "alter/domain.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterdomain.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "ADD_CONSTRAINT",
+      "DROP_DEFAULT",
+      "DROP_NOT_NULL",
+      "DROP_CONSTRAINT",
+      "RENAME_CONSTRAINT",
+      "VALIDATE_CONSTRAINT",
+      "SET_DEFAULT",
+      "SET_NOT_NULL",
+      "RENAME",
+      "OWNER",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "ed04b8efa31bdc8c4cddb767ea6745cfa501f3b209debfc76b1c0684ebe8055d"
+  },
+  {
+    "command": "ALTER EVENT TRIGGER",
+    "file": "alter/event-trigger.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altereventtrigger.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "ENABLE",
+      "DISABLE",
+      "RENAME",
+      "OWNER"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "ae3d10946e449b96579dfed1e62b3c53a7f309ff0a3a7e901e63e1f2755e1a77"
+  },
+  {
+    "command": "ALTER EXTENSION",
+    "file": "alter/extension.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterextension.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "ADD",
+      "DROP",
+      "UPDATE",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "extension_target",
+      "signature",
+      "arg",
+      "order"
+    ],
+    "fixes": [
+      "Fix ordered-set signature optional direct arguments and undefined orders node",
+      "Represent explicit empty argument signature separately from omitted signature"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "f74c6df8b7cc7c4dedffafe489e1a97aa17fc25cccb255057f04955a034561cc"
+  },
+  {
+    "command": "ALTER FOREIGN DATA WRAPPER",
+    "file": "alter/foreign-data.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterforeigndatawrapper.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "OPTIONS",
+      "RENAME",
+      "OWNER"
+    ],
+    "helpers": [
+      "option_action",
+      "role"
+    ],
+    "fixes": [
+      "Separate value-bearing ADD/SET from valueless DROP"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "94c534aadf840e51a597dc818995e07519465059aa5d5815a94163ae74216f7c"
+  },
+  {
+    "command": "ALTER FOREIGN TABLE",
+    "file": "alter/foreign-table.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterforeigntable.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "ACTIONS",
+      "ADD_COLUMN",
+      "DROP_COLUMN",
+      "SET_OPTIONS",
+      "RENAME_COLUMN",
+      "RENAME",
+      "SET_SCHEMA"
+    ],
+    "helpers": [
+      "alter_action",
+      "column_constraint_definition",
+      "foreign_option"
+    ],
+    "fixes": [
+      "Normalize continuation indentation to four-space multiples"
+    ],
+    "remaining": [
+      "Constraint applicability/enforcement, partition bounds, temporal PERIOD/WITHOUT OVERLAPS and identity/sequence rules are not a complete semantic model."
+    ],
+    "synopsis_sha256": "f05e5748a428129d13ec7dd84855feca6edc3dd3be402428ed9da2a0af460359"
+  },
+  {
+    "command": "ALTER FUNCTION",
+    "file": "alter/function.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterfunction.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "OPTIONS",
+      "RENAME",
+      "OWNER",
+      "SCHEMA",
+      "DEPENDS_EXTENSION"
+    ],
+    "helpers": [
+      "action",
+      "arg",
+      "role",
+      "set_parameter_clause",
+      "reset_parameter_clause"
+    ],
+    "fixes": [
+      "Represent explicit empty argument signature separately from omitted signature",
+      "Correct multiple SET clause separators",
+      "Correct multiple RESET clause separators",
+      "Provide structured repeated configuration actions"
+    ],
+    "remaining": [
+      "At least one action must be selected; type/language-specific attributes and duplicate/reset parameter interactions are context restrictions."
+    ],
+    "synopsis_sha256": "24d35c97799ceb7da8b27596bb022cbdefa806e070938a12e8f0d8cafb431aa3"
+  },
+  {
+    "command": "ALTER GROUP",
+    "file": "alter/group.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altergroup.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "ADD_USER",
+      "DROP_USER",
+      "RENAME"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "7a177b9496ec735e2cc517853e51c2621c12bb10d1b9b5583861914163a99891"
+  },
+  {
+    "command": "ALTER INDEX",
+    "file": "alter/index.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterindex.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "SET_STATISTICS",
+      "RENAME",
+      "SET_OPTIONS",
+      "RESET_OPTIONS",
+      "TABLESPACE",
+      "ALL_TABLESPACE",
+      "ATTACH_PARTITION",
+      "DEPENDS_EXTENSION"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "1a378cf0e8717405bdac165118368d1b066cc7e9320575e13f33e59c79535b45"
+  },
+  {
+    "command": "ALTER LANGUAGE",
+    "file": "alter/language.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterlanguage.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "RENAME",
+      "OWNER"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "98e104f1f6c7ab098706cc422a2f752c85393a6ad5fa4cb9b5918017ede586f0"
+  },
+  {
+    "command": "ALTER LARGE OBJECT",
+    "file": "alter/large-object.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterlargeobject.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "f56d3fb27637d9af988f100f85fbff9b89cfe78ba63dda4463447b68e596e510"
+  },
+  {
+    "command": "ALTER MATERIALIZED VIEW",
+    "file": "alter/materialized-view.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altermaterializedview.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "OPTIONS",
+      "RENAME_COLUMN",
+      "RENAME",
+      "SCHEMA",
+      "ALL_TABLESPACE",
+      "DEPENDS_EXTENSION"
+    ],
+    "helpers": [
+      "action",
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "9f2c4d7dd317587193343dcb4e7eaaffc8923d038359ce38496c0ab81ec89d31"
+  },
+  {
+    "command": "ALTER OPERATOR",
+    "file": "alter/operator.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alteroperator.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "OPTIONS",
+      "OWNER",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "17f41360ca814004b274456914d3d8348a2878e8a90a648815d4782ac6abba8f"
+  },
+  {
+    "command": "ALTER OPERATOR CLASS",
+    "file": "alter/operator-class.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alteropclass.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "RENAME",
+      "OWNER",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "ecbf42833a8fd255bd436fd880dd1ff2823f027b62d4dbc0a16997a504e1e0e9"
+  },
+  {
+    "command": "ALTER OPERATOR FAMILY",
+    "file": "alter/operator-family.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alteropfamily.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "ADD",
+      "DROP",
+      "RENAME",
+      "OWNER",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "role",
+      "add_action",
+      "drop_action"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "1a21961c1d1b20b0afaef2a29e878655d2f767c5ec5d74f307c66c81d17ad0fe"
+  },
+  {
+    "command": "ALTER POLICY",
+    "file": "alter/policy.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterpolicy.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "OPTIONS",
+      "RENAME"
+    ],
+    "helpers": [
+      "role_public"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "f6961d34ff39ee907b966c402a5edd0dbaf9a1ac3a0619aef83a5efefe2a66ed"
+  },
+  {
+    "command": "ALTER PROCEDURE",
+    "file": "alter/procedure.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterprocedure.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "OPTIONS",
+      "RENAME",
+      "OWNER",
+      "SCHEMA",
+      "DEPENDS_EXTENSION"
+    ],
+    "helpers": [
+      "action",
+      "arg",
+      "role",
+      "set_parameter_clause",
+      "reset_parameter_clause"
+    ],
+    "fixes": [
+      "Represent explicit empty argument signature separately from omitted signature",
+      "Correct multiple SET clause separators",
+      "Correct multiple RESET clause separators",
+      "Provide structured repeated configuration actions"
+    ],
+    "remaining": [
+      "At least one action must be selected; type/language-specific attributes and duplicate/reset parameter interactions are context restrictions."
+    ],
+    "synopsis_sha256": "d8e7314800ca337f9a1dda4a0b214d4cd05a756272fae69aa20706f178cb8f85"
+  },
+  {
+    "command": "ALTER PUBLICATION",
+    "file": "alter/publication.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterpublication.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "ADD",
+      "DROP",
+      "RENAME",
+      "SET_TABLES",
+      "SET_OPTIONS",
+      "OWNER"
+    ],
+    "helpers": [
+      "publication_object",
+      "table_definition",
+      "publication_drop_object",
+      "table_target",
+      "role"
+    ],
+    "fixes": [
+      "Remove recursive table identifier helper; support grouped tables/schema lists; DROP excludes row filters/column lists"
+    ],
+    "remaining": [
+      "Object kind, clause combination, column lists, nested statement context and catalog-dependent restrictions require caller/PostgreSQL checks."
+    ],
+    "synopsis_sha256": "8a28389e28ab8a78c00d05d6e8eb3368569fcba3e8b95060e320b81e6e329a32"
+  },
+  {
+    "command": "ALTER ROLE",
+    "file": "alter/role.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterrole.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "OPTIONS",
+      "RENAME",
+      "SET_CURRENT",
+      "SET",
+      "RESET",
+      "RESET_ALL"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "b00ae7d01e8b862afed66f292129395fa2ddf4587e19500586501da1021c7c0b"
+  },
+  {
+    "command": "ALTER ROUTINE",
+    "file": "alter/routine.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterroutine.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "OPTIONS",
+      "RENAME",
+      "OWNER",
+      "SCHEMA",
+      "DEPENDS_EXTENSION"
+    ],
+    "helpers": [
+      "action",
+      "arg",
+      "role",
+      "set_parameter_clause",
+      "reset_parameter_clause"
+    ],
+    "fixes": [
+      "Represent explicit empty argument signature separately from omitted signature",
+      "Correct multiple SET clause separators",
+      "Correct multiple RESET clause separators",
+      "Provide structured repeated configuration actions"
+    ],
+    "remaining": [
+      "At least one action must be selected; type/language-specific attributes and duplicate/reset parameter interactions are context restrictions."
+    ],
+    "synopsis_sha256": "b24393ef2f01a34a314529fc7a8fae0758440660d9822d5be33e4f21754c54b8"
+  },
+  {
+    "command": "ALTER RULE",
+    "file": "alter/rule.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterrule.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "648103e0ed80bbc4f569eb05ae0df8ccce4f17b9f8c28a57f6c25ce396981c04"
+  },
+  {
+    "command": "ALTER SCHEMA",
+    "file": "alter/schema.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterschema.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "RENAME",
+      "OWNER"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "b246bd3d7bfe38060f74bcf788fd471c5cdd71156042a94da63fed5ddff4ed62"
+  },
+  {
+    "command": "ALTER SEQUENCE",
+    "file": "alter/sequence.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altersequence.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "OPTIONS",
+      "LOGGING",
+      "RENAME",
+      "OWNER",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "201d130416a035e35dd5ae3d37fcd5bbfb39db3adbbd819cd69801bcf5197188"
+  },
+  {
+    "command": "ALTER SERVER",
+    "file": "alter/server.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterserver.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "OPTIONS",
+      "RENAME",
+      "OWNER"
+    ],
+    "helpers": [
+      "option_action",
+      "role"
+    ],
+    "fixes": [
+      "Separate value-bearing ADD/SET from valueless DROP"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "bc308fcd169d178f8474552665f3109a460654e88bcc3537df4faf2f2b43a054"
+  },
+  {
+    "command": "ALTER STATISTICS",
+    "file": "alter/statistics.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterstatistics.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "RENAME",
+      "TARGET",
+      "SCHEMA",
+      "OWNER"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "8681908dacd34a0a8d74574e5bb5a7a552d4af7f0c8431b6f9c2b614e578acb3"
+  },
+  {
+    "command": "ALTER SUBSCRIPTION",
+    "file": "alter/subscription.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altersubscription.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "CONNECTION",
+      "ENABLE",
+      "DISABLE",
+      "SET_PUBLICATION",
+      "ADD_PUBLICATION",
+      "DROP_PUBLICATION",
+      "REFRESH_PUBLICATION",
+      "SKIP",
+      "OPTIONS",
+      "RENAME",
+      "OWNER"
+    ],
+    "helpers": [
+      "role",
+      "publication_options"
+    ],
+    "fixes": [
+      "Add implicit-refresh COPY_DATA to SET/ADD/DROP PUBLICATION options",
+      "Require nonempty implicit refresh options"
+    ],
+    "remaining": [
+      "Object kind, clause combination, column lists, nested statement context and catalog-dependent restrictions require caller/PostgreSQL checks."
+    ],
+    "synopsis_sha256": "2e4677dd35262550883599bd0363ce4b01e0fdb3f5f68e27d8b0c4c7de560a94"
+  },
+  {
+    "command": "ALTER SYSTEM",
+    "file": "alter/system.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altersystem.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "SET",
+      "RESET",
+      "RESET_ALL"
+    ],
+    "helpers": [],
+    "fixes": [
+      "Add comma-separated configuration values"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "aa7a7e9facf336fbe8a81dbed4f01776f04953f5b6d409d0fcbc0cad5db74b56"
+  },
+  {
+    "command": "ALTER TABLE",
+    "file": "alter/table.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altertable.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "OPTIONS",
+      "RENAME_COLUMN",
+      "RENAME_CONSTRAINT",
+      "RENAME",
+      "ATTACH_PARTITION",
+      "DETACH_PARTITION",
+      "SCHEMA",
+      "ALL_TABLESPACE"
+    ],
+    "helpers": [
+      "action",
+      "column_constraint_definition",
+      "table_constraint_definition",
+      "unique_index_options",
+      "primary_key_index_options",
+      "exclude_index_options",
+      "exclude_column_expression",
+      "on_delete_action",
+      "partition_definition",
+      "partition_bound_definition",
+      "role",
+      "identity_options",
+      "on_update_action",
+      "identity_option"
+    ],
+    "fixes": [
+      "Permit ADD COLUMN without constraints",
+      "Require trigger target (upstream synopsis brackets overgeneralize required server target)",
+      "Expand identity sequence-option structure",
+      "Keep subset SET NULL/DEFAULT column list only on DELETE",
+      "Define allowed ALTER identity sequence parameters",
+      "Explicit whole-item grouping for composite repetitions; verified with the real parser loop walker"
+    ],
+    "remaining": [
+      "Constraint applicability/enforcement, partition bounds, temporal PERIOD/WITHOUT OVERLAPS and identity/sequence rules are not a complete semantic model."
+    ],
+    "synopsis_sha256": "2a1d58df98772a57427a21026ca76d5b78315364d435aae92765b41fd2fcb86c"
+  },
+  {
+    "command": "ALTER TABLESPACE",
+    "file": "alter/tablespace.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altertablespace.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "RENAME",
+      "SET_OPTIONS",
+      "RESET_OPTIONS",
+      "OWNER"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [
+      "Require value assignment for tablespace options"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "438105121ef777dc88c2b1f5c95cde5f19218b8310fdc12950a6c9db1aa245bd"
+  },
+  {
+    "command": "ALTER TEXT SEARCH CONFIGURATION",
+    "file": "alter/text-search-configuration.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altertsconfig.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "ADD_MAPPING",
+      "ALTER_MAPPING",
+      "REPLACE_DICTIONARY",
+      "REPLACE_MAPPING",
+      "DROP_MAPPING",
+      "RENAME",
+      "OWNER",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "5259234d0b01a1ac3bd894d12c85d92ddea49c6e7adbc93a60f8d3739193d9a5"
+  },
+  {
+    "command": "ALTER TEXT SEARCH DICTIONARY",
+    "file": "alter/text-search-dictionary.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altertsdictionary.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "OPTIONS",
+      "RENAME",
+      "OWNER",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "5b2cf13a6dea11b49aa271fe2e100fc4180541691dc620dedfffb25507391301"
+  },
+  {
+    "command": "ALTER TEXT SEARCH PARSER",
+    "file": "alter/text-search-parser.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altertsparser.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "RENAME",
+      "SCHEMA"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "8fe5f2c34fe0eb843afff37dd5601695eb57a0d9e60750e500b853478a9bb3ae"
+  },
+  {
+    "command": "ALTER TEXT SEARCH TEMPLATE",
+    "file": "alter/text-search-template.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altertstemplate.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "RENAME",
+      "SCHEMA"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "b0c2a50ba379a52f039010852e6a9558892aa842356403ce817e8731b7c64a7c"
+  },
+  {
+    "command": "ALTER TRIGGER",
+    "file": "alter/trigger.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altertrigger.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "RENAME",
+      "DEPENDS_EXTENSION"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "a29be98f752cb4805be461bcc5db05707ec24b4c39e93d2fc116062147677301"
+  },
+  {
+    "command": "ALTER TYPE",
+    "file": "alter/type.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-altertype.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "OPTIONS",
+      "ADD_VALUE",
+      "RENAME_ATTRIBUTE",
+      "RENAME_VALUE",
+      "RENAME",
+      "SET_OPTIONS",
+      "OWNER",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "action",
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "c694cb9a4e54e12b3d530b5e7f3400ee54666ccb05c4a9b475e50629d5ca58f0"
+  },
+  {
+    "command": "ALTER USER",
+    "file": "alter/user.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alteruser.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "OPTIONS",
+      "RENAME",
+      "SET_CURRENT",
+      "SET",
+      "RESET",
+      "RESET_ALL"
+    ],
+    "helpers": [
+      "user"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "f9b0131038beff89210955dec54b0d2df4366c6be2add476c3283af244b745b7"
+  },
+  {
+    "command": "ALTER USER MAPPING",
+    "file": "alter/user-mapping.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterusermapping.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "option_action",
+      "role_public"
+    ],
+    "fixes": [
+      "Add USER identity alias from PG18 synopsis",
+      "Separate value-bearing ADD/SET from valueless DROP"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "ba961f4348deb17a9aaad97a519af5817ee737e72d2ce05ab79ccb108715d8e6"
+  },
+  {
+    "command": "ALTER VIEW",
+    "file": "alter/view.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-alterview.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "SET_DEFAULT",
+      "DROP_DEFAULT",
+      "RENAME_COLUMN",
+      "RENAME",
+      "SET_OPTIONS",
+      "RESET_OPTIONS",
+      "OWNER",
+      "SCHEMA"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "da0c2a7dc6fe76b9a2169481fa33b432977713378cb96336478c6df233e7e028"
+  },
+  {
+    "command": "ANALYZE",
+    "file": "other/analyze.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-analyze.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "analyze_options",
+      "table_expression"
+    ],
+    "fixes": [
+      "Allow omitted relation list for database-wide analysis"
+    ],
+    "remaining": [
+      "At least one option inside parentheses and option compatibility/value ranges require caller checks; obsolete alternative spellings are not canonical output."
+    ],
+    "synopsis_sha256": "a4ad10e2a2e9f3c8217cb4de071a5859c43a8cf89aadb808d83babba518acfc1"
+  },
+  {
+    "command": "BEGIN",
+    "file": "transaction/begin.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-begin.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "transaction_mode"
+    ],
+    "fixes": [
+      "Put READ WRITE / READ ONLY alternatives inside explicit SNF braces"
+    ],
+    "remaining": [
+      "Transaction modes may not contradict or duplicate; execution state and snapshot validity are outside grammar."
+    ],
+    "synopsis_sha256": "5ec7b12c62a1425af15b2e1167f8ea817de58b5751612267c2a678487a407f27"
+  },
+  {
+    "command": "CALL",
+    "file": "other/call.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-call.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [
+      "Allow zero arguments"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "558e131b2194efe1c1222fb29a0ecd7c2db68d8b60000bfb43d97661b0448fa9"
+  },
+  {
+    "command": "CHECKPOINT",
+    "file": "other/checkpoint.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-checkpoint.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "a11a1e7300cd762e6543340c642406a33b7d0e2de3ca8d91e1cfbf3e8324085d"
+  },
+  {
+    "command": "CLOSE",
+    "file": "other/close.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-close.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "cb3d8ce13c608629bf62f17c74efd836e6cc6ff40fbe452eac2fe2ad931d0ad5"
+  },
+  {
+    "command": "CLUSTER",
+    "file": "other/cluster.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-cluster.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "c80a2f9e4151738e914e17ca47aee4299cd98a01970a62ddd2c2640bbd8a6860"
+  },
+  {
+    "command": "COMMENT",
+    "file": "other/comment.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-comment.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "comment_target",
+      "signature",
+      "arg",
+      "orders"
+    ],
+    "fixes": [
+      "Empty routine signatures and ordered-set aggregates with zero direct arguments"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "84ed2ff79aa6e749e3dc27c2c961d8a40c00cf4eff24a60501162a1718271ce0"
+  },
+  {
+    "command": "COMMIT",
+    "file": "transaction/commit.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-commit.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "a0fee8c87243505c12cd267ad8ec6fb0ef7db94024528fa15cb5c0c96ef9a1c6"
+  },
+  {
+    "command": "COMMIT PREPARED",
+    "file": "transaction/commit-prepared.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-commit-prepared.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "85f372dddd1958603bbde9ab9847c26d2a35310cf4a4fce8d2eae6c12e6f3942"
+  },
+  {
+    "command": "COPY",
+    "file": "other/copy.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-copy.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "FROM",
+      "TO"
+    ],
+    "helpers": [
+      "copy_from_options",
+      "copy_to_options",
+      "query_statement"
+    ],
+    "fixes": [
+      "Separate FROM/TO options; make WITH optional; enumerate format/error/log values; reject direction-incompatible options structurally"
+    ],
+    "remaining": [
+      "Format-dependent option compatibility, nonempty option selection, positive REJECT_LIMIT with ON_ERROR IGNORE, and mandatory DML RETURNING are not encoded. Legacy pre-9.0 option spellings are intentionally outside canonical-generation scope."
+    ],
+    "synopsis_sha256": "7420303e9ff43575fb4691204d9d53bfd2a60661faceb3256b1be016e38dd94e"
+  },
+  {
+    "command": "CREATE ACCESS METHOD",
+    "file": "create/access-method.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-create-access-method.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [
+      "Enumerate the documented TABLE/INDEX access-method kinds"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "16e179d20f689a60f09278c7352e395db4b7c457ba89f5194ff187f15ec62ab5"
+  },
+  {
+    "command": "CREATE AGGREGATE",
+    "file": "create/aggregate.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createaggregate.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "NORMAL",
+      "ORDERED_SET",
+      "LEGACY"
+    ],
+    "helpers": [
+      "argument_definition",
+      "order_argument_definition"
+    ],
+    "fixes": [
+      "Add zero-argument star signature",
+      "Allow ordered-set aggregates without direct arguments"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "14593493e5f7ce0ec312b2267739c63195938a8b61fc7d7ee943ee5c4051b7ab"
+  },
+  {
+    "command": "CREATE CAST",
+    "file": "create/cast.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createcast.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "FUNCTION",
+      "BINARY",
+      "INOUT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "780198a636e704edc9a0b0e7c29438bb8ce2f305a8f7f9729e96788f2c91002a"
+  },
+  {
+    "command": "CREATE COLLATION",
+    "file": "create/collation.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createcollation.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "PARAMETERS",
+      "COPY"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "af8158e1767de872acd08235577be1d0a7fb6a0246287250a7b7e1fab907f7f9"
+  },
+  {
+    "command": "CREATE CONVERSION",
+    "file": "create/conversion.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createconversion.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "324aaea35aeb8678b81b84f3c2b0a5f1c55f4fc013d9666d9d8c79e4eba16726"
+  },
+  {
+    "command": "CREATE DATABASE",
+    "file": "create/database.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createdatabase.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [
+      "Require synopsis equality before COLLATION_VERSION"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "e408ca683e3bab94f41849685e236f2d0b545717527b383d1d41fd646154be18"
+  },
+  {
+    "command": "CREATE DOMAIN",
+    "file": "create/domain.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createdomain.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "constraint_definition"
+    ],
+    "fixes": [
+      "Allow domains without constraints"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "3bc3fbd4837b65b77743c440d3c754d773df98afb12fa350eeaa07b1ee855b1a"
+  },
+  {
+    "command": "CREATE EVENT TRIGGER",
+    "file": "create/event-trigger.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createeventtrigger.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "filter_definition"
+    ],
+    "fixes": [
+      "Model repeated event filter instead of arbitrary SQL expression values"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "7c790304d1cc15731319a9a704c9868f635601e2b6fa0410a8f358c2014f9b1d"
+  },
+  {
+    "command": "CREATE EXTENSION",
+    "file": "create/extension.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createextension.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "bb2794699e5ef1a82c7d3f32fbf59d16f3e7d2ac7c52c67730ee1f53f44b634a"
+  },
+  {
+    "command": "CREATE FOREIGN DATA WRAPPER",
+    "file": "create/foreign-data.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createforeigndatawrapper.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "b9015099e0385e1a524b7b90d0a9e00d4b7e918d093330484eea71122fcb5a9a"
+  },
+  {
+    "command": "CREATE FOREIGN TABLE",
+    "file": "create/foreign-table.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createforeigntable.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "NORMAL",
+      "PARTITION"
+    ],
+    "helpers": [
+      "column_definition",
+      "partition_column_definition",
+      "column_constraint_definition",
+      "table_constraint_definition",
+      "like_option",
+      "partition_bound_definition"
+    ],
+    "fixes": [
+      "Allow zero-column tables per PG18 synopsis",
+      "Close optional zero-column declaration list"
+    ],
+    "remaining": [
+      "Constraint applicability/enforcement, partition bounds, temporal PERIOD/WITHOUT OVERLAPS and identity/sequence rules are not a complete semantic model."
+    ],
+    "synopsis_sha256": "63ead156459e906c4db117d8b993d99f4ef6cca69d72a289380c5b44fbf38e1f"
+  },
+  {
+    "command": "CREATE FUNCTION",
+    "file": "create/function.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createfunction.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-sublanguage",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "argument_definition",
+      "table_column_definition",
+      "set_parameter_clause",
+      "routine_body_clause",
+      "sql_statement"
+    ],
+    "fixes": [
+      "Allow zero arguments",
+      "Enumerate routine argument modes",
+      "Repeat SET clauses with whitespace, not commas",
+      "Make string/link-symbol/SQL bodies exclusive and structure SQL bodies",
+      "Represent SETOF return type modifier",
+      "Declare nested SQL statement boundary; string and procedural-language internals remain lexical"
+    ],
+    "remaining": [
+      "Quoted procedural bodies and each sql_statement in BEGIN ATOMIC remain opaque. Language/body/OUT/VARIADIC/default-argument rules and required compatible option selection need caller validation."
+    ],
+    "synopsis_sha256": "6e9f941bfe4105309f479a56eaa6025470314965fac01e4d782c3b8e018cc1bb"
+  },
+  {
+    "command": "CREATE GROUP",
+    "file": "create/group.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-creategroup.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "be1c57d7defac3a21e56adc0e025424b45afcc217566e0e64cd3fcaa3f626e1f"
+  },
+  {
+    "command": "CREATE INDEX",
+    "file": "create/index.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createindex.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "index_column_expression"
+    ],
+    "fixes": [
+      "Require index name whenever IF NOT EXISTS is used"
+    ],
+    "remaining": [
+      "CONCURRENTLY/object-kind, transaction-state and other catalog-dependent restrictions are not enforced."
+    ],
+    "synopsis_sha256": "82af3df0af8736369c6fe9391ac1f010c17c171eeb238d005d6dbea67130fb7b"
+  },
+  {
+    "command": "CREATE LANGUAGE",
+    "file": "create/language.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createlanguage.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [
+      "Allow shorthand or full handler form; INLINE/VALIDATOR require HANDLER"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "8f5642803722c09d94fe933c2fa00f206c9afa8f3e647ce33087b1e8b2d903b9"
+  },
+  {
+    "command": "CREATE MATERIALIZED VIEW",
+    "file": "create/materialized-view.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-creatematerializedview.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "select_statement"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "d2a2bbc720bfa123c5579c2cd86cdf604414eff1c8899d69304ca9d21cbe6361"
+  },
+  {
+    "command": "CREATE OPERATOR",
+    "file": "create/operator.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createoperator.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "4f26971bfd4e776f1d7ff784f33d152362690434d6af7b7ba54359720896781e"
+  },
+  {
+    "command": "CREATE OPERATOR CLASS",
+    "file": "create/operator-class.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createopclass.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "operator_definition",
+      "function_definition"
+    ],
+    "fixes": [
+      "Make STORAGE a comma-separated opclass item"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "fd08a79c0294065f422dd50b51242dda638ec933bef0a4505040a60a85fe6855"
+  },
+  {
+    "command": "CREATE OPERATOR FAMILY",
+    "file": "create/operator-family.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createopfamily.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "2b191dabb703471f840c57b32fadab8d6317636fa2ffe02682151aba78cb6c44"
+  },
+  {
+    "command": "CREATE POLICY",
+    "file": "create/policy.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createpolicy.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "role_public"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "2757f9aed327f366fb61c15db60e1e089458e462a551fd2c6155944651a7711c"
+  },
+  {
+    "command": "CREATE PROCEDURE",
+    "file": "create/procedure.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createprocedure.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-sublanguage",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "argument_definition",
+      "set_parameter_clause",
+      "routine_body_clause",
+      "sql_statement"
+    ],
+    "fixes": [
+      "Allow zero arguments",
+      "Enumerate routine argument modes",
+      "Repeat SET clauses with whitespace, not commas",
+      "Make string/link-symbol/SQL bodies exclusive and structure SQL bodies",
+      "Declare nested SQL statement boundary; string and procedural-language internals remain lexical"
+    ],
+    "remaining": [
+      "Quoted procedural bodies and each sql_statement in BEGIN ATOMIC remain opaque. Language/body/OUT/VARIADIC/default-argument rules and required compatible option selection need caller validation."
+    ],
+    "synopsis_sha256": "e68643e151fa622d9a0e335c4dd8ea892bba1ff23f51ff6e1789f8a3ae186660"
+  },
+  {
+    "command": "CREATE PUBLICATION",
+    "file": "create/publication.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createpublication.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "publication_object",
+      "table_definition"
+    ],
+    "fixes": [
+      "Remove recursive table identifier helper; support grouped tables/schema lists; DROP excludes row filters/column lists"
+    ],
+    "remaining": [
+      "Object kind, clause combination, column lists, nested statement context and catalog-dependent restrictions require caller/PostgreSQL checks."
+    ],
+    "synopsis_sha256": "f6812fa76e8a1f1b2c10c0c804b8ec8308d66f35b8b20fe5b8828dff43ac7f47"
+  },
+  {
+    "command": "CREATE ROLE",
+    "file": "create/role.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createrole.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "eabedd121c22d1ff73c3c20503de486f1abda4dc7706469b4074e3bace8671d8"
+  },
+  {
+    "command": "CREATE RULE",
+    "file": "create/rule.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createrule.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "rule_statement"
+    ],
+    "fixes": [
+      "Add single unparenthesized action statement"
+    ],
+    "remaining": [
+      "Object kind, clause combination, column lists, nested statement context and catalog-dependent restrictions require caller/PostgreSQL checks."
+    ],
+    "synopsis_sha256": "2d29a3f6dc14424130004f6f6d17cffbae2cc52ab841a81bb814e870a8766a78"
+  },
+  {
+    "command": "CREATE SCHEMA",
+    "file": "create/schema.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createschema.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "NAMED",
+      "AUTHORIZATION",
+      "NAMED_IF_NOT_EXISTS",
+      "AUTHORIZATION_IF_NOT_EXISTS"
+    ],
+    "helpers": [
+      "role",
+      "create_statement"
+    ],
+    "fixes": [
+      "Split named/auth-only and IF NOT EXISTS forms; make embedded elements optional only where allowed",
+      "Remove extra whitespace"
+    ],
+    "remaining": [
+      "Object kind, clause combination, column lists, nested statement context and catalog-dependent restrictions require caller/PostgreSQL checks."
+    ],
+    "synopsis_sha256": "d8132cef89fdaee5f67a7f49cc927026d8c17a9a032bf9418b502dba8024c0ce"
+  },
+  {
+    "command": "CREATE SEQUENCE",
+    "file": "create/sequence.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createsequence.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "e1bfebc0e6238c036f460e9210ee4d50aee0a6b1d01c8f90418fef47e5d0acbb"
+  },
+  {
+    "command": "CREATE SERVER",
+    "file": "create/server.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createserver.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "82369f1156b4e76ad99d07a706738e8c7722fc0820bd7af23c491b3b177e8b27"
+  },
+  {
+    "command": "CREATE STATISTICS",
+    "file": "create/statistics.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createstatistics.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "EXPRESSION",
+      "KIND"
+    ],
+    "helpers": [
+      "statistics_expression",
+      "kind"
+    ],
+    "fixes": [
+      "Require name for IF NOT EXISTS",
+      "Identify the single-expression declaration",
+      "Require at least two expressions/columns in multivariate form",
+      "Enumerate PG18 statistics kinds"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "6e87f0f568dbd3bf1d3778cd3b88d970b3d06eed5be3bee42e23cea4123e9c92"
+  },
+  {
+    "command": "CREATE SUBSCRIPTION",
+    "file": "create/subscription.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createsubscription.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Object kind, clause combination, column lists, nested statement context and catalog-dependent restrictions require caller/PostgreSQL checks."
+    ],
+    "synopsis_sha256": "a086945746ebb0625509fc55da97eee1031937cb5e5d570e909d6aa4ece56386"
+  },
+  {
+    "command": "CREATE TABLE",
+    "file": "create/table.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createtable.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "NORMAL",
+      "TYPE",
+      "PARTITION"
+    ],
+    "helpers": [
+      "column_definition",
+      "like_option",
+      "typed_column_definition",
+      "partition_column_definition",
+      "partition_bound_definition",
+      "partition_column_expression",
+      "column_constraint_definition",
+      "table_constraint_definition",
+      "unique_index_options",
+      "primary_key_index_options",
+      "exclude_index_options",
+      "on_delete_action",
+      "on_update_action",
+      "identity_options"
+    ],
+    "fixes": [
+      "Restore accepted GLOBAL/LOCAL temporary modifiers",
+      "Represent storage options and WITHOUT OIDS as alternative clauses",
+      "Allow zero-column tables per PG18 synopsis",
+      "Close optional zero-column declaration list",
+      "Keep WITHOUT OIDS scoped to table storage, not constraint index parameters",
+      "Explicit whole-item grouping for composite repetitions; verified with the real parser loop walker"
+    ],
+    "remaining": [
+      "Constraint applicability/enforcement, partition bounds, temporal PERIOD/WITHOUT OVERLAPS and identity/sequence rules are not a complete semantic model."
+    ],
+    "synopsis_sha256": "8f1f4527d8ebde98d7ef6550937d876b9d8804b4bfdfd65edf5bd1985538eff7"
+  },
+  {
+    "command": "CREATE TABLE AS",
+    "file": "create/table-as.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createtableas.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "select_statement"
+    ],
+    "fixes": [
+      "Restore accepted GLOBAL/LOCAL temporary modifiers",
+      "Represent storage options and WITHOUT OIDS as alternative clauses",
+      "Remove independently combinable duplicate WITHOUT OIDS"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "64e6283e89a2a3d1e43aa9710a8732e84fb884cdfb87c7c43d35fb3b74e222aa"
+  },
+  {
+    "command": "CREATE TABLESPACE",
+    "file": "create/tablespace.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createtablespace.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [
+      "Require value assignment for tablespace options"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "4744903172b580d0a1adf9cb68a59b150aae27f6c4f348b3824e8ada5bd19f48"
+  },
+  {
+    "command": "CREATE TEXT SEARCH CONFIGURATION",
+    "file": "create/text-search-configuration.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createtsconfig.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "PARSER",
+      "COPY"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "c97e89e29769c9eaea0f3729f2e051764fa4634b0a0e9b3246709e5ac9027766"
+  },
+  {
+    "command": "CREATE TEXT SEARCH DICTIONARY",
+    "file": "create/text-search-dictionary.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createtsdictionary.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [
+      "Allow template-only dictionary definitions"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "25e9c2c4611535c9b905c083cda060ec30120370b9337b2cbd746514447c8a28"
+  },
+  {
+    "command": "CREATE TEXT SEARCH PARSER",
+    "file": "create/text-search-parser.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createtsparser.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "9d4f96997ebd296359e6c2eb74832a50b01169f31512db6c03b7df71439cb46d"
+  },
+  {
+    "command": "CREATE TEXT SEARCH TEMPLATE",
+    "file": "create/text-search-template.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createtstemplate.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "3fb09248e1169b9f1f086a5bb22baa73f7f3cab5a056f2679fdd404069e1d9d1"
+  },
+  {
+    "command": "CREATE TRANSFORM",
+    "file": "create/transform.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createtransform.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "FROM_SQL",
+      "TO_SQL",
+      "BOTH"
+    ],
+    "helpers": [],
+    "fixes": [
+      "Add one-direction transforms documented in prose"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "00d785aebda2b39c4505c6fa355cf6729a472d8bd50b71d39c0e3b36e64b8b7a"
+  },
+  {
+    "command": "CREATE TRIGGER",
+    "file": "create/trigger.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createtrigger.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "event"
+    ],
+    "fixes": [
+      "Allow zero trigger function arguments",
+      "Match trigger deferrability alternatives"
+    ],
+    "remaining": [
+      "Object kind, clause combination, column lists, nested statement context and catalog-dependent restrictions require caller/PostgreSQL checks."
+    ],
+    "synopsis_sha256": "b6ad76b51053ea4d72b2ad3a2f2e9c154ae24cd1740e0f651b88892656875ec6"
+  },
+  {
+    "command": "CREATE TYPE",
+    "file": "create/type.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createtype.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "COMPOSITE",
+      "ENUM",
+      "RANGE",
+      "FUNCTION",
+      "BASE"
+    ],
+    "helpers": [
+      "attribute_definition"
+    ],
+    "fixes": [
+      "Allow empty composite declaration",
+      "Allow initially empty enum declaration"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "689eca10a8de706f3e7af7eaa73b13713d040a8e8ca4abaf4d6cee420ba67d2e"
+  },
+  {
+    "command": "CREATE USER",
+    "file": "create/user.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createuser.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "b63cf3347fd7dfefd140d9a1a4b9a7ae70b0ecfc52596f5242d3174ce77ceb5c"
+  },
+  {
+    "command": "CREATE USER MAPPING",
+    "file": "create/user-mapping.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createusermapping.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "role_public"
+    ],
+    "fixes": [
+      "Add USER identity alias from PG18 synopsis"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "45007e2eba59ec978e53c9b855a934998c7116e4fad77e268216cda5d141848a"
+  },
+  {
+    "command": "CREATE VIEW",
+    "file": "create/view.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-createview.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "check_option",
+      "select_statement"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "4215b1eb729d9803ee9eff50be9ffeae859936ff7e32838a37c851ed286af9ec"
+  },
+  {
+    "command": "DEALLOCATE",
+    "file": "other/deallocate.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-deallocate.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "8d64605d24d4fc01252b3537520a7e832e60ee681c70996324628edb889c4bce"
+  },
+  {
+    "command": "DECLARE",
+    "file": "other/declare.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-declare.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "select_statement"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "baabd31d9ff1f9221f1a01e8fc5ca57fe604910c9cb2345a206ba4bd4f778412"
+  },
+  {
+    "command": "DELETE",
+    "file": "query/delete.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-delete.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-sublanguage",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "with_query_definition",
+      "from_expression",
+      "joined_expression",
+      "join_type",
+      "select_statement",
+      "query_statement"
+    ],
+    "fixes": [
+      "Record function columns require type and allow COLLATE; grouped joins",
+      "Explicit whole-item grouping for composite repetitions; verified with the real parser loop walker"
+    ],
+    "remaining": [
+      "Expression, subquery-result, recursive CTE, RETURNING alias, target-column/type and cross-clause restrictions require caller/PostgreSQL checks.",
+      "FROM JSON_TABLE/XMLTABLE sublanguages are not expanded; general SQL expressions and functions remain opaque input boundaries."
+    ],
+    "synopsis_sha256": "6cadb8939cbe6651f78ae42eeac620ba5fe19df4da0e1a973bcdce8bce1cc0ed"
+  },
+  {
+    "command": "DISCARD",
+    "file": "other/discard.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-discard.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "1fe92e789691c2c3c0d5b9cf6a61117d35bbce3f7ff98f0527390c7f5bb75a71"
+  },
+  {
+    "command": "DO",
+    "file": "other/do.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-do.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [
+      "Explicit code-literal boundary, rather than a misleading executable statement placeholder"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "5fc2eb94dc48000192ba73f2d050ea29dae4a5927018b7b4774d69a30158a498"
+  },
+  {
+    "command": "DROP ACCESS METHOD",
+    "file": "drop/access-method.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-drop-access-method.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "0d487862fb3a98c5ad55f8793f8f1bd14ff7272e8f0f9d5b82ee74f25fb596a2"
+  },
+  {
+    "command": "DROP AGGREGATE",
+    "file": "drop/aggregate.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropaggregate.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "signature",
+      "arg",
+      "orders"
+    ],
+    "fixes": [
+      "Ordered-set aggregates allow zero direct arguments; resolve order/orders helper mismatch"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "bab850f946ffb0932fe80735b5c75f62a564f4066a06daa726a68382f93d106d"
+  },
+  {
+    "command": "DROP CAST",
+    "file": "drop/cast.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropcast.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "48512f6e25b6ac1e88c42d63787c371bbe3aa7f2a1091c4920820094efe3fd0c"
+  },
+  {
+    "command": "DROP COLLATION",
+    "file": "drop/collation.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropcollation.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "9cf2439b77794ce2523c18e3c4d5920cb45ac2e08bd03b1cc5486c0a13edfaaa"
+  },
+  {
+    "command": "DROP CONVERSION",
+    "file": "drop/conversion.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropconversion.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "cca601f0d4c67ee25fdeea3484ab071ed003df0bddbae75dcbd48d727e68d055"
+  },
+  {
+    "command": "DROP DATABASE",
+    "file": "drop/database.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropdatabase.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [
+      "Require FORCE parentheses and permit omitted WITH"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "44bae5e620291d16d3b2f789de793b3e752254d9089d72524a091efa8e1876c9"
+  },
+  {
+    "command": "DROP DOMAIN",
+    "file": "drop/domain.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropdomain.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "a7d15bb0f92b36c83562e0ae6ff9c35913c6fbc97098cab0dff405890a3a93a8"
+  },
+  {
+    "command": "DROP EVENT TRIGGER",
+    "file": "drop/event-trigger.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropeventtrigger.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "7489635aba7fdc793ebfc51d7bdc9e0e451842af897c7cbb2024e24ca4a20264"
+  },
+  {
+    "command": "DROP EXTENSION",
+    "file": "drop/extension.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropextension.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "c919f81ecd3b6ec3a5dfe1dbdc29250e2bba5a6efa0ba4c866e853cf4161eafb"
+  },
+  {
+    "command": "DROP FOREIGN DATA WRAPPER",
+    "file": "drop/foreign-data.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropforeigndatawrapper.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "65ea706880cd50dd43f9081eb272a6eb49923a3be8a062099db914e236ac68cd"
+  },
+  {
+    "command": "DROP FOREIGN TABLE",
+    "file": "drop/foreign-table.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropforeigntable.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "ff15258b744c7594710f239b9dae6a5f661008cd259927756815eb85a528d1f1"
+  },
+  {
+    "command": "DROP FUNCTION",
+    "file": "drop/function.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropfunction.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "signature",
+      "arg"
+    ],
+    "fixes": [
+      "Allow explicitly empty argument signature"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "93e2152388043c4dda9ed9f6f83eedb667e996836086a5c5b1cffd27cf06895f"
+  },
+  {
+    "command": "DROP GROUP",
+    "file": "drop/group.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropgroup.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "8f25411fb8f35d7d2f7b98887173702cd0ae8b4f20e4955f438dd6d1970d0759"
+  },
+  {
+    "command": "DROP INDEX",
+    "file": "drop/index.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropindex.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "CONCURRENTLY/object-kind, transaction-state and other catalog-dependent restrictions are not enforced."
+    ],
+    "synopsis_sha256": "eff9eb2b4268a95cdf3301305553ece9ff2c790a01fa46bbf54485674dbca2df"
+  },
+  {
+    "command": "DROP LANGUAGE",
+    "file": "drop/language.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droplanguage.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "feb56eab5390387bc98222ea6a10f019db48d3f70f0b4159f4fb78bc53cb05e9"
+  },
+  {
+    "command": "DROP MATERIALIZED VIEW",
+    "file": "drop/materialized-view.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropmaterializedview.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "7bd915230347c004a66a6dbdf605cba8e82db06956a47f6197b5b8d54340b5c4"
+  },
+  {
+    "command": "DROP OPERATOR",
+    "file": "drop/operator.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropoperator.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "092c891679157726aba7e117e999b178e9afbcb22d86bd216e77ee7572d0955a"
+  },
+  {
+    "command": "DROP OPERATOR CLASS",
+    "file": "drop/operator-class.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropopclass.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "b9fa2ae3efc8c029cc7cd1f824e2d73bcd7cfcaf16f8bc5fb1b5c41ba47d6703"
+  },
+  {
+    "command": "DROP OPERATOR FAMILY",
+    "file": "drop/operator-family.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropopfamily.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "433e9462e1a72fa86741cfafab21b8459d8aaf83b598074ef86d461f36e27de7"
+  },
+  {
+    "command": "DROP OWNED",
+    "file": "drop/owned.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-drop-owned.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "509ce1db07b9c0c3bac0ebd6fd52e0be05b99b23f2d6f59bceaea5c724cb5a62"
+  },
+  {
+    "command": "DROP POLICY",
+    "file": "drop/policy.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droppolicy.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "64f810cd359eb835123c8174f21357eea36ad4907d72bb8df8ea39642e3919bf"
+  },
+  {
+    "command": "DROP PROCEDURE",
+    "file": "drop/procedure.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropprocedure.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "signature",
+      "arg"
+    ],
+    "fixes": [
+      "Allow explicitly empty argument signature"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "172c5b6d9efd18849cc75f339761544318062773d9474216cc3806ec450ffefe"
+  },
+  {
+    "command": "DROP PUBLICATION",
+    "file": "drop/publication.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droppublication.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "4d492c78631f2885229203a952b837572a38b01b315692ec605a63793f81abc2"
+  },
+  {
+    "command": "DROP ROLE",
+    "file": "drop/role.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droprole.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "a57361d5267715c7a7f76c26205f380a8bb77e3f0ad7bdb1bb3402d47ab89d37"
+  },
+  {
+    "command": "DROP ROUTINE",
+    "file": "drop/routine.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droproutine.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "signature",
+      "arg"
+    ],
+    "fixes": [
+      "Allow explicitly empty argument signature"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "fcb31b2108ca315230cf08d1f56e780feb3a46cace924c434a4d0687587a3d1c"
+  },
+  {
+    "command": "DROP RULE",
+    "file": "drop/rule.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droprule.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "0418e1de550d643771ab96de082f389cd4d8484ec4e72c13ce708a7f00d86cf9"
+  },
+  {
+    "command": "DROP SCHEMA",
+    "file": "drop/schema.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropschema.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "6434a25cdc50bd3e4a4b638f33772b12ecfa37f92d2d407e59661ce877aaa550"
+  },
+  {
+    "command": "DROP SEQUENCE",
+    "file": "drop/sequence.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropsequence.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "1ce8ecce9c066722bda0e7d89ed2508a2c12485341e24054e069ea80cde16710"
+  },
+  {
+    "command": "DROP SERVER",
+    "file": "drop/server.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropserver.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "6f209742cefec2c4bc39e9d27f82e155b0a97d4f9f0afa026abee46fdb24aa8f"
+  },
+  {
+    "command": "DROP STATISTICS",
+    "file": "drop/statistics.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropstatistics.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "f1fb4d9d1a860152425c10ac862bc52432f6cce3d48633fc933eaa4ea1160503"
+  },
+  {
+    "command": "DROP SUBSCRIPTION",
+    "file": "drop/subscription.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropsubscription.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "e82e1a493ba8a1c706e6f6feae8b72b6cd84d3f5b29f0399e41fd43fdbec5897"
+  },
+  {
+    "command": "DROP TABLE",
+    "file": "drop/table.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droptable.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "eb55210779eaf3835801b8f2794358ff6edf1c7a9ee99193d14e7e4a038e10bb"
+  },
+  {
+    "command": "DROP TABLESPACE",
+    "file": "drop/tablespace.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droptablespace.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "82d3fd5de5062fc1d478c0e489b3409ad8467e6792b97f59da0ab0f24c7c4ef3"
+  },
+  {
+    "command": "DROP TEXT SEARCH CONFIGURATION",
+    "file": "drop/text-search-configuration.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droptsconfig.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "607f8d10c8dc5d026dc8dae49e369be63c976a52aa0211de5927ed4d72b7f469"
+  },
+  {
+    "command": "DROP TEXT SEARCH DICTIONARY",
+    "file": "drop/text-search-dictionary.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droptsdictionary.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "acdeb81fad1f35773503444def3dfe0cc5be30aa71c09cddbfdd869e27a579d3"
+  },
+  {
+    "command": "DROP TEXT SEARCH PARSER",
+    "file": "drop/text-search-parser.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droptsparser.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "83c37ea85a7f443c1cc23286965ca0fa736a380b5515e69e3605ae6868fbeeff"
+  },
+  {
+    "command": "DROP TEXT SEARCH TEMPLATE",
+    "file": "drop/text-search-template.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droptstemplate.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "a7bccf59da6dcfb46a1ba0f8bdb23359fa2bc083182ad4b4f889516fb8a0f8a1"
+  },
+  {
+    "command": "DROP TRANSFORM",
+    "file": "drop/transform.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droptransform.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "dd742366c0143b488cae2899423e22e3a5ea4b6df6a13b6ed310b75c3cf6796d"
+  },
+  {
+    "command": "DROP TRIGGER",
+    "file": "drop/trigger.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droptrigger.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "2eff8add7bef1fcaf082633f079456b89911c73d73f06646426b0c1a5ef87b11"
+  },
+  {
+    "command": "DROP TYPE",
+    "file": "drop/type.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-droptype.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "e4c7bf279a1d11d7b995163af1d454f4f1b40a9d0e7b1555a31ab1da63570581"
+  },
+  {
+    "command": "DROP USER",
+    "file": "drop/user.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropuser.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "1e2becdb46f7550faa6c8c3cf8fa9ca0ff1145b6ac7af3d49cb6012a8cab1cda"
+  },
+  {
+    "command": "DROP USER MAPPING",
+    "file": "drop/user-mapping.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropusermapping.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "role_public"
+    ],
+    "fixes": [
+      "Use the documented USER alias rather than SESSION_USER"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "3f83d82ede5555f7d1a4e6137d2a40edb7bc9479492ef38809e744c046920b67"
+  },
+  {
+    "command": "DROP VIEW",
+    "file": "drop/view.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-dropview.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "d4474f31245b4e745a0c150a26869b52a8a38ace1d0612bfc6cccf73f116fd9e"
+  },
+  {
+    "command": "END",
+    "file": "transaction/end.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-end.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "0aa5b3025c961a1c1012d19e1441a6b4cb0567b0844855e99dfcd61bcdd83c1e"
+  },
+  {
+    "command": "EXECUTE",
+    "file": "other/execute.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-execute.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "9dd0a6fe5a9e822c96c092b4522d2672ee1e913b6c0e9d6f827831933d8778da"
+  },
+  {
+    "command": "EXPLAIN",
+    "file": "other/explain.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-explain.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "explain_options",
+      "explainable_statement"
+    ],
+    "fixes": [
+      "Enumerate explainable statement categories instead of unrestricted opaque SQL"
+    ],
+    "remaining": [
+      "At least one option inside parentheses and option compatibility/value ranges require caller checks; obsolete alternative spellings are not canonical output."
+    ],
+    "synopsis_sha256": "064a8153419d8206ef24ea5a2b1d541ff63a738901de9a1a81a1149b1f0c9880"
+  },
+  {
+    "command": "FETCH",
+    "file": "other/fetch.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-fetch.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "direction"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "6c6578561c4c765c8add7ec24e528e645e672157d4215cf1a4abc0da7ebd3e8b"
+  },
+  {
+    "command": "GRANT",
+    "file": "auth/grant.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-grant.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "TABLE",
+      "COLUMN",
+      "SEQUENCE",
+      "DATABASE",
+      "DOMAIN",
+      "FOREIGN_DATA_WRAPPER",
+      "FOREIGN_SERVER",
+      "ROUTINE",
+      "LANGUAGE",
+      "LARGE_OBJECT",
+      "PARAMETER",
+      "SCHEMA",
+      "TABLESPACE",
+      "TYPE",
+      "ROLE"
+    ],
+    "helpers": [
+      "routine_definition",
+      "role_public",
+      "arg"
+    ],
+    "fixes": [
+      "Move routine-kind keyword outside repeated routine signatures; permit explicit zero-argument signatures",
+      "Explicit whole-item grouping for composite repetitions; verified with the real parser loop walker"
+    ],
+    "remaining": [
+      "Privilege/object-kind restrictions, PUBLIC versus role membership/grant option, grantor authority and inherited membership require semantic validation."
+    ],
+    "synopsis_sha256": "53efeec2ce576fc197a2b7795039e833a461e35f796e601c1fa4aefb3faf87a8"
+  },
+  {
+    "command": "IMPORT FOREIGN SCHEMA",
+    "file": "other/import-foreign-schema.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-importforeignschema.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "e77f39d2d405b7bf8c9a2843357c28c5cd51d12f3b1de77e82a5bbe105cb5749"
+  },
+  {
+    "command": "INSERT",
+    "file": "query/insert.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-insert.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "with_query_definition",
+      "conflict_target",
+      "conflict_action",
+      "select_statement",
+      "query_statement"
+    ],
+    "fixes": [
+      "Four-space continuation indentation",
+      "Explicit whole-item grouping for composite repetitions; verified with the real parser loop walker"
+    ],
+    "remaining": [
+      "Expression, subquery-result, recursive CTE, RETURNING alias, target-column/type and cross-clause restrictions require caller/PostgreSQL checks."
+    ],
+    "synopsis_sha256": "d9daf6df0af5e49fe893c7a23bc7d23e1e3c44f29d44967d8d3f92572a3fbca5"
+  },
+  {
+    "command": "LISTEN",
+    "file": "other/listen.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-listen.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "ce6efcce2ef1a287ff32d3675786980b327e01de991c568e1e2dbbdfb75c7f27"
+  },
+  {
+    "command": "LOAD",
+    "file": "other/load.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-load.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "5a37460b3675e4166832af8beb5deb649e334aeece8c3e7ff9a688a49c101dc9"
+  },
+  {
+    "command": "LOCK",
+    "file": "other/lock.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-lock.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "lock_mode"
+    ],
+    "fixes": [
+      "Repeat ONLY with each individual target"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "c8542cb6f9803b0e486f1cf6a8e06002567a7bb0527e3ffb0ae4d0b4115037b3"
+  },
+  {
+    "command": "MERGE",
+    "file": "query/merge.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-merge.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "with_query_definition",
+      "from_expression",
+      "when_clause",
+      "update_action",
+      "insert_action",
+      "select_statement",
+      "query_statement"
+    ],
+    "fixes": [
+      "Four-space continuation indentation",
+      "Explicit whole-item grouping for composite repetitions; verified with the real parser loop walker"
+    ],
+    "remaining": [
+      "Expression, subquery-result, recursive CTE, RETURNING alias, target-column/type and cross-clause restrictions require caller/PostgreSQL checks."
+    ],
+    "synopsis_sha256": "9d3548da1dcab893741e695d59d5caecd2458693805d185f187f9c18ff70420e"
+  },
+  {
+    "command": "MOVE",
+    "file": "other/move.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-move.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "direction"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "430c0076629d921d520c9fb3426fa5aaf7f86ad8a4065bc77f69bac0c3a53ce1"
+  },
+  {
+    "command": "NOTIFY",
+    "file": "other/notify.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-notify.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "efbf04420dd5f83855d6516301261cb246367fa42243958fdb933574bacfc244"
+  },
+  {
+    "command": "PREPARE",
+    "file": "other/prepare.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-prepare.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "query_statement"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "42e2e3edc8f9e41002e2b231f73c843ef414b61bcd96bc9d5bdacf31996816e4"
+  },
+  {
+    "command": "PREPARE TRANSACTION",
+    "file": "transaction/prepare-transaction.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-prepare-transaction.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "ac49873fbd48cc1e8397236ab11fe36eb668c70267ced611cc100d8c80b156f2"
+  },
+  {
+    "command": "REASSIGN OWNED",
+    "file": "other/reassign-owned.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-reassign-owned.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "role",
+      "new_role"
+    ],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "0a47ab460bdab8b9931f9d330b0c7811c41a6429f1e07dfba4ca1d7542ba4ee6"
+  },
+  {
+    "command": "REFRESH MATERIALIZED VIEW",
+    "file": "other/refresh-materialized-view.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-refreshmaterializedview.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "76cd03d41e0b5b1c80de12524335353b1caa26878ef0aaaf922bb33333a2b170"
+  },
+  {
+    "command": "REINDEX",
+    "file": "other/reindex.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-reindex.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "RELATION",
+      "DATABASE"
+    ],
+    "helpers": [
+      "reindex_options"
+    ],
+    "fixes": [],
+    "remaining": [
+      "At least one option inside parentheses and option compatibility/value ranges require caller checks; obsolete alternative spellings are not canonical output."
+    ],
+    "synopsis_sha256": "82774bcc45d5fa3165fd0782158fc80a5a56a47543e845378c166a69660549f8"
+  },
+  {
+    "command": "RELEASE SAVEPOINT",
+    "file": "transaction/release-savepoint.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-release-savepoint.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "1c142d033309e98de8538c900351fa6ebadd5eeaaca808160b5fa59921e4a951"
+  },
+  {
+    "command": "RESET",
+    "file": "other/reset.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-reset.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "PARAMETER",
+      "ALL"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "6193c5bbbd9c0267e3f91a6692714584ecdfca74c176e6ca6dff0cdcec33d975"
+  },
+  {
+    "command": "REVOKE",
+    "file": "auth/revoke.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-revoke.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "TABLE",
+      "COLUMN",
+      "SEQUENCE",
+      "DATABASE",
+      "DOMAIN",
+      "FOREIGN_DATA_WRAPPER",
+      "FOREIGN_SERVER",
+      "ROUTINE",
+      "LANGUAGE",
+      "LARGE_OBJECT",
+      "PARAMETER",
+      "SCHEMA",
+      "TABLESPACE",
+      "TYPE",
+      "ROLE"
+    ],
+    "helpers": [
+      "routine_definition",
+      "role_public",
+      "arg"
+    ],
+    "fixes": [
+      "Move routine-kind keyword outside repeated routine signatures; permit explicit zero-argument signatures",
+      "Explicit whole-item grouping for composite repetitions; verified with the real parser loop walker"
+    ],
+    "remaining": [
+      "Privilege/object-kind restrictions, PUBLIC versus role membership/grant option, grantor authority and inherited membership require semantic validation."
+    ],
+    "synopsis_sha256": "d51d46d84ffdf18fc26019d0cdd2a7e24c09354185061913e2c0aa7cd6103f04"
+  },
+  {
+    "command": "ROLLBACK",
+    "file": "transaction/rollback.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-rollback.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "5d59a7a3239b5bd93b508a4ccc6df9b4c26fac1d8aa0c7b66c51bcaba2f3a44e"
+  },
+  {
+    "command": "ROLLBACK PREPARED",
+    "file": "transaction/rollback-prepared.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-rollback-prepared.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "418ed1b7222903eac9b735093294f8dc7ea2cc6b54aab815c67e7cfff2f50632"
+  },
+  {
+    "command": "ROLLBACK TO SAVEPOINT",
+    "file": "transaction/rollback-to.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-rollback-to.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "e843cccd514db03555d4839153de402dc52bc867b4329ae53abb9c84ff281539"
+  },
+  {
+    "command": "SAVEPOINT",
+    "file": "transaction/save-point.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-savepoint.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "82ece26230e274d3368a11e059d7b8e80bdec5a79e84772ed224e1e9f71ed482"
+  },
+  {
+    "command": "SECURITY LABEL",
+    "file": "other/security-label.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-security-label.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "label_target",
+      "signature",
+      "arg",
+      "orders"
+    ],
+    "fixes": [
+      "Complete mode/name/type argument definitions, empty signatures, zero direct aggregate arguments"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "5dc79931d4d81b951f131ff53f397fb3527ed8808faaab1645afec414041e695"
+  },
+  {
+    "command": "SELECT",
+    "file": "query/select.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-select.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-sublanguage",
+    "cases": [
+      "SELECT",
+      "TABLE"
+    ],
+    "helpers": [
+      "locking_clause",
+      "with_query_definition",
+      "from_expression",
+      "joined_expression",
+      "join_type",
+      "window_expression",
+      "frame_expression",
+      "frame_start",
+      "frame_end",
+      "frame_exclusion",
+      "group_by_expression",
+      "order_by_expression",
+      "select_statement",
+      "query_statement"
+    ],
+    "fixes": [
+      "Record function columns require type and allow COLLATE; grouped joins; separate legal frame starts/ends and single-bound forms",
+      "Explicit whole-item grouping for composite repetitions; verified with the real parser loop walker"
+    ],
+    "remaining": [
+      "Expression, subquery-result, recursive CTE, RETURNING alias, target-column/type and cross-clause restrictions require caller/PostgreSQL checks.",
+      "FROM JSON_TABLE/XMLTABLE sublanguages are not expanded; general SQL expressions and functions remain opaque input boundaries.",
+      "Relative frame-end ordering, RANGE/GROUPS ORDER BY requirements, set-operation/locking compatibility and parenthesized set-query precedence remain context restrictions. SELECT INTO follows its own documented synopsis, which is narrower than SELECT."
+    ],
+    "synopsis_sha256": "1eb815e381fdddce493c8a0f12a49eadcfcfb2e0426022e58fec2523e4d5991c"
+  },
+  {
+    "command": "SELECT INTO",
+    "file": "query/select-into.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-selectinto.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-sublanguage",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "locking_clause",
+      "with_query_definition",
+      "from_expression",
+      "joined_expression",
+      "join_type",
+      "window_expression",
+      "frame_expression",
+      "frame_start",
+      "frame_end",
+      "frame_exclusion",
+      "group_by_expression",
+      "order_by_expression",
+      "select_statement",
+      "query_statement"
+    ],
+    "fixes": [
+      "Record function columns require type and allow COLLATE; grouped joins; separate legal frame starts/ends and single-bound forms",
+      "Explicit whole-item grouping for composite repetitions; verified with the real parser loop walker"
+    ],
+    "remaining": [
+      "Expression, subquery-result, recursive CTE, RETURNING alias, target-column/type and cross-clause restrictions require caller/PostgreSQL checks.",
+      "FROM JSON_TABLE/XMLTABLE sublanguages are not expanded; general SQL expressions and functions remain opaque input boundaries.",
+      "Relative frame-end ordering, RANGE/GROUPS ORDER BY requirements, set-operation/locking compatibility and parenthesized set-query precedence remain context restrictions. SELECT INTO follows its own documented synopsis, which is narrower than SELECT."
+    ],
+    "synopsis_sha256": "7fb2be5abaee60e9cb1bde01bbb09636db16d006c779799b8bcfd1f544275498"
+  },
+  {
+    "command": "SET",
+    "file": "other/set.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-set.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "PARAMETER",
+      "TIME_ZONE",
+      "SCHEMA",
+      "NAMES"
+    ],
+    "helpers": [],
+    "fixes": [
+      "Comma-separated parameter values plus documented SCHEMA and NAMES aliases"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "eb2ffcb52eb0f076a8a97f478c18d5418a05f4a0fcbfd2f948a3f516a420bf4a"
+  },
+  {
+    "command": "SET CONSTRAINTS",
+    "file": "other/set-constraints.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-set-constraints.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "e8ef26e2d3601357b5c07220d158863cc998bf32ce744e606b2c45f035dbbab5"
+  },
+  {
+    "command": "SET ROLE",
+    "file": "other/set-role.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-set-role.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "SET",
+      "RESET"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "3ff10d48d5d41ada60751b53fa4f4d41fa46030eab0ab7cf04c53bc44757abe9"
+  },
+  {
+    "command": "SET SESSION AUTHORIZATION",
+    "file": "other/set-session-authorization.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-set-session-authorization.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "SET",
+      "RESET"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "a1e7a4acd4d3529ab5d73b4903e7aaf30a63b8094aad6a4ee562516eeca4f8db"
+  },
+  {
+    "command": "SET TRANSACTION",
+    "file": "transaction/set-transaction.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-set-transaction.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "TRANSACTION",
+      "SNAPSHOT",
+      "SESSION"
+    ],
+    "helpers": [
+      "transaction_mode"
+    ],
+    "fixes": [
+      "Put READ WRITE / READ ONLY alternatives inside explicit SNF braces"
+    ],
+    "remaining": [
+      "Transaction modes may not contradict or duplicate; execution state and snapshot validity are outside grammar."
+    ],
+    "synopsis_sha256": "56ea6e2dba944e8ef36379cea5236a2a638cec0ce5d057537929254c5bc4bf22"
+  },
+  {
+    "command": "SHOW",
+    "file": "other/show.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-show.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "65852bb25f385647903539b1fc24924dc8551b288a0611d9b343f44a6d6cd0c8"
+  },
+  {
+    "command": "START TRANSACTION",
+    "file": "transaction/start-transaction.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-start-transaction.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "transaction_mode"
+    ],
+    "fixes": [
+      "Put READ WRITE / READ ONLY alternatives inside explicit SNF braces"
+    ],
+    "remaining": [
+      "Transaction modes may not contradict or duplicate; execution state and snapshot validity are outside grammar."
+    ],
+    "synopsis_sha256": "84b9030702ce92ce088eed692199362bf05e6cc8feed7b2fd1c1eb42d9df2a62"
+  },
+  {
+    "command": "TRUNCATE",
+    "file": "other/truncate.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-truncate.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [
+      "Repeat ONLY with each individual target"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "965d45c7f0daada22f7802f94f76166aeb16c751ffac1d864b99c7cd42021c00"
+  },
+  {
+    "command": "UNLISTEN",
+    "file": "other/unlisten.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-unlisten.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [],
+    "fixes": [],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "557b6e85090cda7bedbfd7f98f969c8e9f46933ef16d19d194fce2ded22fe853"
+  },
+  {
+    "command": "UPDATE",
+    "file": "query/update.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-update.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-sublanguage",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "with_query_definition",
+      "from_expression",
+      "joined_expression",
+      "join_type",
+      "select_statement",
+      "query_statement"
+    ],
+    "fixes": [
+      "Record function columns require type and allow COLLATE; grouped joins and indentation",
+      "Explicit whole-item grouping for composite repetitions; verified with the real parser loop walker"
+    ],
+    "remaining": [
+      "Expression, subquery-result, recursive CTE, RETURNING alias, target-column/type and cross-clause restrictions require caller/PostgreSQL checks.",
+      "FROM JSON_TABLE/XMLTABLE sublanguages are not expanded; general SQL expressions and functions remain opaque input boundaries."
+    ],
+    "synopsis_sha256": "5c43e27bd24817c4c4f5754c446f888a9d115ff5e6da3c70e5a550555497c43e"
+  },
+  {
+    "command": "VACUUM",
+    "file": "other/vacuum.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-vacuum.html",
+    "reviewed": "2026-09-30",
+    "status": "partial-context",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "vacuum_options",
+      "table_expression"
+    ],
+    "fixes": [
+      "Allow omitted relation list for database-wide vacuum"
+    ],
+    "remaining": [
+      "At least one option inside parentheses and option compatibility/value ranges require caller checks; obsolete alternative spellings are not canonical output."
+    ],
+    "synopsis_sha256": "b06247a0b97a67ad64ad96ec38b4798fcda7368e37ce6d29704083df7d6e2e7a"
+  },
+  {
+    "command": "VALUES",
+    "file": "query/values.snf",
+    "source": "https://www.postgresql.org/docs/18/sql-values.html",
+    "reviewed": "2026-09-30",
+    "status": "synopsis-structured",
+    "cases": [
+      "IMPLICIT"
+    ],
+    "helpers": [
+      "order_by_expression"
+    ],
+    "fixes": [
+      "Explicit whole-item grouping for composite repetitions; verified with the real parser loop walker"
+    ],
+    "remaining": [
+      "Identifiers, literals, data types and parameter values are caller-supplied leaves; this row certifies command synopsis structure, not catalog/permission/execution validity."
+    ],
+    "synopsis_sha256": "89c54f29edde20dd4718082668e1d4f861bfec393d138745f826f97e30354844"
+  }
+]

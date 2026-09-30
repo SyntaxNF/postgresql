@@ -1,10 +1,9 @@
 # https://www.postgresql.org/docs/18/sql-createtableas.html
 
-CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name
+CREATE [ [ GLOBAL | LOCAL ] { TEMPORARY | TEMP } | UNLOGGED ] TABLE [ IF NOT EXISTS ] name
     [ ( colname [, ...] ) ]
     [ USING index_method ]
-    [ WITH ( { storage_parameter [= value] } [, ...] ) ]
-    [ WITHOUT OIDS ]
+    [ WITH ( { storage_parameter [= value] } [, ...] ) | WITHOUT OIDS ]
     [ ON COMMIT { PRESERVE ROWS | DELETE ROWS | DROP } ]
     [ TABLESPACE tablespace ]
     AS select_statement

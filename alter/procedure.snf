@@ -2,35 +2,35 @@
 
 # CASE OPTIONS
 ALTER PROCEDURE name
-    [ ( arg [, ...] ) ]
+    [ ( [ arg [, ...] ] ) ]
     action
     [ RESTRICT ]
 
 # CASE RENAME
 ALTER PROCEDURE name
-    [ ( arg [, ...] ) ]
+    [ ( [ arg [, ...] ] ) ]
     RENAME TO new_name
 
 # CASE OWNER
 ALTER PROCEDURE name
-    [ ( arg [, ...] ) ]
+    [ ( [ arg [, ...] ] ) ]
     OWNER TO role
 
 # CASE SCHEMA
 ALTER PROCEDURE name
-    [ ( arg [, ...] ) ]
+    [ ( [ arg [, ...] ] ) ]
     SET SCHEMA schema
 
 # CASE DEPENDS_EXTENSION
 ALTER PROCEDURE name
-    [ ( arg [, ...] ) ]
+    [ ( [ arg [, ...] ] ) ]
     [ NO ] DEPENDS
     ON EXTENSION extension
 
 # WHERE action
 [ [ EXTERNAL ] SECURITY INVOKER | [ EXTERNAL ] SECURITY DEFINER ]
-[ { SET config_parameter { { TO | = } { value | DEFAULT } | FROM CURRENT } } [, ...] ]
-[ { RESET config_parameter } [, ...] ]
+[ set_parameter_clause [...] ]
+[ reset_parameter_clause [...] ]
 [ RESET ALL ]
 
 # WHERE arg
@@ -38,3 +38,9 @@ ALTER PROCEDURE name
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }
+
+# WHERE set_parameter_clause
+SET config_parameter { { TO | = } { value | DEFAULT } | FROM CURRENT }
+
+# WHERE reset_parameter_clause
+RESET config_parameter
