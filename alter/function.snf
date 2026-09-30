@@ -35,8 +35,8 @@ ALTER FUNCTION name
 [ COST cost ]
 [ ROWS rows ]
 [ SUPPORT support ]
-[ { SET config_parameter { { TO | = } { value | DEFAULT } | FROM CURRENT } } [, ...] ]
-[ { RESET config_parameter } [, ...] ]
+set_parameter_clause [...]
+reset_parameter_clause [...]
 [ RESET ALL ]
 
 # WHERE arg
@@ -44,3 +44,9 @@ ALTER FUNCTION name
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }
+
+# WHERE set_parameter_clause
+SET config_parameter { { TO | = } { value | DEFAULT } | FROM CURRENT }
+
+# WHERE reset_parameter_clause
+RESET config_parameter

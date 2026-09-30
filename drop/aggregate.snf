@@ -14,5 +14,5 @@ ORDER BY order [, ...]
 }
 )
 
-# WHERE arg, orders
+# WHERE arg, order
 [ argmode ] [ argname ] argtype

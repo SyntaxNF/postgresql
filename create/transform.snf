@@ -1,6 +1,17 @@
 # https://www.postgresql.org/docs/18/sql-createtransform.html
 
+# CASE FROM_SQL
 CREATE [ OR REPLACE ] TRANSFORM FOR type LANGUAGE language (
-    FROM SQL WITH FUNCTION from [ (fromtype [, ...]) ],
-    TO SQL WITH FUNCTION to [ (totype [, ...]) ]
+    FROM SQL WITH FUNCTION from_function [ ( argtype [, ...] ) ]
+)
+
+# CASE TO_SQL
+CREATE [ OR REPLACE ] TRANSFORM FOR type LANGUAGE language (
+    TO SQL WITH FUNCTION to_function [ ( argtype [, ...] ) ]
+)
+
+# CASE BOTH
+CREATE [ OR REPLACE ] TRANSFORM FOR type LANGUAGE language (
+    FROM SQL WITH FUNCTION from_function [ ( argtype [, ...] ) ],
+    TO SQL WITH FUNCTION to_function [ ( argtype [, ...] ) ]
 )

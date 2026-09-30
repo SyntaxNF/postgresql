@@ -1,5 +1,5 @@
 # https://www.postgresql.org/docs/18/sql-create-access-method.html
 
 CREATE ACCESS METHOD name
-    TYPE type
+    TYPE { TABLE | INDEX }
     HANDLER handler

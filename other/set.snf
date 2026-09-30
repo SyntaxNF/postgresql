@@ -2,8 +2,14 @@
 
 # CASE PARAMETER
 SET [ SESSION | LOCAL ] config_parameter
-    { TO | = } { value | 'value' | DEFAULT }
+    { TO | = } { { value | 'value' } [, ...] | DEFAULT }
 
 # CASE TIME_ZONE
 SET [ SESSION | LOCAL ] TIME ZONE
     { value | 'value' | LOCAL | DEFAULT }
+
+# CASE SCHEMA
+SET [ SESSION | LOCAL ] SCHEMA 'schema'
+
+# CASE NAMES
+SET [ SESSION | LOCAL ] NAMES 'encoding'

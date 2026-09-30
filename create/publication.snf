@@ -1,9 +1,13 @@
 # https://www.postgresql.org/docs/18/sql-createpublication.html
 
 CREATE PUBLICATION name
-    [ FOR ALL TABLES | FOR table [, ...] ]
+    [ FOR ALL TABLES | FOR publication_object [, ...] ]
     [ WITH ( { publication_parameter [= value] } [, ...] ) ]
 
-# ONEOFIS table
-TABLE [ ONLY ] table [ * | ( colname [, ...] ) ] [ WHERE ( boolean_expression ) ]
-TABLES IN SCHEMA { schema | CURRENT_SCHEMA }
+# PARTOFIS publication_object
+TABLE table_definition [, ...]
+
+TABLES IN SCHEMA { schema | CURRENT_SCHEMA } [, ...]
+
+# WHERE table_definition
+[ ONLY ] table [ * ] [ ( colname [, ...] ) ] [ WHERE ( boolean_expression ) ]

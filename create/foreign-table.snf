@@ -5,7 +5,7 @@ CREATE FOREIGN TABLE [ IF NOT EXISTS ] name (
     {
         column_definition |
         table_constraint_definition |
-        LIKE like_table [ like_option [...] ]
+        LIKE like_table like_option [...]
     } [, ...]
 )
     [ INHERITS ( inherit [, ...] ) ]
@@ -25,11 +25,11 @@ CREATE FOREIGN TABLE [ IF NOT EXISTS ] name PARTITION OF parent
 # WHERE column_definition
 colname coltype [ OPTIONS ( { option 'value' } [, ...] ) ]
 [ COLLATE collation ]
-[ column_constraint_definition [...] ]
+column_constraint_definition [...]
 
 # WHERE partition_column_definition
 colname [ WITH OPTIONS ]
-[ column_constraint_definition [...] ]
+column_constraint_definition [...]
 
 # WHERE column_constraint_definition
 [ CONSTRAINT constraint ]
@@ -51,6 +51,6 @@ colname [ WITH OPTIONS ]
 { INCLUDING | EXCLUDING } { COMMENTS | CONSTRAINTS | DEFAULTS | GENERATED | STATISTICS | ALL }
 
 # ONEOFIS partition_bound_definition
-  IN ( partition_bound_expression [, ...] )
+IN ( partition_bound_expression [, ...] )
 FROM ( { partition_bound_expression | MINVALUE | MAXVALUE } [, ...] ) TO ( { partition_bound_expression | MINVALUE | MAXVALUE } [, ...] )
 WITH ( MODULUS modulus, REMAINDER remainder )
