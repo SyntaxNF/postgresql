@@ -236,3 +236,9 @@ WITH ( MODULUS modulus, REMAINDER remainder )
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }
+
+# WHERE identity_options
+[ INCREMENT [ BY ] increment ]
+    [ MINVALUE minvalue | NO MINVALUE ] [ MAXVALUE maxvalue | NO MAXVALUE ]
+    [ START [ WITH ] start ] [ CACHE cache ] [ [ NO ] CYCLE ]
+    [ SEQUENCE NAME sequence ] [ LOGGED | UNLOGGED ]

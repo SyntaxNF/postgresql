@@ -1,0 +1,61 @@
+# https://www.postgresql.org/docs/18/sql-alterforeigntable.html
+
+# CASE ACTIONS
+ALTER FOREIGN TABLE [ IF EXISTS ] [ ONLY ] name [ * ] alter_action [, ...]
+
+# CASE ADD_COLUMN
+ALTER FOREIGN TABLE [ IF EXISTS ] [ ONLY ] name [ * ]
+    ADD [ COLUMN ] [ IF NOT EXISTS ] colname type [ COLLATE collate ] [ column_constraint_definition [...] ]
+
+# CASE DROP_COLUMN
+ALTER FOREIGN TABLE [ IF EXISTS ] [ ONLY ] name [ * ]
+    DROP [ COLUMN ] [ IF EXISTS ] colname [ RESTRICT | CASCADE ]
+
+# CASE SET_OPTIONS
+ALTER FOREIGN TABLE [ IF EXISTS ] [ ONLY ] name [ * ] OPTIONS ( foreign_option [, ...] )
+
+# CASE RENAME_COLUMN
+ALTER FOREIGN TABLE [ IF EXISTS ] [ ONLY ] name [ * ]
+    RENAME [ COLUMN ] colname TO new_colname
+
+# CASE RENAME
+ALTER FOREIGN TABLE [ IF EXISTS ] name RENAME TO new_name
+
+# CASE SET_SCHEMA
+ALTER FOREIGN TABLE [ IF EXISTS ] name SET SCHEMA schema
+
+# ONEOFIS alter_action
+ADD [ COLUMN ] [ IF NOT EXISTS ] colname type [ COLLATE collate ] [ column_constraint_definition [...] ]
+DROP [ COLUMN ] [ IF EXISTS ] colname [ RESTRICT | CASCADE ]
+ALTER [ COLUMN ] colname [ SET DATA ] TYPE type [ COLLATE collate ]
+ALTER [ COLUMN ] colname SET DEFAULT value_expression
+ALTER [ COLUMN ] colname DROP DEFAULT
+ALTER [ COLUMN ] colname { SET | DROP } NOT NULL
+ALTER [ COLUMN ] colname SET STATISTICS statistics_target
+ALTER [ COLUMN ] colname SET ( { attribute_parameter = value } [, ...] )
+ALTER [ COLUMN ] colname RESET ( attribute_parameter [, ...] )
+ALTER [ COLUMN ] colname SET STORAGE { PLAIN | EXTERNAL | EXTENDED | MAIN | DEFAULT }
+ALTER [ COLUMN ] colname OPTIONS ( foreign_option [, ...] )
+ADD [ CONSTRAINT constraint ] CHECK ( boolean_expression ) [ NO INHERIT ] [ ENFORCED | NOT ENFORCED ] [ NOT VALID ]
+ADD [ CONSTRAINT constraint ] NOT NULL colname [ NO INHERIT ] [ ENFORCED | NOT ENFORCED ]
+VALIDATE CONSTRAINT constraint
+DROP CONSTRAINT [ IF EXISTS ] constraint [ RESTRICT | CASCADE ]
+DISABLE TRIGGER { trigger | ALL | USER }
+ENABLE TRIGGER { trigger | ALL | USER }
+ENABLE REPLICA TRIGGER trigger
+ENABLE ALWAYS TRIGGER trigger
+SET WITHOUT OIDS
+INHERIT parent_table
+NO INHERIT parent_table
+OWNER TO { role | CURRENT_ROLE | CURRENT_USER | SESSION_USER }
+OPTIONS ( foreign_option [, ...] )
+
+# WHERE column_constraint_definition
+[ CONSTRAINT constraint ]
+    { NOT NULL [ NO INHERIT ] | NULL | CHECK ( boolean_expression ) [ NO INHERIT ] |
+      DEFAULT value_expression | GENERATED ALWAYS AS ( generation_expression ) [ STORED | VIRTUAL ] }
+    [ ENFORCED | NOT ENFORCED ]
+
+# ONEOFIS foreign_option
+[ ADD | SET ] option 'value'
+DROP option

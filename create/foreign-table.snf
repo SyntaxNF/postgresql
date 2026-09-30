@@ -5,7 +5,7 @@ CREATE FOREIGN TABLE [ IF NOT EXISTS ] name (
     {
         column_definition |
         table_constraint_definition |
-        LIKE like_table [ like_option ]
+        LIKE like_table [ like_option [...] ]
     } [, ...]
 )
     [ INHERITS ( inherit [, ...] ) ]
