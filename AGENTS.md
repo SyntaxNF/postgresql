@@ -8,7 +8,7 @@ Each SNF file should begin with a comment linking to the relevant PostgreSQL doc
 
 ## Build, Test, and Development Commands
 
-Validation is opt-in: never run tests or type checks without explicit user permission for the current task. See `docs/validation.md`. Available commands are:
+Validation is opt-in: never run tests or type checks without explicit user permission for the current task. See `README.md` for parser setup. Available commands are:
 
 - `npm run check:snf` — actual-parser source/AST/directive checks using `SNF_PARSER_MODULE`.
 - `npm run test:regression` — focused generation-structure and loop-binding regressions using the same parser.
