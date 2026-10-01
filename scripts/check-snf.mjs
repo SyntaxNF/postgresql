@@ -8,7 +8,7 @@ export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 export const parserRevision = 'bcf2c3ac58b45e7d5391716393586b00b11e0c1a';
 export const defaultDiffBase = '75d7ec80383dea9ceafe4bf6e324515daaa7e877';
 const entry = process.env.SNF_PARSER_MODULE;
-if (!entry) throw new Error('Set SNF_PARSER_MODULE to the pinned built parser; see docs/validation.md');
+if (!entry) throw new Error('Set SNF_PARSER_MODULE to the pinned built parser; see README.md');
 const parserEntry = fs.realpathSync(path.resolve(entry));
 const git = (cwd, ...args) => execFileSync('git', ['-C', cwd, ...args], { encoding: 'utf8' }).trim();
 const parserRoot = git(path.dirname(parserEntry), 'rev-parse', '--show-toplevel');

@@ -1,54 +1,32 @@
 # PostgreSQL SNF
 
-本仓库维护 `PostgreSQL 18` SQL 语句的 `SNF`（Syntax Normal Form）定义。定义用于阅读和辅助生成 SQL，表达分支、可选项、重复结构和语法节点；不承诺任意输入及选项组合都满足完整 SQL 语义。表达式、类型、函数体由调用方提供，子查询复用已有 statement 定义，都是正常的输入边界。
-
-## 版本基线
-
-本仓库以 [PostgreSQL 18 Documentation](https://www.postgresql.org/docs/18/sql-commands.html) 的 SQL Commands 为唯一语法基线，不混入旧版本或开发中版本的语法写法。
+本仓库维护 PostgreSQL 18 SQL 语句的 SNF（Syntax Normal Form）定义，供阅读与 SQL 生成使用。语法以 [PostgreSQL 18 SQL Commands](https://www.postgresql.org/docs/18/sql-commands.html) 为基线；每个 `.snf` 首行链接对应的官方语法页。
 
 ## 目录
 
-- `create/`：创建数据库对象。
-- `alter/`：修改数据库对象。
-- `drop/`：删除数据库对象。
-- `query/`：DML 与查询语句。
-- `transaction/`：事务与锁定语句。
-- `auth/`：角色、授权和访问控制语句。
-- `other/`：会话、维护、管理和实用语句。
-- `definition/`：配置参数等辅助元数据。
-- `docs/`：迁移检查清单等项目文档。
+- `create/`、`alter/`、`drop/`：数据库对象的创建、修改与删除。
+- `query/`：查询与 DML。
+- `transaction/`：事务控制。
+- `auth/`：角色、授权与访问控制。
+- `other/`：会话、维护、管理及实用语句。
+- `definition/parameter.yaml`：配置参数等辅助元数据。
 
-## SNF 语法
+## SNF 用法
 
-### 基础记号
+选取语句文件和所需 `CASE`，展开本地节点，再由调用方提供标识符、表达式、类型或语句体等输入。嵌套查询可以复用已有 statement 定义。
 
 | 记号 | 含义 |
 | --- | --- |
-| `KEYWORD` | 需要原样生成的 SQL 关键字。 |
-| `placeholder` | 需要由调用方提供或由其他语法节点展开的占位符。 |
-| `[ syntax ]` | 整个 `syntax` 可选，最多出现一次。 |
-| `{ a \| b }` | 必须从候选项中选择一个。 |
-| `syntax [...]` | 前一个 `syntax` 整体重复零次或多次，成员之间没有额外分隔符。 |
-| `item [, ...]` | `item` 重复零次或多次，多个成员之间使用逗号分隔。 |
-| `statement [; ...]` | `statement` 重复零次或多次，多个语句之间使用分号分隔。 |
-| `( syntax )` | 需要原样生成的 SQL 圆括号。 |
-| `'value'` | 需要原样生成的 SQL 字符串字面量。 |
+| `KEYWORD` | 原样生成的 SQL 关键字。 |
+| `placeholder` | 调用方输入或其他语法节点。 |
+| `[ syntax ]` | 整段可选，最多一次。 |
+| `{ a \| b }` | 必选分支。 |
+| `item [...]` | 完整 `item` 重复零次或多次，不额外添加分隔符。 |
+| `item [, ...]` | 完整 `item` 重复零次或多次，成员间用逗号分隔。 |
+| `statement [; ...]` | 完整 statement 重复零次或多次，成员间用分号分隔。 |
+| `( syntax )`、`'value'` | 原样生成的 SQL 圆括号、字符串字面量。 |
 
-循环包含前一个完整成员，本身允许零项；不要再为纯循环包一层可选。`[ ORDER BY item [, ...] ]` 或 `[ ( arg [, ...] ) ]` 包含关键字或括号，仍需保留整体可选。多字段成员用 `{ ... }` 或 helper 绑定后再重复，避免只重复最后一个字段。
-
-省略号只用于服务端语法确实允许重复的列表或语句序列。`[=]` 等紧凑写法表示对应符号本身可选。
-
-### 定义指令
-
-| 指令 | 含义 |
-| --- | --- |
-| `# CASE label` | 完整语法的顶层分支；同一文件有多个顶层语法时，每个分支都要标记。 |
-| `# WHERE name` | 定义一个可复用语法节点；语法相同时可以用逗号同时声明多个名称。 |
-| `# ONEOFIS name` | 定义单行候选集合；每个物理行是一个候选，语义等同于 `{ a \| b }`。 |
-| `# PARTOFIS name` | 定义多行候选集合；每个空行分隔的 block 是一个候选。 |
-| `# STATEMENT name` | 声明可嵌套的 statement 节点，不作为当前文件的顶层语法。 |
-
-例如：
+`# CASE` 标记顶层分支；`# WHERE` 定义复用节点；`# ONEOFIS` 每个物理行是一个候选；`# PARTOFIS` 每个空行分隔的 block 是一个候选；`# STATEMENT` 声明可嵌套的语句节点。
 
 ```snf
 # CASE RENAME
@@ -60,91 +38,22 @@ col_expression [ ASC | DESC ]
 # STATEMENT query_statement
 ```
 
-## 书写与生成规则
+## 生成约定
 
-- 每个 `.snf` 文件首行链接到对应的 PostgreSQL 18 官方语法页。
-- SQL 关键字使用大写，语法占位符使用小写；文件名使用小写和连字符。
-- 主语句中相互独立的 clause 使用四个空格缩进，并按语法顺序分行展示。
-- `ONEOFIS` 的单个候选不能换行；候选需要跨行时使用 `PARTOFIS`。
-- `alter/` 中的 `RENAME`、`ADD`、`DROP`、`SET` 等主操作优先提升为顶层 `# CASE`。只有同类且允许组合的属性才放入 `# CASE OPTIONS`。
-- 相互独立且至多出现一次的 clause 按固定顺序分别写成可选项，不得合并成可重复的 option 循环。
-- 只有值列表、对象列表、语句序列等真正允许重复的结构才使用 `...`。
-- SQL 生成器会移除圆括号内最后一个逗号。因此，圆括号内按固定顺序排列的可选字段可以各自保留尾逗号，无需用 `PARTOFIS` 穷举组合。
-- SNF 表达规范 SQL，不收录仅仅能被服务端解析器容忍、但不适合作为标准生成结果的排列方式。
+- 循环包含前一个完整成员，允许零项；多字段成员用分组或 helper 整体绑定后重复。
+- 纯循环不再套可选外壳；`[ ORDER BY item [, ...] ]`、`[ ( arg [, ...] ) ]` 等含关键字或括号的整体可选仍需保留。
+- 相互独立且至多一次的子句按固定顺序分别可选，只有真实列表或语句序列使用循环。
+- 生成器需移除 SQL 圆括号内最后一个逗号；圆括号内固定顺序的可选字段可以各自保留尾逗号。
+- `name`、`new_name` 只用于当前主对象及其重命名；其他对象使用 `table`、`constraint`、`colname` 等语义名称。
+- `_statement` 表示完整语句，`_expression` 表示表达式，`_definition` 表示结构声明；`_clause`、`_option`、`_action` 分别表示子句、选项和依赖父语句的操作。
+- 表达式、类型、函数体由调用方提供；权限、输入引用/转义、选项组合与执行流程由消费方处理。
 
-## 占位符命名
+## 手动检查命令
 
-当前文件所定义主对象的名称统一使用 `name`；只有该主对象的重命名目标使用 `new_name`。其他对象不得复用 `name`，必须使用对象类型或上下文名称，例如 `table`、`constraint`、`index`、`new_index`、`colname`。通用语义与同级 MySQL SNF 保持一致，PostgreSQL 专属概念则保留准确的领域名称。
+按 `AGENTS.md`，仅在用户明确要求时运行。准备 [SyntaxNF/parser](https://github.com/SyntaxNF/parser) 的 `bcf2c3ac58b45e7d5391716393586b00b11e0c1a` checkout，按其锁文件安装依赖并重新构建，然后设置实际构建入口：
 
-### 语法节点后缀
-
-| 后缀 | 适用语义 | 示例 |
-| --- | --- | --- |
-| `_statement` | 可独立执行或可完整嵌套的 SQL。 | `query_statement` |
-| `_expression` | 产生值、布尔结果或关系的表达式。 | `boolean_expression` |
-| `_definition` | 列、约束、参数、分区等对象结构的声明。 | `column_definition` |
-| `_clause` | 带自身关键字、位置固定且不能独立执行的子句。 | `order_by_clause` |
-| `_option` | 一个可选设置或候选项。 | `table_option` |
-| `_options` | 一组允许组合的设置。 | `table_options` |
-| `_action` | 依赖父语句、不能独立执行的操作片段。 | `on_delete_action` |
-| `_alias` | 对象在当前语句中的别名，必须带对象上下文。 | `table_alias` |
-| `_target` | 操作或子句的目标结构。 | `conflict_target` |
-| `_assignment` | 包含左值、赋值运算符和右值的完整结构。 | `column_assignment` |
-| `_parameter` | 配置参数的名称。 | `storage_parameter` |
-| `_item` | 同类结构中的一个成员。 | `information_item` |
-| `_list` | 一组同类成员构成的列表。 | `table_index_list` |
-| `_mode` | 行为或状态的选择。 | `lock_mode` |
-| `_method` | 实现方式或算法的选择。 | `index_method` |
-| `_value` | 不是任意 SQL 表达式的值或枚举。 | `condition_value` |
-
-标识符直接使用对象类型名，不为追求后缀形式而误标节点角色。例如，`order_by_clause` 包含 `ORDER BY` 关键字，`order_by_expression` 只表示一个排序项；依赖父语句的操作应命名为 `_action`，而不是 `_statement`。
-
-避免使用含义过宽的 `config`，应按角色选择 `_option`、`_options`、`_parameter` 或 `_definition`。引用已有对象时优先使用 `table`、`constraint`、`referenced_table` 等语义名称，而不是泛化的 `_reference`。`_condition` 只用于 `join_condition` 这类带自身结构的条件节点；普通判断条件使用 `boolean_expression`。
-
-### 常用占位符
-
-下表是两个 SNF 仓库共享的常用词汇。不是每个文件都需要声明全部节点，但同一名称在不同文件中应保持相同语义。
-
-| 占位符 | 含义 |
-| --- | --- |
-| `name` | 当前文件所定义主对象的名称。 |
-| `new_name` | 当前主对象重命名后的名称。 |
-| `table`、`database`、`schema`、`index`、`constraint`、`tablespace` | 非当前主对象的对应类型标识符。 |
-| `colname` | 列名；多个列名仍通过 `colname [, ...]` 表达。 |
-| `role`、`user` | 角色或用户标识符；是否可互换由具体语句决定。 |
-| `type` | SQL 数据类型。 |
-| `collate` | 排序规则标识符。 |
-| `argname`、`argtype`、`argmode` | 参数名称、参数类型和参数模式。 |
-| `value` | 当前语法位置接受的原子值；若可接受一般 SQL 表达式，应改用 `_expression`。 |
-| `value_expression` | 一般值表达式。 |
-| `boolean_expression` | 返回真假结果的判断表达式。 |
-| `col_expression` | SELECT 列、赋值或其他列上下文中的表达式。 |
-| `from_expression` | `FROM` 上下文中的表、连接或关系表达式。 |
-| `group_by_expression`、`order_by_expression`、`window_expression` | 对应子句中的一个分组项、排序项或窗口表达式。 |
-| `index_column_expression` | 索引中的一个列或表达式项。 |
-| `query_statement` | 可作为查询来源或嵌套查询的完整查询语句。 |
-| `select_statement` | 语法明确要求 `SELECT` 的完整语句。 |
-| `sql_statement` | 上下文允许的通用完整 SQL 语句；优先使用更具体的名称。 |
-| `argument_definition` | 一个函数或存储过程参数的完整声明。 |
-| `column_definition` | 一个列的完整声明。 |
-| `with_query_definition` | `WITH` 中的一个公共表表达式定义。 |
-| `table_alias`、`col_alias`、`function_alias` | 表、列或函数结果的别名。 |
-| `on_delete_action`、`on_update_action` | 外键 `ON DELETE` 或 `ON UPDATE` 后的动作片段。 |
-
-### PostgreSQL 专属占位符
-
-| 占位符 | 含义 |
-| --- | --- |
-| `referenced_table` | 外键等结构中被引用的表。 |
-| `index_method`、`access_method` | 索引方法和对象访问方法。 |
-| `storage_parameter` | PostgreSQL 对象的存储参数名。 |
-| `opclass` | 索引运算符类。 |
-| `role_public` | 允许普通角色或关键字 `PUBLIC` 的角色位置。 |
-
-## 覆盖状态
-
-语句入口、生成范围及验证边界见 [SQL 定义范围](docs/coverage.md)。文件存在不代表全部语法组合已经验证。
-
-## 显式结构验证
-
-仅在用户明确要求时运行 parser 与结构回归；命令和验证边界见 [验证说明](docs/validation.md)。本轮生成结构修正及字段迁移见 [修订说明](docs/revision.md)。
+```sh
+export SNF_PARSER_MODULE=/absolute/path/to/parser/dist/esm/index.mjs
+npm run check:snf
+npm run test:regression
+```
