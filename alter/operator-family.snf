@@ -31,7 +31,7 @@ ALTER OPERATOR FAMILY name
 # PARTOFIS add_action
 OPERATOR number
     operator ( left, right )
-    [ FOR SEARCH | FOR ORDER BY order ]
+    [ { FOR SEARCH | FOR ORDER BY order } ]
 
 FUNCTION number
     [ ( left [, right ] ) ]

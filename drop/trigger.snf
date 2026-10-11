@@ -2,4 +2,4 @@
 
 DROP TRIGGER [ IF EXISTS ] name
     ON table
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]

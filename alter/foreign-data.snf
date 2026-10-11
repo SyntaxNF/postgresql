@@ -2,8 +2,8 @@
 
 # CASE OPTIONS
 ALTER FOREIGN DATA WRAPPER name
-    [ HANDLER handler | NO HANDLER ]
-    [ VALIDATOR validator | NO VALIDATOR ]
+    [ { HANDLER handler | NO HANDLER } ]
+    [ { VALIDATOR validator | NO VALIDATOR } ]
     [ OPTIONS ( option_action [, ...]) ]
 
 # CASE RENAME
@@ -13,7 +13,7 @@ ALTER FOREIGN DATA WRAPPER name RENAME TO new_name
 ALTER FOREIGN DATA WRAPPER name OWNER TO role
 
 # PARTOFIS option_action
-[ ADD | SET ] option 'value'
+[ { ADD | SET } ] option 'value'
 
 DROP option
 

@@ -38,32 +38,32 @@ GRANT { { SELECT | UPDATE } [, ...] | ALL [ PRIVILEGES ] }
 REVOKE [ GRANT OPTION FOR ] { { SELECT | INSERT | UPDATE | DELETE | TRUNCATE | REFERENCES | TRIGGER | MAINTAIN } [, ...] | ALL [ PRIVILEGES ] }
     ON TABLES
     FROM role_public [, ...]
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]
 
 REVOKE [ GRANT OPTION FOR ] { { USAGE | SELECT | UPDATE } [, ...] | ALL [ PRIVILEGES ] }
     ON SEQUENCES
     FROM role_public [, ...]
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]
 
 REVOKE [ GRANT OPTION FOR ] { EXECUTE | ALL [ PRIVILEGES ] }
     ON { FUNCTIONS | ROUTINES }
     FROM role_public [, ...]
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]
 
 REVOKE [ GRANT OPTION FOR ] { USAGE | ALL [ PRIVILEGES ] }
     ON TYPES
     FROM role_public [, ...]
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]
 
 REVOKE [ GRANT OPTION FOR ] { { USAGE | CREATE } [, ...] | ALL [ PRIVILEGES ] }
     ON SCHEMAS
     FROM role_public [, ...]
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]
 
 REVOKE [ GRANT OPTION FOR ] { { SELECT | UPDATE } [, ...] | ALL [ PRIVILEGES ] }
     ON LARGE OBJECTS
     FROM role_public [, ...]
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]
 
 # WHERE role
 { role_name | CURRENT_ROLE | CURRENT_USER | SESSION_USER }

@@ -10,8 +10,8 @@ Each SNF file should begin with a comment linking to the relevant PostgreSQL doc
 
 Validation is opt-in: never run tests or type checks without explicit user permission for the current task. See `README.md` for parser setup. Available commands are:
 
-- `npm run check:snf` — actual-parser source/AST/directive checks using `SNF_PARSER_MODULE`.
-- `npm run test:regression` — focused generation-structure and loop-binding regressions using the same parser.
+- `npm run validate` / `npm run validate:snf` — all-file source/AST/directive checks using `SNF_PARSER_WORKTREE_MODULE` for the current explicit-syntax build.
+- `npm test` / `npm run test:regression` — common AST/generator contracts plus PostgreSQL generation-structure and loop-binding regressions using the same parser.
 
 Useful repository checks are:
 
@@ -23,7 +23,7 @@ Do not add undocumented tool commands to contributor workflows. If automation is
 
 ## Coding Style & Naming Conventions
 
-Write PostgreSQL keywords in uppercase and grammar placeholders in lowercase. Use four-space indentation for wrapped alternatives and YAML mappings; do not use tabs. Keep optional syntax in square brackets, alternatives separated by `|`, repetitions as `[...]`, and related helper productions close to the statement they support. Follow surrounding whitespace and section-comment patterns instead of reformatting unrelated definitions.
+Write PostgreSQL keywords in uppercase and grammar placeholders in lowercase. Use four-space indentation for wrapped alternatives and YAML mappings; do not use tabs. Keep optional syntax in square brackets, alternatives inside explicit `{ A | B }` (optional enums as `[ { A | B } ]`), repetitions as `[...]`, and related helper productions close to the statement they support. Follow surrounding whitespace and section-comment patterns instead of reformatting unrelated definitions.
 
 Use `name` only for the primary object represented by the current definition and `new_name` only when that primary object is renamed. Every secondary object must use its semantic type, such as `constraint`, `index`, `new_index`, `colname`, `window`, or `tablespace`.
 

@@ -2,4 +2,4 @@
 
 DROP TRANSFORM [ IF EXISTS ] FOR type
     LANGUAGE language
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]

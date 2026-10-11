@@ -14,7 +14,7 @@ ALTER SERVER name
     OWNER TO role
 
 # PARTOFIS option_action
-[ ADD | SET ] option 'value'
+[ { ADD | SET } ] option 'value'
 
 DROP option
 

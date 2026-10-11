@@ -1,7 +1,7 @@
 # https://www.postgresql.org/docs/18/sql-createtable.html
 
 # CASE NORMAL
-CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name (
+CREATE [ { TEMPORARY | TEMP | UNLOGGED } ] TABLE [ IF NOT EXISTS ] name (
     {
         column_definition |
         table_constraint_definition |
@@ -16,7 +16,7 @@ CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name (
     [ TABLESPACE tablespace ]
 
 # CASE TYPE
-CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name OF type
+CREATE [ { TEMPORARY | TEMP | UNLOGGED } ] TABLE [ IF NOT EXISTS ] name OF type
     [ ( {
         typed_column_definition |
         table_constraint_definition
@@ -28,7 +28,7 @@ CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name OF type
     [ TABLESPACE tablespace ]
 
 # CASE PARTITION
-CREATE [ TEMPORARY | TEMP | UNLOGGED ] TABLE [ IF NOT EXISTS ] name PARTITION OF parent
+CREATE [ { TEMPORARY | TEMP | UNLOGGED } ] TABLE [ IF NOT EXISTS ] name PARTITION OF parent
     [ ( {
         partition_column_definition |
         table_constraint_definition
@@ -70,17 +70,17 @@ WITH ( MODULUS modulus, REMAINDER remainder )
 NULL |
 NOT NULL [ NO INHERIT ] |
 DEFAULT value_expression |
-GENERATED ALWAYS AS ( generated_expression ) [ STORED | VIRTUAL ] |
+GENERATED ALWAYS AS ( generated_expression ) [ { STORED | VIRTUAL } ] |
 GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY [ ( identity_options ) ] |
 PRIMARY KEY primary_key_index_options |
 UNIQUE [ NULLS [ NOT ] DISTINCT ] unique_index_options |
 CHECK ( boolean_expression ) [ NO INHERIT ] |
 REFERENCES referenced_table [ ( refcolname ) ]
-    [ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ]
+    [ { MATCH FULL | MATCH PARTIAL | MATCH SIMPLE } ]
     [ ON DELETE on_delete_action ]
     [ ON UPDATE on_update_action ]
 }
-[ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ] [ ENFORCED | NOT ENFORCED ]
+[ { DEFERRABLE | NOT DEFERRABLE } ] [ { INITIALLY DEFERRED | INITIALLY IMMEDIATE } ] [ { ENFORCED | NOT ENFORCED } ]
 
 # WHERE table_constraint_definition
 [ CONSTRAINT constraint ]
@@ -95,7 +95,7 @@ EXCLUDE [ USING index_method ] (
     {
         { colname | ( col_expression ) } [ COLLATE collate ]
         [ opclass [ ( { opclass_parameter = value } [, ...] ) ] ]
-        [ ASC | DESC ] [ NULLS { FIRST | LAST } ] WITH operator
+        [ { ASC | DESC } ] [ NULLS { FIRST | LAST } ] WITH operator
     } [, ...]
 )
 exclude_index_options
@@ -103,11 +103,11 @@ exclude_index_options
 FOREIGN KEY ( colname [, ...] [, PERIOD colname ] )
 REFERENCES referenced_table
 [ ( refcolname [, ...] [, PERIOD refcolname ] ) ]
-[ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ]
+[ { MATCH FULL | MATCH PARTIAL | MATCH SIMPLE } ]
 [ ON DELETE on_delete_action ]
 [ ON UPDATE on_update_action ]
 }
-[ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ] [ ENFORCED | NOT ENFORCED ]
+[ { DEFERRABLE | NOT DEFERRABLE } ] [ { INITIALLY DEFERRED | INITIALLY IMMEDIATE } ] [ { ENFORCED | NOT ENFORCED } ]
 
 # WHERE unique_index_options, primary_key_index_options, exclude_index_options
 [ INCLUDE ( include [, ...] ) ]
@@ -122,6 +122,6 @@ REFERENCES referenced_table
 
 # WHERE identity_options
 [ INCREMENT [ BY ] increment ]
-    [ MINVALUE minvalue | NO MINVALUE ] [ MAXVALUE maxvalue | NO MAXVALUE ]
+    [ { MINVALUE minvalue | NO MINVALUE } ] [ { MAXVALUE maxvalue | NO MAXVALUE } ]
     [ START [ WITH ] start ] [ CACHE cache ] [ [ NO ] CYCLE ]
-    [ SEQUENCE NAME sequence ] [ LOGGED | UNLOGGED ]
+    [ SEQUENCE NAME sequence ] [ { LOGGED | UNLOGGED } ]

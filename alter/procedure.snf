@@ -28,7 +28,7 @@ ALTER PROCEDURE name
     ON EXTENSION extension
 
 # WHERE action
-[ [ EXTERNAL ] SECURITY INVOKER | [ EXTERNAL ] SECURITY DEFINER ]
+[ { [ EXTERNAL ] SECURITY INVOKER | [ EXTERNAL ] SECURITY DEFINER } ]
 set_parameter_clause [...]
 reset_parameter_clause [...]
 [ RESET ALL ]

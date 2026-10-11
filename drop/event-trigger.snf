@@ -1,4 +1,4 @@
 # https://www.postgresql.org/docs/18/sql-dropeventtrigger.html
 
 DROP EVENT TRIGGER [ IF EXISTS ] name
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]

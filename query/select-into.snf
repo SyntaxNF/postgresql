@@ -1,18 +1,18 @@
 # https://www.postgresql.org/docs/18/sql-selectinto.html
 
 [ WITH [ RECURSIVE ] with_query_definition [, ...] ]
-SELECT [ ALL | DISTINCT [ ON ( col_expression [, ...] ) ] ]
+SELECT [ { ALL | DISTINCT [ ON ( col_expression [, ...] ) ] } ]
     { * | col_expression [ [ AS ] col_alias ] } [, ...]
-    INTO [ TEMPORARY | TEMP | UNLOGGED ] [ TABLE ] new_table
+    INTO [ { TEMPORARY | TEMP | UNLOGGED } ] [ TABLE ] new_table
     [ FROM from_expression [, ...] ]
     [ WHERE boolean_expression ]
     [ GROUP BY group_by_expression [, ...] ]
     [ HAVING boolean_expression ]
     [ WINDOW { window AS ( window_expression ) } [, ...] ]
-    [ { UNION | INTERSECT | EXCEPT } [ ALL | DISTINCT ] select_statement ]
+    [ { UNION | INTERSECT | EXCEPT } [ { ALL | DISTINCT } ] select_statement ]
     [ ORDER BY order_by_expression [, ...] ]
     [ LIMIT { limit | ALL } ]
-    [ OFFSET offset [ ROW | ROWS ] ]
+    [ OFFSET offset [ { ROW | ROWS } ] ]
     [ FETCH { FIRST | NEXT } [ fetch ] { ROW | ROWS } ONLY ]
     locking_clause [...]
 
@@ -77,7 +77,7 @@ CUBE ( { col_expression | ( col_expression [, ...] ) } [, ...] )
 GROUPING SETS ( group_by_expression [, ...] )
 
 # WHERE order_by_expression
-col_expression [ ASC | DESC | USING operator ] [ NULLS { FIRST | LAST } ]
+col_expression [ { ASC | DESC | USING operator } ] [ NULLS { FIRST | LAST } ]
 
 # STATEMENT select_statement
 SELECT

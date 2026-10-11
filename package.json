@@ -12,7 +12,9 @@
     "postgres"
   ],
   "scripts": {
-    "check:snf": "node scripts/check-snf.mjs",
-    "test:regression": "node scripts/regression.mjs"
+    "test:regression": "node --test scripts/*.test.mjs && node scripts/regression.mjs",
+    "validate": "npm run validate:snf",
+    "validate:snf": "node scripts/check-snf.mjs",
+    "test": "npm run test:regression"
   }
 }

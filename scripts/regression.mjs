@@ -48,7 +48,7 @@ function repeats(file, name, expected, separator = ',') {
 for (const file of ['create/function.snf', 'create/procedure.snf']) {
     repeats(file, null, /^argument_definition$/);
     repeats(file, null, /^set_parameter_clause$/, '');
-    prodHas(file, 'argument_definition', /\[ IN \| OUT \| INOUT \| VARIADIC \]/);
+    prodHas(file, 'argument_definition', /\[ \{ IN \| OUT \| INOUT \| VARIADIC \} \]/);
     has(file, /\[ AS pg_definition \]/, 'caller-supplied body stays supported');
     has(file, /\[ sql_definition \]/, 'reused SQL body stays supported');
 }
@@ -60,7 +60,7 @@ for (const file of ['alter/function.snf', 'alter/procedure.snf', 'alter/routine.
     prodHas(file, 'reset_parameter_clause', /^RESET config_parameter$/);
 }
 for (const file of ['alter/foreign-data.snf', 'alter/server.snf', 'alter/user-mapping.snf']) {
-    prodHas(file, 'option_action', /\[ ADD \| SET \] option 'value'/);
+    prodHas(file, 'option_action', /\[ \{ ADD \| SET \} \] option 'value'/);
     prodHas(file, 'option_action', /DROP option$/);
 }
 for (const file of ['alter/user-mapping.snf', 'create/user-mapping.snf', 'drop/user-mapping.snf']) prodHas(file, 'role_public', /(?:\{|\|)\s*USER\s*(?:\||\})/);
@@ -89,21 +89,21 @@ prodHas('alter/subscription.snf', 'publication_options', /COPY_DATA/);
 prodHas('alter/table.snf', 'action', /DISABLE TRIGGER \{ trigger \| ALL \| USER \}/);
 prodHas('alter/table.snf', 'identity_option', /INCREMENT \[ BY \] increment/);
 has('drop/database.snf', /\[ \[ WITH \] \( FORCE \) \]/, 'FORCE parentheses');
-// Omit accepted-but-ineffective legacy table options from new SQL generation.
+// Generated tables omit ineffective options.
 for (const [file, name] of [['create/table.snf', 'NORMAL'], ['create/table.snf', 'TYPE'], ['create/table.snf', 'PARTITION'], ['create/table-as.snf', null]]) {
     prodLacks(file, name, /\b(?:GLOBAL|LOCAL)\b|WITHOUT OIDS/);
-    prodHas(file, name, /CREATE \[ TEMPORARY \| TEMP \| UNLOGGED \] TABLE/);
+    prodHas(file, name, /CREATE \[ \{ TEMPORARY \| TEMP \| UNLOGGED \} \] TABLE/);
     prodHas(file, name, /\[ WITH \( \{ storage_parameter \[= value\] \} \[, \.\.\.\] \) \]/);
 }
-has('create/view.snf', /WITH \[ CASCADED \| LOCAL \] CHECK OPTION/, 'effective LOCAL view option stays');
-has('other/set.snf', /SET \[ SESSION \| LOCAL \]/, 'effective LOCAL setting stays');
+has('create/view.snf', /WITH \[ \{ CASCADED \| LOCAL \} \] CHECK OPTION/, 'effective LOCAL view option stays');
+has('other/set.snf', /SET \[ \{ SESSION \| LOCAL \} \]/, 'effective LOCAL setting stays');
 prodLacks('alter/table.snf', 'action', /SET WITHOUT OIDS/);
 prodLacks('alter/foreign-table.snf', 'alter_action', /SET WITHOUT OIDS/);
-check('all SNF files omit the same ineffective compatibility forms', () => {
+check('all SNF files omit ineffective table options', () => {
     for (const family of ['alter', 'auth', 'create', 'drop', 'other', 'query', 'transaction']) {
         for (const filename of fs.readdirSync(path.join(root, family)).filter(name => name.endsWith('.snf'))) {
             const file = `${family}/${filename}`, text = source(file);
-            assert.doesNotMatch(text, /\b(?:WITH|WITHOUT) OIDS\b/, `${file}: legacy OIDS option`);
+            assert.doesNotMatch(text, /\b(?:WITH|WITHOUT) OIDS\b/, `${file}: unsupported OIDS option`);
             assert.doesNotMatch(text, /\b(?:GLOBAL|LOCAL)\b\s*(?:\|\s*LOCAL\s*)?\]?\s*\{?\s*(?:TEMPORARY|TEMP)\b/, `${file}: ineffective temporary-table prefix`);
         }
     }
@@ -205,9 +205,8 @@ check('ordinary inputs and external statement declarations need no inventory', (
 check('unreachable declared helper fails', () => assert.ok(checkDocument('fixture.snf', `${header}SELECT input\n\n# WHERE unused\nvalue\n`).errors.some(error => error.includes('unreachable helper'))));
 check('unowned continuation fails', () => assert.ok(checkDocument('fixture.snf', `${header}SELECT input\n\nSELECT another\n`).errors.some(error => error.includes('unowned continuation'))));
 check('raw parentheses cannot stand in for a grouped repeated member', () => assert.ok(checkDocument('fixture.snf', `${header}VALUES ( value_expression [, ...] ) [, ...]\n`).errors.some(error => error.includes('no single bound member'))));
-check('pure optional gate is explicitly scoped to changed files', () => {
+check('pure optional gate applies to every file without a Git baseline', () => {
     const input = `${header}SELECT [ item [, ...] ]\n`;
-    assert.deepEqual(checkDocument('fixture.snf', input).errors, []);
-    assert.ok(checkDocument('fixture.snf', input, { checkPureLoopOptionals: true }).errors.some(error => error.includes('redundant pure-LOOP optional')));
+    assert.ok(checkDocument('fixture.snf', input).errors.some(error => error.includes('redundant pure-LOOP optional')));
 });
 console.log(JSON.stringify({ checks, passed: true, parserRevision, oracleFixtures: fixtures.length, oracleExpansions: fixtures.length * 3, scope: 'Retained production shapes, actual walker binding, isolated 0/1/2 expansion fixtures, and validator/parser negative cases. No production SQL generator or database execution.' }, null, 2));

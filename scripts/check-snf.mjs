@@ -1,25 +1,15 @@
 // Explicitly invoked checks over the canonical SNF parser; never executes SQL.
+import { inspectContract } from './snf-contract.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
+import { parser as parserModule, parserRevision, parserInput } from './parser-runtime.mjs';
+export { parserRevision } from './parser-runtime.mjs';
 
 export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-export const parserRevision = 'bcf2c3ac58b45e7d5391716393586b00b11e0c1a';
-export const defaultDiffBase = '75d7ec80383dea9ceafe4bf6e324515daaa7e877';
-const entry = process.env.SNF_PARSER_MODULE;
-if (!entry) throw new Error('Set SNF_PARSER_MODULE to the pinned built parser; see README.md');
-const parserEntry = fs.realpathSync(path.resolve(entry));
-const git = (cwd, ...args) => execFileSync('git', ['-C', cwd, ...args], { encoding: 'utf8' }).trim();
-const parserRoot = git(path.dirname(parserEntry), 'rev-parse', '--show-toplevel');
-if (git(parserRoot, 'rev-parse', 'HEAD') !== parserRevision) throw new Error(`Parser source must be at ${parserRevision}`);
-if (parserEntry !== path.join(parserRoot, 'dist/esm/index.mjs')) throw new Error('Use the pinned checkout’s dist/esm/index.mjs entry');
-if (JSON.parse(fs.readFileSync(path.join(parserRoot, 'package.json'), 'utf8')).name !== 'snf-parser') throw new Error('Unexpected parser package');
-// Ignore unrelated untracked environment files, but reject edits to build inputs.
-if (git(parserRoot, 'diff', 'HEAD', '--', 'src', 'package.json', 'pnpm-lock.yaml', 'tsconfig.json', 'vite.config.ts')) throw new Error('Parser build inputs differ from the pinned revision');
-if (git(parserRoot, 'ls-files', '--others', '--exclude-standard', '--', 'src')) throw new Error('Untracked parser source found');
-export const { SNFDocumentParser, SNFParser, NodeType, exchangeQuoteNode, exchangeLoopNode } = await import(pathToFileURL(parserEntry).href);
+export const { SNFDocumentParser, SNFParser, NodeType, exchangeQuoteNode, exchangeLoopNode } = parserModule;
 export const parser = new SNFDocumentParser();
+export const document = file => parser.parse(fs.readFileSync(path.join(root, file), 'utf8'));
 const trivia = new Set([NodeType.BLANK, NodeType.WRAP]);
 export const significant = nodes => (nodes ?? []).filter(node => !trivia.has(node.type));
 export const normalized = ast => exchangeLoopNode(exchangeQuoteNode(ast));
@@ -28,8 +18,8 @@ export function visit(node, callback, parent) {
     node.children?.forEach(child => visit(child, callback, node));
 }
 
-// OPTIONAL introduces an ENUM/GROUP layer. Unwrap only single choices, never
-// keywords or punctuation: [ ORDER BY item [, ...] ] and [ (arg [, ...]) ] stay.
+// OPTIONAL directly owns its sequence. Explicit single-choice ENUM/GROUP
+// wrappers can also enclose a loop; never unwrap keywords or punctuation.
 function unwrapSingleChoice(node) {
     while ([NodeType.ENUM, NodeType.GROUP].includes(node?.type)) {
         const children = significant(node.children);
@@ -48,7 +38,7 @@ export function pureLoopOptionals(ast) {
     return found;
 }
 
-export function checkDocument(file, source, { checkPureLoopOptionals = false } = {}) {
+export function checkDocument(file, source) {
     const errors = [];
     const fail = message => errors.push(`${file}: ${message}`);
     if (!/^# https:\/\/www\.postgresql\.org\/docs\/18\/sql-[a-z-]+\.html\r?\n/.test(source)) fail('missing version-scoped first-line source');
@@ -63,6 +53,7 @@ export function checkDocument(file, source, { checkPureLoopOptionals = false } =
     for (const [index, line] of document.lines.entries()) {
         if (source.slice(line.start, line.end) !== line.content + line.ending || line.line !== index + 1) fail(`physical line span mismatch at line ${index + 1}`);
     }
+    errors.push(...inspectContract(document, parserModule).map(error => `${file}: ${error}`));
     const declarations = new Map(), cases = new Set(), roots = [], productions = [];
     let active, astNodes = 0, loops = 0;
     const redundantOptionals = [];
@@ -132,7 +123,6 @@ export function checkDocument(file, source, { checkPureLoopOptionals = false } =
             const contentLineIndex = block.content.slice(0, node.start).split('\n').length - 1;
             const line = block.lines.filter(item => item.type === 'content')[contentLineIndex].line;
             redundantOptionals.push({ line, raw: node.raw });
-            if (checkPureLoopOptionals) fail(`redundant pure-LOOP optional at block line ${block.startLine}: ${node.raw.replace(/\s+/g, ' ')}`);
         }
     }
     if (!roots.length) fail('no entry point');
@@ -158,29 +148,22 @@ export function checkDocument(file, source, { checkPureLoopOptionals = false } =
 
 export function checkRepository() {
     const errors = [], files = {};
-    const diffBase = process.env.SNF_DIFF_BASE || defaultDiffBase;
-    git(root, 'rev-parse', '--verify', `${diffBase}^{commit}`);
-    const changed = new Set([
-        ...git(root, 'diff', '--name-only', diffBase, '--', '*.snf').split('\n'),
-        ...git(root, 'ls-files', '--others', '--exclude-standard', '--', '*.snf').split('\n'),
-    ].filter(Boolean));
     for (const family of ['alter', 'auth', 'create', 'drop', 'other', 'query', 'transaction']) {
         for (const filename of fs.readdirSync(path.join(root, family)).filter(name => name.endsWith('.snf')).sort()) {
             const file = `${family}/${filename}`;
-            const result = checkDocument(file, fs.readFileSync(path.join(root, file), 'utf8'), { checkPureLoopOptionals: changed.has(file) });
+            const result = checkDocument(file, fs.readFileSync(path.join(root, file), 'utf8'));
             errors.push(...result.errors);
             if (result.record) files[file] = result.record;
         }
     }
     if (Object.keys(files).length !== 183) errors.push(`expected 183 parsed SNF documents, got ${Object.keys(files).length}`);
     return {
-        scope: 'Canonical SNF parsing, physical round-trip, raw AST spans, directive ownership, local-reference reachability, and actual loop binding; pure-LOOP optional gate only for changed files. Not SQL generation or database validation.',
-        parserRevision, diffBase, changedFiles: [...changed].sort(),
+        scope: 'Canonical SNF parsing, physical round-trip, raw AST spans, directive ownership, local-reference reachability, actual loop binding, and pure-LOOP optional checks on every file. Not database validation.',
+        parserRevision, parserInput,
         documents: Object.keys(files).length,
         blocks: Object.values(files).reduce((sum, file) => sum + file.blocks, 0),
         astNodes: Object.values(files).reduce((sum, file) => sum + file.astNodes, 0),
         loops: Object.values(files).reduce((sum, file) => sum + file.loops, 0),
-        untouchedPureLoopOptionals: Object.entries(files).filter(([file]) => !changed.has(file)).reduce((sum, [, file]) => sum + file.redundantOptionals.length, 0),
         errors, files,
     };
 }

@@ -24,7 +24,7 @@ ALTER TABLE [ IF EXISTS ] name
 # CASE DETACH_PARTITION
 ALTER TABLE [ IF EXISTS ] name
     DETACH PARTITION partition
-    [ CONCURRENTLY | FINALIZE ]
+    [ { CONCURRENTLY | FINALIZE } ]
 
 # CASE SCHEMA
 ALTER TABLE [ IF EXISTS ] name
@@ -41,7 +41,7 @@ ADD [ COLUMN ] [ IF NOT EXISTS ] colname type
     [ COLLATE collate ]
     column_constraint_definition [...]
 
-DROP [ COLUMN ] [ IF EXISTS ] colname [ RESTRICT | CASCADE ]
+DROP [ COLUMN ] [ IF EXISTS ] colname [ { RESTRICT | CASCADE } ]
 
 ALTER [ COLUMN ] colname
     [ SET DATA ] TYPE type
@@ -88,28 +88,28 @@ ALTER [ COLUMN ] colname
 
 ADD [ CONSTRAINT constraint ]
     table_constraint_definition
-    [ DEFERRABLE | NOT DEFERRABLE ]
-    [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
-    [ ENFORCED | NOT ENFORCED ]
+    [ { DEFERRABLE | NOT DEFERRABLE } ]
+    [ { INITIALLY DEFERRED | INITIALLY IMMEDIATE } ]
+    [ { ENFORCED | NOT ENFORCED } ]
     [ NOT VALID ]
 
 ADD [ CONSTRAINT constraint ]
     { UNIQUE | PRIMARY KEY }
     USING INDEX index
-    [ DEFERRABLE | NOT DEFERRABLE ]
-    [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
+    [ { DEFERRABLE | NOT DEFERRABLE } ]
+    [ { INITIALLY DEFERRED | INITIALLY IMMEDIATE } ]
 
 ALTER CONSTRAINT constraint
-    [ DEFERRABLE | NOT DEFERRABLE ]
-    [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
-    [ ENFORCED | NOT ENFORCED ]
+    [ { DEFERRABLE | NOT DEFERRABLE } ]
+    [ { INITIALLY DEFERRED | INITIALLY IMMEDIATE } ]
+    [ { ENFORCED | NOT ENFORCED } ]
 
 ALTER CONSTRAINT constraint
-    [ INHERIT | NO INHERIT ]
+    [ { INHERIT | NO INHERIT } ]
 
 VALIDATE CONSTRAINT constraint
 
-DROP CONSTRAINT [ IF EXISTS ] constraint [ RESTRICT | CASCADE ]
+DROP CONSTRAINT [ IF EXISTS ] constraint [ { RESTRICT | CASCADE } ]
 
 DISABLE TRIGGER { trigger | ALL | USER }
 
@@ -172,16 +172,16 @@ UNIQUE [ NULLS [ NOT ] DISTINCT ]
 PRIMARY KEY
     primary_key_index_options |
 DEFAULT value_expression |
-GENERATED ALWAYS AS ( generated_expression ) [ STORED | VIRTUAL ] |
+GENERATED ALWAYS AS ( generated_expression ) [ { STORED | VIRTUAL } ] |
 GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY [ ( identity_options ) ] |
     REFERENCES referenced_table [ ( refcolname ) ]
-    [ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ]
+    [ { MATCH FULL | MATCH PARTIAL | MATCH SIMPLE } ]
     [ ON DELETE on_delete_action ]
     [ ON UPDATE on_update_action ]
 }
-[ DEFERRABLE | NOT DEFERRABLE ]
-[ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
-[ ENFORCED | NOT ENFORCED ]
+[ { DEFERRABLE | NOT DEFERRABLE } ]
+[ { INITIALLY DEFERRED | INITIALLY IMMEDIATE } ]
+[ { ENFORCED | NOT ENFORCED } ]
 
 # PARTOFIS table_constraint_definition
 NOT NULL colname [ NO INHERIT ]
@@ -202,7 +202,7 @@ EXCLUDE [ USING index_method ]
 FOREIGN KEY ( colname [, ...] [, PERIOD colname ] )
     REFERENCES referenced_table
         [ ( refcolname [, ...] [, PERIOD refcolname ] ) ]
-    [ MATCH FULL | MATCH PARTIAL | MATCH SIMPLE ]
+    [ { MATCH FULL | MATCH PARTIAL | MATCH SIMPLE } ]
     [ ON DELETE on_delete_action ]
     [ ON UPDATE on_update_action ]
 
@@ -214,7 +214,7 @@ FOREIGN KEY ( colname [, ...] [, PERIOD colname ] )
 # WHERE exclude_column_expression
 { colname | ( col_expression ) } [ COLLATE collate ]
 [ opclass [ ( { opclass_parameter = value } [, ...] ) ] ]
-[ ASC | DESC ] [ NULLS { FIRST | LAST } ]
+[ { ASC | DESC } ] [ NULLS { FIRST | LAST } ]
 
 # WHERE on_delete_action, on_update_action
 { NO ACTION | RESTRICT | CASCADE | SET NULL [ ( colname [, ...] ) ] | SET DEFAULT [ ( colname [, ...] ) ] }
@@ -237,9 +237,9 @@ WITH ( MODULUS modulus, REMAINDER remainder )
 
 # WHERE identity_options
 [ INCREMENT [ BY ] increment ]
-    [ MINVALUE minvalue | NO MINVALUE ] [ MAXVALUE maxvalue | NO MAXVALUE ]
+    [ { MINVALUE minvalue | NO MINVALUE } ] [ { MAXVALUE maxvalue | NO MAXVALUE } ]
     [ START [ WITH ] start ] [ CACHE cache ] [ [ NO ] CYCLE ]
-    [ SEQUENCE NAME sequence ] [ LOGGED | UNLOGGED ]
+    [ SEQUENCE NAME sequence ] [ { LOGGED | UNLOGGED } ]
 
 # ONEOFIS identity_option
 INCREMENT [ BY ] increment

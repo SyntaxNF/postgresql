@@ -2,7 +2,7 @@
 
 DECLARE name
     [ BINARY ]
-    [ ASENSITIVE | INSENSITIVE ]
+    [ { ASENSITIVE | INSENSITIVE } ]
     [ [ NO ] SCROLL ]
     CURSOR [ { WITH | WITHOUT } HOLD ]
     FOR select_statement

@@ -17,7 +17,7 @@ COPY { table [ ( colname [, ...] ) ] | ( query_statement ) }
 [ DELIMITER 'delimiter', ]
 [ NULL 'null', ]
 [ DEFAULT 'default', ]
-[ HEADER [ header | MATCH ], ]
+[ HEADER [ { header | MATCH } ], ]
 [ QUOTE 'quote', ]
 [ ESCAPE 'escape', ]
 [ FORCE_QUOTE { ( colname [, ...] ) | * }, ]

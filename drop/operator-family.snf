@@ -2,4 +2,4 @@
 
 DROP OPERATOR FAMILY [ IF EXISTS ] name
     USING index_method
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]

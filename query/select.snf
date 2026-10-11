@@ -2,17 +2,17 @@
 
 # CASE SELECT
 [ WITH [ RECURSIVE ] with_query_definition [, ...] ]
-SELECT [ ALL | DISTINCT [ ON ( col_expression [, ...] ) ] ]
+SELECT [ { ALL | DISTINCT [ ON ( col_expression [, ...] ) ] } ]
     { * | col_expression [ [ AS ] col_alias ] } [, ...]
     [ FROM from_expression [, ...] ]
     [ WHERE boolean_expression ]
-    [ GROUP BY [ ALL | DISTINCT ] group_by_expression [, ...] ]
+    [ GROUP BY [ { ALL | DISTINCT } ] group_by_expression [, ...] ]
     [ HAVING boolean_expression ]
     [ WINDOW { window AS ( window_expression ) } [, ...] ]
-    [ { UNION | INTERSECT | EXCEPT } [ ALL | DISTINCT ] select_statement ]
+    [ { UNION | INTERSECT | EXCEPT } [ { ALL | DISTINCT } ] select_statement ]
     [ ORDER BY order_by_expression [, ...] ]
     [ LIMIT { limit | ALL } ]
-    [ OFFSET offset [ ROW | ROWS ] ]
+    [ OFFSET offset [ { ROW | ROWS } ] ]
     [ FETCH { FIRST | NEXT } [ fetch ] { ROW | ROWS } { ONLY | WITH TIES } ]
     locking_clause [...]
 
@@ -20,7 +20,7 @@ SELECT [ ALL | DISTINCT [ ON ( col_expression [, ...] ) ] ]
 TABLE [ ONLY ] table [ * ]
 
 # WHERE locking_clause
-FOR { UPDATE | NO KEY UPDATE | SHARE | KEY SHARE } [ OF table [, ...] ] [ NOWAIT | SKIP LOCKED ]
+FOR { UPDATE | NO KEY UPDATE | SHARE | KEY SHARE } [ OF table [, ...] ] [ { NOWAIT | SKIP LOCKED } ]
 
 # WHERE with_query_definition
 with_name [ ( colname [, ...] ) ] AS [ [ NOT ] MATERIALIZED ] ( query_statement )
@@ -80,7 +80,7 @@ CUBE ( { col_expression | ( col_expression [, ...] ) } [, ...] )
 GROUPING SETS ( group_by_expression [, ...] )
 
 # WHERE order_by_expression
-col_expression [ ASC | DESC | USING operator ] [ NULLS { FIRST | LAST } ]
+col_expression [ { ASC | DESC | USING operator } ] [ NULLS { FIRST | LAST } ]
 
 # STATEMENT select_statement
 SELECT

@@ -5,7 +5,7 @@ ALTER USER MAPPING FOR role_public
     OPTIONS ( option_action [, ...] )
 
 # PARTOFIS option_action
-[ ADD | SET ] option 'value'
+[ { ADD | SET } ] option 'value'
 
 DROP option
 

@@ -12,7 +12,7 @@ CREATE [ OR REPLACE ] PROCEDURE name (
     [ sql_definition ]
 
 # WHERE argument_definition
-[ IN | OUT | INOUT | VARIADIC ] [ argname ] argtype
+[ { IN | OUT | INOUT | VARIADIC } ] [ argname ] argtype
 [ { DEFAULT | = } value_expression ]
 
 # WHERE set_parameter_clause

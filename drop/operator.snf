@@ -2,4 +2,4 @@
 
 DROP OPERATOR [ IF EXISTS ]
     { name ( { left | NONE } , right ) } [, ...]
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]

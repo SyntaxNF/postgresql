@@ -38,14 +38,14 @@ column_constraint_definition [...]
     NULL |
     CHECK ( boolean_expression ) [ NO INHERIT ] |
     DEFAULT value_expression |
-    GENERATED ALWAYS AS ( generation_expression ) [ STORED | VIRTUAL ]
+    GENERATED ALWAYS AS ( generation_expression ) [ { STORED | VIRTUAL } ]
 }
-[ ENFORCED | NOT ENFORCED ]
+[ { ENFORCED | NOT ENFORCED } ]
 
 # WHERE table_constraint_definition
 [ CONSTRAINT constraint ]
 { NOT NULL colname [ NO INHERIT ] | CHECK ( boolean_expression ) [ NO INHERIT ] }
-[ ENFORCED | NOT ENFORCED ]
+[ { ENFORCED | NOT ENFORCED } ]
 
 # WHERE like_option
 { INCLUDING | EXCLUDING } { COMMENTS | CONSTRAINTS | DEFAULTS | GENERATED | STATISTICS | ALL }

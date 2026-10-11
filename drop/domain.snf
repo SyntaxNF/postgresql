@@ -1,4 +1,4 @@
 # https://www.postgresql.org/docs/18/sql-dropdomain.html
 
 DROP DOMAIN [ IF EXISTS ] name [, ...]
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]

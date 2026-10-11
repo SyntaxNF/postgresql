@@ -1,15 +1,15 @@
 # https://www.postgresql.org/docs/18/sql-set.html
 
 # CASE PARAMETER
-SET [ SESSION | LOCAL ] config_parameter
+SET [ { SESSION | LOCAL } ] config_parameter
     { TO | = } { { value | 'value' } [, ...] | DEFAULT }
 
 # CASE TIME_ZONE
-SET [ SESSION | LOCAL ] TIME ZONE
+SET [ { SESSION | LOCAL } ] TIME ZONE
     { value | 'value' | LOCAL | DEFAULT }
 
 # CASE SCHEMA
-SET [ SESSION | LOCAL ] SCHEMA 'schema'
+SET [ { SESSION | LOCAL } ] SCHEMA 'schema'
 
 # CASE NAMES
-SET [ SESSION | LOCAL ] NAMES 'encoding'
+SET [ { SESSION | LOCAL } ] NAMES 'encoding'

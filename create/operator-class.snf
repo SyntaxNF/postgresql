@@ -7,7 +7,7 @@ CREATE OPERATOR CLASS name [ DEFAULT ]
 
 # WHERE operator_definition
 OPERATOR number operator
-[ ( left, right ) ] [ FOR SEARCH | FOR ORDER BY order ]
+[ ( left, right ) ] [ { FOR SEARCH | FOR ORDER BY order } ]
 
 # WHERE function_definition
 FUNCTION number

@@ -2,7 +2,7 @@
 
 DROP AGGREGATE [ IF EXISTS ]
     signature [, ...]
-    [ CASCADE | RESTRICT ]
+    [ { CASCADE | RESTRICT } ]
 
 # WHERE signature
 name (

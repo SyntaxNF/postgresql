@@ -4,8 +4,8 @@
 ALTER SEQUENCE [ IF EXISTS ] name
     [ AS type ]
     [ INCREMENT [ BY ] increment ]
-    [ MINVALUE minvalue | NO MINVALUE ]
-    [ MAXVALUE maxvalue | NO MAXVALUE ]
+    [ { MINVALUE minvalue | NO MINVALUE } ]
+    [ { MAXVALUE maxvalue | NO MAXVALUE } ]
     [ [ NO ] CYCLE ]
     [ START [ WITH ] start ]
     [ RESTART [ [ WITH ] restart ] ]
