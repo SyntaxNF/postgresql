@@ -7,12 +7,11 @@ import { parser as parserModule, parserRevision, parserInput } from './parser-ru
 export { parserRevision } from './parser-runtime.mjs';
 
 export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-export const { SNFDocumentParser, SNFParser, NodeType, exchangeQuoteNode, exchangeLoopNode } = parserModule;
+export const { SNFDocumentParser, SNFParser, NodeType } = parserModule;
 export const parser = new SNFDocumentParser();
 export const document = file => parser.parse(fs.readFileSync(path.join(root, file), 'utf8'));
 const trivia = new Set([NodeType.BLANK, NodeType.WRAP]);
 export const significant = nodes => (nodes ?? []).filter(node => !trivia.has(node.type));
-export const normalized = ast => exchangeLoopNode(exchangeQuoteNode(ast));
 export function visit(node, callback, parent) {
     callback(node, parent);
     node.children?.forEach(child => visit(child, callback, node));
@@ -30,7 +29,7 @@ function unwrapSingleChoice(node) {
 }
 export function pureLoopOptionals(ast) {
     const found = [];
-    visit(normalized(ast), node => {
+    visit(ast, node => {
         if (node.type !== NodeType.OPTIONAL) return;
         const children = significant(node.children);
         if (children.length === 1 && unwrapSingleChoice(children[0])?.type === NodeType.LOOP) found.push(node);
@@ -54,93 +53,31 @@ export function checkDocument(file, source) {
         if (source.slice(line.start, line.end) !== line.content + line.ending || line.line !== index + 1) fail(`physical line span mismatch at line ${index + 1}`);
     }
     errors.push(...inspectContract(document, parserModule).map(error => `${file}: ${error}`));
-    const declarations = new Map(), cases = new Set(), roots = [], productions = [];
-    let active, astNodes = 0, loops = 0;
-    const redundantOptionals = [];
-    for (const block of document.blocks) {
-        if (!block.content && /^# https:/.test(block.comment)) {
-            // The source-comment block still has a real (empty) ROOT AST.
-            visit(block.ast, node => {
-                astNodes++;
-                if (block.content.slice(node.start, node.end) !== node.raw) fail(`AST raw/span mismatch at line ${block.startLine}`);
-            });
-            continue;
-        }
-        if (source.slice(block.start, block.end) !== block.lines.map(line => line.content + line.ending).join('')) fail(`block span mismatch at line ${block.startLine}`);
-        const directives = [...block.comment.matchAll(/^# (CASE|WHERE|ONEOFIS|PARTOFIS|STATEMENT) (.+)$/gm)];
-        if (directives.length > 1) fail(`multiple directives at line ${block.startLine}`);
-        const otherComments = block.comment.split('\n').filter(line => line && !/^# (CASE|WHERE|ONEOFIS|PARTOFIS|STATEMENT) .+$/.test(line));
-        if (otherComments.length) fail(`unknown directive at line ${block.startLine}`);
-        if (directives.length) {
-            const [, kind, names] = directives[0];
-            active = { kind, names: names.split(/\s*,\s*/), variables: [], content: [], blocks: [] };
-            productions.push(active);
-            for (const name of active.names) {
-                if (!(kind === 'CASE' ? /^[A-Z][A-Z0-9_]*$/ : /^[a-z][a-z0-9_]*$/).test(name)) fail(`invalid ${kind} name ${name}`);
-                if (kind === 'CASE') {
-                    if (cases.has(name)) fail(`duplicate CASE ${name}`);
-                    cases.add(name);
-                } else {
-                    if (declarations.has(name)) fail(`duplicate helper ${name}`);
-                    declarations.set(name, active);
-                }
-            }
-            if (kind === 'CASE') roots.push(active);
-        } else if (!active && !roots.length) {
-            active = { kind: 'IMPLICIT', names: [], variables: [], content: [], blocks: [] };
-            roots.push(active); productions.push(active);
-        } else if (!active || !['PARTOFIS', 'ONEOFIS'].includes(active.kind)) fail(`unowned continuation at line ${block.startLine}`);
-        if (!block.content.trim() && active?.kind !== 'STATEMENT') fail(`empty production at line ${block.startLine}`);
-        if (active) { active.content.push(block.content); active.blocks.push(block); }
-        if (active?.kind === 'STATEMENT') {
-            for (const line of block.content.split('\n').filter(Boolean)) {
-                if (!/^[A-Z][A-Z0-9_]*(?: [A-Z][A-Z0-9_]*)*$/.test(line)) fail(`invalid STATEMENT category ${line}`);
-            }
-        }
-        if (active?.kind === 'ONEOFIS') {
-            for (const line of block.content.split('\n')) {
-                try { new SNFParser().parse(line); } catch { fail(`multiline ONEOFIS candidate at line ${block.startLine}`); }
-            }
-        }
-        visit(block.ast, (node, parent) => {
-            astNodes++;
-            if (!Number.isInteger(node.start) || !Number.isInteger(node.end) || node.start < 0 || node.end < node.start || node.end > block.content.length || block.content.slice(node.start, node.end) !== node.raw) fail(`AST raw/span mismatch at line ${block.startLine}`);
-            if (parent && (node.start < parent.start || node.end > parent.end)) fail(`AST child escapes parent span at line ${block.startLine}`);
-            if (node.type === NodeType.VARIABLE && active) active.variables.push(node.content);
-            if (node.type === NodeType.SPLIT) fail(`alternative separator outside braces at line ${block.startLine}`);
-            if (node.type === NodeType.REPEAT && parent?.type !== NodeType.LOOP) fail(`orphan repetition at line ${block.startLine}`);
-            if (node.type === NodeType.GROUP && !node.content.trim()) fail(`empty alternative at line ${block.startLine}`);
-            if (node.type === NodeType.LOOP) loops++;
-        });
-        // A parsed postfix marker must actually absorb its preceding repeatable
-        // member in the canonical walker. Parsing success alone does not prove it.
-        visit(normalized(block.ast), node => {
-            if (node.type !== NodeType.LOOP) return;
-            const members = significant(node.children);
-            if (!Array.isArray(node.ast) || members.length !== 1 || ![NodeType.ENUM, NodeType.OPTIONAL, NodeType.VARIABLE].includes(members[0]?.type)) fail(`postfix loop has no single bound member at line ${block.startLine}`);
-        });
-        for (const node of pureLoopOptionals(block.ast)) {
-            const contentLineIndex = block.content.slice(0, node.start).split('\n').length - 1;
-            const line = block.lines.filter(item => item.type === 'content')[contentLineIndex].line;
-            redundantOptionals.push({ line, raw: node.raw });
-        }
-    }
-    if (!roots.length) fail('no entry point');
-    if (cases.size && roots.some(production => production.kind === 'IMPLICIT')) fail('mixed implicit and CASE entry points');
+    const productions = [
+        ...document.entries.map(entry => ({ ...entry, kind: entry.name ? 'CASE' : 'IMPLICIT', names: entry.name ? [entry.name] : [] })),
+        ...document.definitions,
+    ].map(item => ({ ...item, content: item.blocks.map(index => document.blocks[index].content), blocks: item.blocks.map(index => document.blocks[index]) }));
+    const declarations = new Map(document.definitions.flatMap(d => d.names.map(name => [name, d])));
     const reachable = new Set();
     function follow(name) {
         if (!declarations.has(name) || reachable.has(name)) return;
-        reachable.add(name);
-        declarations.get(name).variables.forEach(follow);
+        const definition = declarations.get(name);
+        definition.names.forEach(name => reachable.add(name));
+        definition.dependencies.forEach(follow);
     }
-    roots.forEach(production => production.variables.forEach(follow));
+    document.entries.forEach(entry => entry.dependencies.forEach(follow));
     for (const name of declarations.keys()) if (!reachable.has(name)) fail(`unreachable helper ${name}`);
-    // Unbound names are ordinary caller inputs, expressions, bodies, identifiers,
-    // or reused statements. No closed-world input inventory is required.
-    const leaves = [...new Set(productions.flatMap(production => production.variables).filter(name => !declarations.has(name)))].sort();
+    if (!document.entries.length) fail('no entry point');
+    if (document.entries.filter(entry => !entry.name).length > 1) fail('unowned continuation');
+    let astNodes = 0, loops = 0;
+    const leaves = new Set(), redundantOptionals = [];
+    for (const production of productions) {
+        visit(production.ast, node => { astNodes++; if (node.type === NodeType.LOOP) loops++; if (node.type === NodeType.VARIABLE) leaves.add(node.content); });
+        for (const node of pureLoopOptionals(production.ast)) redundantOptionals.push({ line: document.blocks[node.sourceBlock].startLine, raw: node.raw });
+    }
     const record = {
-        cases: [...cases], helpers: [...declarations.keys()], leaves,
-        externalStatements: [...declarations].filter(([, production]) => production.kind === 'STATEMENT' && !production.content.join('').trim()).map(([name]) => name),
+        cases: document.entries.map(entry => entry.name).filter(Boolean), helpers: [...declarations.keys()], leaves: [...leaves].sort(),
+        externalStatements: document.definitions.filter(d => d.kind === 'STATEMENT' && !d.ast.categories.length).flatMap(d => d.names),
         blocks: document.blocks.length, astNodes, loops, redundantOptionals,
     };
     return { errors, record, productions, document };

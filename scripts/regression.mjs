@@ -1,4 +1,4 @@
-// Explicit structural tests using the canonical parser and walkers.
+// Explicit structural tests using the canonical parser final AST.
 // The small expansion oracle below is an isolated fixture, NOT a production
 // SQL generator, PostgreSQL SQL parser, or database execution test.
 import assert from 'node:assert/strict';
@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
     root, parserRevision, parser, SNFParser, NodeType,
-    normalized, significant, visit, pureLoopOptionals, checkDocument,
+    significant, visit, pureLoopOptionals, checkDocument,
 } from './check-snf.mjs';
 
 let checks = 0;
@@ -28,7 +28,7 @@ function prodHas(file, name, expression) { check(`${file}:${name}`, () => assert
 function prodLacks(file, name, expression) { check(`${file}:${name}`, () => assert.doesNotMatch(prodSource(file, name), expression)); }
 function boundLoops(file, name) {
     const loops = [];
-    for (const block of production(file, name).blocks) visit(normalized(block.ast), node => {
+    visit(production(file, name).ast, node => {
         if (node.type === NodeType.LOOP) loops.push(node);
     });
     return loops;
@@ -36,10 +36,9 @@ function boundLoops(file, name) {
 function repeats(file, name, expected, separator = ',') {
     check(`${file}:${name ?? '<implicit>'} whole-item binding ${expected}`, () => {
         const loop = boundLoops(file, name).find(node => expected.test(significant(node.children)[0]?.raw ?? ''));
-        assert.ok(loop, 'expected whole item is not a canonical walker LOOP child');
+        assert.ok(loop, 'expected whole item is not a compiled LOOP child');
         assert.equal(significant(loop.children).length, 1);
-        assert.ok(Array.isArray(loop.ast), 'canonical walker retains original marker in ast');
-        assert.equal(significant(loop.ast).filter(node => node.type !== NodeType.REPEAT).map(node => node.content).join(' '), separator);
+        assert.equal(loop.separator, separator);
     });
 }
 
@@ -119,7 +118,7 @@ prodHas('other/set.snf', 'SCHEMA', /SCHEMA 'schema'/);
 prodHas('other/set.snf', 'NAMES', /NAMES 'encoding'/);
 for (const file of ['transaction/begin.snf', 'transaction/start-transaction.snf', 'transaction/set-transaction.snf']) prodHas(file, 'transaction_mode', /\{ READ WRITE \| READ ONLY \}/);
 
-// These assertions examine the real exchangeLoopNode result, not just brackets.
+// These assertions examine the final parser result, not just brackets.
 for (const file of ['auth/grant.snf', 'auth/revoke.snf']) {
     repeats(file, 'COLUMN', /^\{ \{ SELECT \| INSERT \| UPDATE \| REFERENCES \} \( colname \[, \.\.\.\] \) \}$/);
     repeats(file, 'routine_definition', /^\{ routine \[ \( arg \[, \.\.\.\] \) \] \}$/);
@@ -144,15 +143,15 @@ for (const file of ['query/select.snf', 'query/select-into.snf', 'query/delete.s
 // Demonstrate 0/1/2 repetitions against the actual normalized AST. This intentionally
 // limited test-only interpreter chooses the first ENUM alternative, omits OPTIONAL
 // nodes unless requested, substitutes fixture values, and joins LOOP members using
-// the canonical marker ast. It has no grammar references, DB connection, production
+// the compiled separator. It has no grammar references, DB connection, production
 // integration, or general SQL validity checks. Zero is allowed even where SQL needs
 // at least one item: caller selection/semantic eligibility is outside this test.
 function fixtureExpansion(input, { count, value = name => name, optional = false, nestedCount = 1 }) {
-    const ast = normalized(new SNFParser().parse(input));
+    const ast = new SNFParser().parse(input);
     function render(node, context = { depth: 0, index: 0 }) {
         if (node.type === NodeType.LOOP) {
             const amount = context.depth === 0 ? count : nestedCount;
-            const separator = (node.ast ?? []).filter(child => child.type !== NodeType.REPEAT).flatMap(child => render(child, context));
+            const separator = node.separator ? [node.separator] : [];
             const output = [];
             for (let index = 0; index < amount; index++) {
                 if (index) output.push(...separator);
@@ -162,6 +161,7 @@ function fixtureExpansion(input, { count, value = name => name, optional = false
         }
         if (node.type === NodeType.OPTIONAL && !optional) return [];
         if (node.type === NodeType.ENUM) return render(significant(node.children)[0], context);
+        if (node.type === NodeType.QUOTED) return [node.quote + node.children.flatMap(child => render(child, context)).join(' ') + node.quote];
         if (node.children) return node.children.flatMap(child => render(child, context));
         if ([NodeType.BLANK, NodeType.WRAP].includes(node.type)) return [];
         assert.notEqual(node.type, NodeType.REPEAT, 'fixture encountered an unbound repeat marker');
@@ -204,9 +204,9 @@ check('ordinary inputs and external statement declarations need no inventory', (
 });
 check('unreachable declared helper fails', () => assert.ok(checkDocument('fixture.snf', `${header}SELECT input\n\n# WHERE unused\nvalue\n`).errors.some(error => error.includes('unreachable helper'))));
 check('unowned continuation fails', () => assert.ok(checkDocument('fixture.snf', `${header}SELECT input\n\nSELECT another\n`).errors.some(error => error.includes('unowned continuation'))));
-check('raw parentheses cannot stand in for a grouped repeated member', () => assert.ok(checkDocument('fixture.snf', `${header}VALUES ( value_expression [, ...] ) [, ...]\n`).errors.some(error => error.includes('no single bound member'))));
+check('raw parentheses cannot stand in for a grouped repeated member', () => assert.ok(checkDocument('fixture.snf', `${header}VALUES ( value_expression [, ...] ) [, ...]\n`).errors.some(error => error.includes('no preceding complete repeatable item'))));
 check('pure optional gate applies to every file without a Git baseline', () => {
     const input = `${header}SELECT [ item [, ...] ]\n`;
     assert.ok(checkDocument('fixture.snf', input).errors.some(error => error.includes('redundant pure-LOOP optional')));
 });
-console.log(JSON.stringify({ checks, passed: true, parserRevision, oracleFixtures: fixtures.length, oracleExpansions: fixtures.length * 3, scope: 'Retained production shapes, actual walker binding, isolated 0/1/2 expansion fixtures, and validator/parser negative cases. No production SQL generator or database execution.' }, null, 2));
+console.log(JSON.stringify({ checks, passed: true, parserRevision, oracleFixtures: fixtures.length, oracleExpansions: fixtures.length * 3, scope: 'Retained production shapes, final AST loop binding, isolated 0/1/2 expansion fixtures, and validator/parser negative cases. No production SQL generator or database execution.' }, null, 2));
