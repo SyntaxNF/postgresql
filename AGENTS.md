@@ -31,6 +31,8 @@ Name grammar nodes by their actual role: suffix complete executable or fully nes
 
 Use a context-qualified `_alias` for aliases, `_target` for operation or clause targets, `_assignment` for complete assignment structures, `_parameter` for configuration parameter names, and `_item`/`_list` for one member versus a homogeneous member list. Use `_mode` for behavioral or state selections, `_method` for implementation or algorithm selections, and `_value` only for values or enumerations that are not arbitrary SQL expressions. Avoid generic `config`; choose `_option`, `_options`, `_parameter`, or `_definition` by role. Prefer the referenced object's semantic type, such as `table`, `constraint`, or `referenced_table`, over a generic `_reference`. Reserve `_condition` for structured condition grammar such as `join_condition`; use `boolean_expression` for ordinary predicates.
 
+For multiline parenthesized blocks, append the SQL opening `(` or `[ (` to the preceding statement line, indent the contents by four spaces, and place the matching `)` or `) ]` on its own line. Put a multiline enum's `{` on its own indented line and its alternatives one level deeper; do not combine `(` with a multiline enum opener. Compact single-line lists may stay inline. ONEOFIS candidates must remain single physical lines.
+
 ## Testing Guidelines
 
 The opt-in checks verify SNF structure, not full SQL semantics or database execution. Validate changes by comparing them with the linked PostgreSQL 18 syntax page, checking balanced delimiters, and reviewing every alternative and optional clause in the diff. Keep edits narrowly scoped so grammar changes can be reviewed independently.
